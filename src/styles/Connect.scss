@@ -1,13 +1,21 @@
-// Path: src\styles\Connect.scss
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-$primaryColor: #A066F2;        // Couleur principale violette
-$secondaryColor: #9ca3af;      // Gris
-$backgroundColor: #f3f4f6;    // Gris très clair
-$textColor: #1f2937;           // Gris foncé
-$errorColor: #dc2626;          // Rouge pour les messages d'erreur
+// Path: src\styles\Connect.scss
+$primaryColor: #A066F2; // Couleur principale violette
+$secondaryColor: #9ca3af; // Gris
+$backgroundColor: #f3f4f6; // Gris très clair
+$textColor: #1f2937; // Gris foncé
+$errorColor: #dc2626; // Rouge pour les messages d'erreur
+$highlightColor : #7C3AED; // Couleur de surbrillance violette
+$CouleurFondPrimary: #5F5BD9; // Couleur principale violette
+$CouleurFondSecondary: #BD50BF; // Couleur principale violette
 
 body {
-    background-color: $backgroundColor;
+    background: linear-gradient(320deg, $CouleurFondPrimary, $CouleurFondSecondary);
     color: $textColor;
     font-family: 'Roboto', sans-serif;
     font-size: 1.2rem;
@@ -16,6 +24,7 @@ body {
     margin: 0;
     padding: 0;
     text-align: center;
+    font-family: 'Arial';
 }
 
 .central_connect_form {
@@ -24,13 +33,20 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    transform: translateY(0);
+    position: static;
+
 }
 
 .central_connect_form h1 {
     font-size: 2.5rem;
     font-weight: 500;
     margin-bottom: 2rem;
-    color: $primaryColor;
+    background: linear-gradient(35deg, $CouleurFondSecondary, $primaryColor);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
 .central_connect_form form {
@@ -45,6 +61,18 @@ body {
     padding: 2rem;
 }
 
+.central_connect_form img {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    margin-bottom: 2rem;
+    object-fit: cover;
+    object-position: center;
+    position: relative;
+    top: 1.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
 .central_connect_form form label {
     font-size: 1.2rem;
     font-weight: 400;
@@ -54,20 +82,24 @@ body {
 
 .central_connect_form form input {
     width: 100%;
-    height: 2.5rem;  // Réduire la hauteur du champ d'entrée
-    border: 1px solid $secondaryColor;
+    height: 1rem;
     border-radius: 0.5rem;
     margin-bottom: 1rem;
     padding: 1rem;
     font-size: 1.2rem;
     font-weight: 400;
     color: $textColor;
+    border: 1px solid $secondaryColor;
+    transition: all 0.3s ease-in-out;
+    outline: none;
 
     &:focus {
-        outline: none;
-        border-color: $primaryColor;
+        border: 1px solid $primaryColor;
     }
+
 }
+
+
 
 .central_connect_form form button {
     width: 100%;
@@ -75,14 +107,14 @@ body {
     border-radius: 0.5rem;
     border: none;
     margin-top: 1rem;
-    background-color: $primaryColor;
     color: #fff;
     font-size: 1.2rem;
     font-weight: 500;
     cursor: pointer;
+    background: linear-gradient(135deg, $primaryColor, $highlightColor);
 
     &:hover {
-        background-color: darken($primaryColor, 10%);
+        background: linear-gradient(135deg, darken($primaryColor, 5%), darken($highlightColor, 5%));
     }
 }
 
@@ -98,12 +130,36 @@ body {
     font-weight: 400;
 }
 
-// Ajouter des media queries pour gérer les appareils avec des résolutions différentes
-// par exemple :
-/*
+
+a {
+    color: $primaryColor;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-top: 2rem;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 10px;
+    position: relative;
+    top: 20px;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.error {
+    color: $errorColor;
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-top: 1rem;
+}
+
 @media screen and (max-width: 768px) {
     .central_connect_form form {
         width: 90%;
     }
 }
-*/
