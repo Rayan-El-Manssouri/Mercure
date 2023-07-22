@@ -1,0 +1,109 @@
+// Path: src\styles\Connect.scss
+
+$primaryColor: #A066F2;        // Couleur principale violette
+$secondaryColor: #9ca3af;      // Gris
+$backgroundColor: #f3f4f6;    // Gris très clair
+$textColor: #1f2937;           // Gris foncé
+$errorColor: #dc2626;          // Rouge pour les messages d'erreur
+
+body {
+    background-color: $backgroundColor;
+    color: $textColor;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 300;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.central_connect_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.central_connect_form h1 {
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    color: $primaryColor;
+}
+
+.central_connect_form form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30rem;
+    max-width: 90%;
+    background-color: #fff;
+    border-radius: 1rem;
+    padding: 2rem;
+}
+
+.central_connect_form form label {
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    color: $textColor;
+}
+
+.central_connect_form form input {
+    width: 100%;
+    height: 2.5rem;  // Réduire la hauteur du champ d'entrée
+    border: 1px solid $secondaryColor;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: $textColor;
+
+    &:focus {
+        outline: none;
+        border-color: $primaryColor;
+    }
+}
+
+.central_connect_form form button {
+    width: 100%;
+    height: 3.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    margin-top: 1rem;
+    background-color: $primaryColor;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 500;
+    cursor: pointer;
+
+    &:hover {
+        background-color: darken($primaryColor, 10%);
+    }
+}
+
+.central_connect_form form button:disabled {
+    background-color: $secondaryColor;
+    cursor: not-allowed;
+}
+
+.central_connect_form form .error-message {
+    color: $errorColor;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+// Ajouter des media queries pour gérer les appareils avec des résolutions différentes
+// par exemple :
+/*
+@media screen and (max-width: 768px) {
+    .central_connect_form form {
+        width: 90%;
+    }
+}
+*/

@@ -1,5 +1,5 @@
 import React from 'react';
-import HomeForm from '../components/HomeForm';
+
 
 const Home = () => {
     return (
@@ -7,7 +7,6 @@ const Home = () => {
             {/* Div central de message vers un utilisateur */}
             <div className="message">
                 <p>Bienvenue sur Mercure!</p>
-                <HomeForm />
             </div>
         </div>
     );
