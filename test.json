@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "sender": "compte_utilisateur_1",
+        "receiver": "compte_utilisateur_2",
+        "timestamp": "2023-07-22T21:35:18.393Z",
+        "content": "Coucou"
+    },
+    {
+        "id": 2,
+        "sender": "compte_utilisateur_1",
+        "receiver": "compte_utilisateur_2",
+        "timestamp": "2023-07-22T21:39:56.037Z",
+        "content": "qsd"
+    },
+    {
+        "id": 3,
+        "sender": "compte_utilisateur_1",
+        "receiver": "compte_utilisateur_2",
+        "timestamp": "2023-07-22T21:41:10.089Z",
+        "content": "qsd"
+    },
+    {
+        "id": 4,
+        "sender": "compte_utilisateur_1",
+        "receiver": "compte_utilisateur_2",
+        "timestamp": "2023-07-22T21:43:14.648Z",
+        "content": "qsd"
+    }
+]
