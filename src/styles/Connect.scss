@@ -14,7 +14,7 @@ $highlightColor : #7C3AED; // Couleur de surbrillance violette
 $CouleurFondPrimary: #5F5BD9; // Couleur principale violette
 $CouleurFondSecondary: #BD50BF; // Couleur principale violette
 
-body {
+.body {
     background: linear-gradient(320deg, $CouleurFondPrimary, $CouleurFondSecondary);
     color: $textColor;
     font-family: 'Roboto', sans-serif;
@@ -49,7 +49,7 @@ body {
     color: transparent;
 }
 
-.central_connect_form form {
+.central_connect_form .form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -61,7 +61,7 @@ body {
     padding: 2rem;
 }
 
-.central_connect_form img {
+.central_connect_form .form img {
     width: 5rem;
     height: 5rem;
     border-radius: 50%;
@@ -73,14 +73,14 @@ body {
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
 
-.central_connect_form form label {
+.central_connect_form .form label {
     font-size: 1.2rem;
     font-weight: 400;
     margin-bottom: 1rem;
     color: $textColor;
 }
 
-.central_connect_form form input {
+.central_connect_form .form input {
     width: 100%;
     height: 1rem;
     border-radius: 0.5rem;
@@ -101,7 +101,7 @@ body {
 
 
 
-.central_connect_form form button {
+.central_connect_form .form button {
     width: 100%;
     height: 3.5rem;
     border-radius: 0.5rem;
@@ -118,12 +118,12 @@ body {
     }
 }
 
-.central_connect_form form button:disabled {
+.central_connect_form .form button:disabled {
     background-color: $secondaryColor;
     cursor: not-allowed;
 }
 
-.central_connect_form form .error-message {
+.central_connect_form .form .error-message {
     color: $errorColor;
     margin-top: 0.5rem;
     font-size: 1rem;
@@ -131,7 +131,7 @@ body {
 }
 
 
-a {
+.body .central_connect_form .form .central_connect_form__links  a {
     color: $primaryColor;
     text-decoration: none;
     font-size: 1.2rem;
@@ -147,7 +147,7 @@ a {
     }
 }
 
-a:hover {
+.body .central_connect_form.central_connect_form__links a:hover {
     text-decoration: underline;
 }
 

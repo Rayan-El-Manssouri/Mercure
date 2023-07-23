@@ -1,0 +1,108 @@
+// variable
+$primaryColor: #A066F2; // Couleur principale violette
+$secondaryColor: #9ca3af; // Gris
+$backgroundColor: #f3f4f6; // Gris très clair
+$textColor: #1f2937; // Gris foncé
+$errorColor: #dc2626; // Rouge pour les messages d'erreur
+$highlightColor : #7C3AED; // Couleur de surbrillance violette
+$CouleurFondPrimary: #5F5BD9; // Couleur principale violette
+$CouleurFondSecondary: #BD50BF; // Couleur principale violette
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+header{
+    background-color: #ffffff;
+    width: 250px;
+    height: 100vh;
+    border-right: 1px solid #EAEEF7;
+}
+
+header .logo{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #EAEEF7;
+}
+
+header .logo img{
+    width: 50px;
+    height: 50px;
+}
+
+header .logo span{
+    font-size: 20px;
+    font-weight: 500;
+    color: #1F2937;
+    margin-left: 10px;
+}
+
+header ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+header ul li{
+    padding: 20px 0;
+    text-align: left;
+    position: relative;
+    left: 15%;
+}
+
+header ul li img{
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    position: relative;
+    top: 10px;
+}
+
+
+header ul li a{
+    text-decoration: none;
+    color: #1F2937;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius:  10px;
+    padding: 20px;
+}
+
+header ul li a:hover{
+    background-color: #EAEEF7;
+}
+
+
+header ul .logout{
+    padding: 20px 0;
+    width: 100%;
+    border-top: 1px solid #EAEEF7;
+    position: relative;
+    left: 0;
+    top: 280px;
+    text-align: center;
+}
+
+
+header ul .logout button{
+    background-color: #ffffff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    color: #1F2937;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #EAEEF7;
+}
+
+header ul .logout button:hover{
+    background-color: #EAEEF7;
+}

@@ -1,13 +1,14 @@
-from flask import Flask, request, jsonify, Response
+from flask import Flask, request, jsonify, session, make_response
 import json
 from flask_cors import CORS
 from flask_socketio import SocketIO, send
+import os
 
+SECRET_KEY = 'fq9f529er4f98re5d2c95ea4r85f2s5qe41rf95edcs'
 app = Flask(__name__)
-CORS(app)
-socketio = SocketIO(app, cors_allowed_origins="*")
-
-
+app.config['SECRET_KEY'] = SECRET_KEY  # Définir la clé secrète pour Flask
+CORS(app, supports_credentials=True)
+socketio = SocketIO(app, cors_allowed_origins="*", cors_allowed_methods="*")  # Ajoutez cette ligne pour configurer CORS pour SocketIO
 
 def read_messages_from_file():
     try:
@@ -16,13 +17,50 @@ def read_messages_from_file():
     except FileNotFoundError:
         return []
 
-
-
 def save_messages_to_file(messages):
     with open("Message.txt", "w") as file:
         json.dump(messages, file, indent=4)
 
 messages = read_messages_from_file()
+
+@app.route('/logout', methods=['GET'])
+def logout():
+    # Supprimer les informations de session de l'utilisateur
+    session.pop('user_email', None)
+
+    # Rediriger l'utilisateur vers la page de connexion après la déconnexion
+    return jsonify({"message": "Déconnexion réussie"}), 200, {'Content-Type': 'application/json'}
+
+@app.route('/login', methods=['POST'])
+def login():
+    data = request.get_json()
+    if data and 'email' in data and 'password' in data:
+        # Lire les informations d'identification à partir du fichier JSON
+        file_path = './server/Compte.txt'
+        if os.path.exists(file_path):
+            with open(file_path, 'r') as file:
+                accounts_list = json.load(file)
+
+            # Vérifier si l'e-mail et le mot de passe correspondent
+            for account in accounts_list:
+                if account['email'] == data['email'] and account['password'] == data['password']:
+                    session['user_email'] = data['email']
+                    return jsonify({"message": "Connexion réussie", "email": data['email']}), 200
+            # Si on sort de la boucle, cela signifie que les informations d'identification sont incorrectes
+            return jsonify({"error": "Email ou mot de passe incorrect"}), 401
+        else:
+            return jsonify({"error": "Fichier de comptes introuvable"}), 500
+    else:
+        return jsonify({"error": "Données de connexion invalides"}), 400
+
+
+@app.route('/checkLogin', methods=['GET'])
+def check_login():
+    # Vérifier si l'utilisateur est connecté en vérifiant la présence de l'adresse e-mail dans la session
+    if 'user_email' in session:
+        return jsonify({"message": "Utilisateur connecté"}), 200
+    else:
+        return jsonify({"error": "Utilisateur non connecté"}), 401
 
 @app.route('/messages', methods=['GET'])
 def get_messages():
