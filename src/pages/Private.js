@@ -1,86 +1,78 @@
-import { NavLink } from 'react-router-dom';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PrivateStyle from '../styles/Private.scss';
-
+import HeaderPrivate from '../components/HeaderPrivate';
+import { NavLink } from 'react-router-dom';
 const Private = () => {
-  // const email = localStorage.getItem('email');
-
+  const [user, setUser] = useState({});
+  const numberViewBoxCompte = 10;
+  const numberPublication = 5;
   useEffect(() => {
-    const styleTag = document.querySelector('style[data-emotion-css]');
-    if (styleTag) {
-      styleTag.remove();
-      const newStyleTag = document.createElement('style');
-      newStyleTag.setAttribute('data-emotion-css', 'true');
-      newStyleTag.textContent = PrivateStyle; // Injecte le contenu du fichier SCSS dans la balise <style>
-      document.head.appendChild(newStyleTag);
-    }
-  }, []);
-  const handleLogout = async () => {
-    try {
-      const response = await fetch('http://localhost:8000/logout', {
-        method: 'GET',
-        credentials: 'include',
+    fetch('http://localhost:8000/Compte.txt', {
+      method: 'GET',
+      credentials: 'include',
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        const userEmail = localStorage.getItem('email');
+        const user = data.find((userData) => userData.email === userEmail);
+        setUser(user);
       });
-      if (response.ok) {
-        window.location.href = '/Connect';
-      } else {
-        console.error('Erreur lors de la déconnexion côté serveur');
-      }
-    } catch (error) {
-      console.error('Erreur lors de la déconnexion :', error);
-    }
+  }, []);
+
+  // Créez le composant ProfilViewBox
+  const ProfilViewBox = ({ number }) => {
+    return (
+      <div className='profil_view_box'>
+        <img src='./assets/user_default.png' alt='' />
+        <p>Utilisateur Mercure</p>
+        <p className='petit'>Vous suit</p>
+        <NavLink to='/profil'>Voir le profil</NavLink>
+      </div>
+    );
   };
+
+  const Publication = ({ numberPublication }) => {
+    return (
+      <div className='publication_text'>
+        <img src='./assets/user_default.png' alt='' />
+        <p className='Auteur'>Netflix • 1j</p>
+        <p>Sortie de élite 8 !</p>
+        <textarea
+          name='publication'
+          id='publication'
+          placeholder='Rajouter un commentaire ...'
+        ></textarea>
+      </div>
+    )
+  }
 
   return (
     <div style={PrivateStyle} >
-      <header>
-        <div className='logo'> 
-          <span>Mercure</span>
-          <img src="assets/logo_light.png" alt="random" />
-        </div>
-        <ul>
-          <li>
-            <NavLink to="/Private">
-              <img src="./assets/dashboard.png" alt="random" />
-              Acceuil
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/Private">
-              <img src="./assets/notification.png" alt="random" />
-              Notification
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/Private">
-              <img src="./assets/user_default.png" alt="random" />
-              Profil
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/Private">
-              <img src="./assets/search.png" alt="random" />
-              Recherche
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/Private">
-              <img src="./assets/message.png" alt="random" />
-
-              Message
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/Private">
-              <img src="./assets/settings.png" alt="random" />
-              Paramètre
-            </NavLink>
-          </li>
-          <div className='logout'>
-            <button onClick={handleLogout}>Déconnexion</button>
+      <HeaderPrivate />
+      <div className='bull_info_profil_vite_fais'>
+        <img src='./assets/user_default.png' alt='' />
+        <p>{user.pseudo}</p>
+        <p>{user.NomMessage}</p>
+      </div>
+      <div className='sugestion'>
+        <h1>Sugestion pour vous<span>Voir tous</span></h1>
+        <div className='bull_sugestion'>
+          <div className='bull_sugestion_profil'>
+            {Array.from({ length: numberViewBoxCompte }, (_, index) => (
+              <ProfilViewBox key={index} />
+            ))}
           </div>
-        </ul>
-      </header>
+        </div>
+      </div>
+      <div className='Publications'>
+        
+        <h1>Publications</h1>
+      </div>
+      {/* Ui Message */}
+      {Array.from({ length: numberPublication }, (_, index) => (
+        <Publication key={index} />
+      ))}
     </div>
   );
 };

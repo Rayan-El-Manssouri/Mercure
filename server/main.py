@@ -38,7 +38,7 @@ def login():
         # Lire les informations d'identification à partir du fichier JSON
         file_path = './server/Compte.txt'
         if os.path.exists(file_path):
-            with open(file_path, 'r') as file:
+            with open(file_path, 'r', encoding="utf-8") as file:
                 accounts_list = json.load(file)
 
             # Vérifier si l'e-mail et le mot de passe correspondent
@@ -53,6 +53,16 @@ def login():
     else:
         return jsonify({"error": "Données de connexion invalides"}), 400
 
+
+# Ouvrir le fichier texte et lire son contenu avec l'encodage UTF-8
+with open('./server/Compte.txt', 'r', encoding='utf-8') as f:
+    content = f.read()
+
+
+# Si la route est /Compte.txt, renvoyer le contenu du fichier
+@app.route('/Compte.txt')
+def get_file():
+    return content
 
 @app.route('/checkLogin', methods=['GET'])
 def check_login():
