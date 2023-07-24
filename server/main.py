@@ -9,13 +9,19 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = SECRET_KEY  # Définir la clé secrète pour Flask
 CORS(app, supports_credentials=True)
 socketio = SocketIO(app, cors_allowed_origins="*", cors_allowed_methods="*")  # Ajoutez cette ligne pour configurer CORS pour SocketIO
-
 def read_messages_from_file():
     try:
-        with open("Message.txt", "r") as file:
+        with open("./server/Message.txt", "r") as file:
             return json.loads(file.read())
     except FileNotFoundError:
         return []
+
+@app.route('/Message.txt')
+def get_file():
+    messages = read_messages_from_file()
+    return jsonify(messages)  # Utilise jsonify pour renvoyer les données JSON avec l'en-tête approprié
+
+
 
 def save_messages_to_file(messages):
     with open("Message.txt", "w") as file:
@@ -58,10 +64,9 @@ def login():
 with open('./server/Compte.txt', 'r', encoding='utf-8') as f:
     content = f.read()
 
-
 # Si la route est /Compte.txt, renvoyer le contenu du fichier
 @app.route('/Compte.txt')
-def get_file():
+def get_file_compte():
     return content
 
 @app.route('/checkLogin', methods=['GET'])

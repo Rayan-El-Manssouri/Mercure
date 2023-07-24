@@ -4,5 +4,11 @@
         "password": "123456",
         "pseudo": "rayan.elmsr",
         "NomMessage": "𝐑𝐚𝐲𝐚𝐧"
+    },
+    {
+        "email": "compte_utilisateur_1@gmail.com",
+        "password": "123456",
+        "pseudo": "rayan.elmsr",
+        "NomMessage": "𝐑𝐚𝐲𝐚𝐧"
     }
 ]

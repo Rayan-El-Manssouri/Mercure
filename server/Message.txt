@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "sender": "compte_utilisateur_1@gmail.com",
+        "receiver": "test@gmail.com",
+        "timestamp": "2023-07-22T21:35:18.393Z",
+        "content": "je suis le compte de compte_utilisateur_1@gmail.com"
+    },
+    {
+        "id": 2,
+        "sender": "compte_utilisateur_2@gmail.com",
+        "receiver": "test@gmail.com",
+        "timestamp": "2023-07-22T21:35:18.393Z",
+        "content": "je suis le compte de compte_utilisateur_2@gmail.com"
+    },
+    {
+        "id": 3,
+        "sender": "compte_utilisateur_1@gmail.com",
+        "receiver": "compte_utilisateur_2@gmail.com",
+        "timestamp": "2023-07-22T21:35:18.393Z",
+        "content": "je suis le compte de compte_utilisateur_2@gmail.com"
+    },
+    {
+        "id": 4,
+        "sender": "compte_utilisateur_1@gmail.com",
+        "receiver": "test@gmail.com",
+        "timestamp": "2023-07-22T21:35:18.393Z",
+        "content": "Deuxiéme message envoyer !"
+    }
+]

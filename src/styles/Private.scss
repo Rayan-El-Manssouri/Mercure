@@ -245,3 +245,60 @@ header ul .logout button:hover {
     }
 
 }
+
+.message{
+    position: relative;
+    left: 13%;
+    border-bottom: 1px solid #EAEEF7;
+    top: -6px;
+    ul{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        li{
+            margin: 20px;
+            cursor: pointer;
+        }
+    }
+    h1{
+        font-size: 20px;
+        font-weight: 500;
+        color: #1F2937;
+        margin-bottom: 20px;
+        position: relative;
+        left: 2%;
+        top: 20px;
+        span{
+            position: relative;
+            top: -5px;
+        }
+    }
+}
+
+.message__content{
+    position: relative;
+    left: 13%;
+    top: -6px;
+    width: 20%;
+    padding: 10px;
+    border-right: 1px solid #EAEEF7;
+    height: 100vh;
+    .boite_reception{
+        border-bottom: 1px solid #EAEEF7;
+        height: 75px;
+    }
+    .boite_reception:hover{
+        cursor: pointer;
+        background-color: #EAEEF7;
+    }
+    p{
+        font-size: 14px;
+        font-weight: 500;
+        color: #1F2937;
+        position: relative;
+        left: 70px;
+        top: -55px;
+    }
+    
+}

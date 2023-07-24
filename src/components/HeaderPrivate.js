@@ -26,7 +26,7 @@ const HeaderPrivate = () => {
             </div>
             <ul>
                 <li>
-                    <NavLink to="/Private">
+                    <NavLink to="/Home">
                         <img src="./assets/dashboard.png" alt="random" />
                         Acceuil
                     </NavLink>
@@ -50,7 +50,7 @@ const HeaderPrivate = () => {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/Private">
+                    <NavLink to="/Messagerie">
                         <img src="./assets/message.png" alt="random" />
                         Message
                     </NavLink>

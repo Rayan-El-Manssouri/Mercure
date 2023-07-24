@@ -3,13 +3,13 @@ import { BrowserRouter, Routes, Route , Navigate } from 'react-router-dom';
 import Private from './pages/Private';
 const Connect = React.lazy(() => import('./pages/Connect'));
 const Home = React.lazy(() => import('./pages/Home'));
+const Messagerie = React.lazy(() => import('./pages/Messagerie'));
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('isLoggedIn') === 'true');
   useEffect(() => {
     const checkLoginStatus = async () => {
       try {
-        // Vérifier l'état de connexion côté serveur
         const response = await fetch('http://localhost:8000/checkLogin', {
           method: 'GET',
           credentials: 'include',
@@ -39,12 +39,27 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route
           path="/Private"
-          element={isLoggedIn ?  <Private /> : <Navigate to="/Connect" />}
+          element={
+            <React.Suspense fallback={<div>Loading...</div>}>
+              {isLoggedIn ?  <Private /> : <Navigate to="/Connect" />}
+            </React.Suspense>
+          }
         />
-        {/* Créé une route privée pour la page de Connect si isLoggedIn est false on laisse sinon on le redirgie dans le Private */}
+        <Route
+          path="/Messagerie"
+          element={
+            <React.Suspense fallback={<div>Loading...</div>}>
+              {isLoggedIn ?  <Messagerie /> : <Navigate to="/Connect" />}
+            </React.Suspense>
+          }
+        />
         <Route
           path="/Connect"
-          element={isLoggedIn ? <Navigate to="/Private" /> : <Connect />}
+          element={
+            <React.Suspense fallback={<div>Loading...</div>}>
+              {isLoggedIn ? <Navigate to="/Private" /> : <Connect />}
+            </React.Suspense>
+          }
         />
       </Routes>
     </BrowserRouter>
