@@ -16,35 +16,34 @@ const Messagerie = () => {
   
         // Filtrer les messages en fonction de l'utilisateur connecté (email)
         const filteredMessages = data.filter(
-          (message) => (message.sender === email || message.receiver === email)
+          (message) => message.sender === email || message.receiver === email
         );
   
-        // Trier les messages par timestamp, le plus récent d'abord
-        filteredMessages.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-  
-        // Obtenir les derniers messages de chaque utilisateur (sans répétitions)
-        const latestMessagesByUser = [];
-        const processedEmails = [];
+        // Regrouper les messages par expéditeur (sender) ou destinataire (receiver) tout en conservant les doublons
+        const groupedMessages = {};
   
         filteredMessages.forEach((message) => {
           const otherUser = message.sender === email ? message.receiver : message.sender;
-          
-          const existingIndex = latestMessagesByUser.findIndex(
-            (m) => m.sender === otherUser || m.receiver === otherUser
-          );
-        
-          if (existingIndex !== -1) {
-            const existingMessage = latestMessagesByUser[existingIndex];
-            if (new Date(message.timestamp) > new Date(existingMessage.timestamp)) {
-              latestMessagesByUser[existingIndex] = message;
-            }
-          } else {
-            latestMessagesByUser.push(message);
+          if (!groupedMessages[otherUser] || new Date(message.timestamp) > new Date(groupedMessages[otherUser].timestamp)) {
+            groupedMessages[otherUser] = message;
           }
         });
+  
+        // Obtenir les derniers messages de chaque utilisateur (avec les doublons)
+        const latestMessagesWithDuplicates = Object.values(groupedMessages);
+  
+        // Trier les messages par timestamp, le plus récent d'abord
+        latestMessagesWithDuplicates.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+  
         // Afficher le contenu des derniers messages pour vérifier s'ils sont corrects
+        console.log(latestMessagesWithDuplicates);
+  
+        // Supprimer les doublons basés sur l'ID (conserver uniquement le dernier message de chaque utilisateur)
+        const latestMessagesByUser = Array.from(new Map(latestMessagesWithDuplicates.map((message) => [message.id, message])).values());
+  
+        // Afficher le contenu des derniers messages sans doublons
         console.log(latestMessagesByUser);
-        latestMessagesByUser.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+  
         setLatestMessages(latestMessagesByUser);
       } catch (error) {
         console.error('Erreur lors de la récupération des messages:', error);
@@ -53,6 +52,7 @@ const Messagerie = () => {
   
     fetchMessages();
   }, [email]);
+  
   
   const BoiteReception = ({ message }) => {
     // Utiliser les propriétés du message pour afficher les détails de la boîte de réception

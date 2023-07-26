@@ -7,24 +7,18 @@
         "content": "je suis le compte de compte_utilisateur_1@gmail.com"
     },
     {
-        "id": 2,
-        "sender": "compte_utilisateur_2@gmail.com",
-        "receiver": "test@gmail.com",
-        "timestamp": "2023-07-22T21:35:18.393Z",
-        "content": "je suis le compte de compte_utilisateur_2@gmail.com"
-    },
-    {
-        "id": 3,
-        "sender": "compte_utilisateur_1@gmail.com",
-        "receiver": "compte_utilisateur_2@gmail.com",
-        "timestamp": "2023-07-22T21:35:18.393Z",
-        "content": "je suis le compte de compte_utilisateur_2@gmail.com"
-    },
-    {
-        "id": 4,
+        "id": 1,
         "sender": "compte_utilisateur_1@gmail.com",
         "receiver": "test@gmail.com",
-        "timestamp": "2023-07-22T21:35:18.393Z",
-        "content": "Deuxiéme message envoyer !"
+        "timestamp": "2023-07-22T21:36:18.393Z",
+        "content": "Dernier message fonctionelle !"
+    },
+     {
+        "id": 1,
+        "sender": "compte_utilisateur_1@gmail.com",
+        "receiver": "test@gmail.com",
+        "timestamp": "2023-07-22T21:37:18.393Z",
+        "content": "Dernier message fonctionelle envoyer à 22h37!"
     }
+
 ]
