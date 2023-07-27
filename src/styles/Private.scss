@@ -12,7 +12,7 @@ $CouleurFondSecondary: #BD50BF; // Couleur principale violette
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Systeme UI', sans-serif;
 }
 
 header {
@@ -143,11 +143,13 @@ header ul .logout button:hover {
     left: 75%;
     top: 50px;
     width: 250px;
+
     h1 {
         font-size: 16px;
         font-weight: 500;
         color: #1F2937;
         margin-bottom: 20px;
+
         span {
             color: #7C3AED;
             position: relative;
@@ -159,9 +161,11 @@ header ul .logout button:hover {
         background-color: #1F2937;
         color: #fff;
         width: 300px;
-        .profil_view_box{
+
+        .profil_view_box {
             height: 60px;
-            p{
+
+            p {
                 font-size: 14px;
                 font-weight: 500;
                 color: #fff;
@@ -169,14 +173,17 @@ header ul .logout button:hover {
                 left: 50px;
                 top: -45px;
             }
+
             img {
                 width: 50px;
                 height: 50px
             }
+
             .petit {
                 font-size: 10px;
             }
-            a{
+
+            a {
                 text-decoration: none;
                 color: #7C3AED;
                 font-size: 14px;
@@ -186,24 +193,25 @@ header ul .logout button:hover {
                 top: -70px;
             }
         }
-       
+
     }
 }
 
 
-.Publications{
+.Publications {
     position: relative;
     left: 15%;
     top: -550px;
     border-bottom: 1px solid #EAEEF7;
     width: 55%;
-    h1{
+
+    h1 {
         padding: 10px;
         font-size: 20px;
     }
 }
 
-.publication_text{
+.publication_text {
     position: relative;
     left: 15%;
     top: -550px;
@@ -211,10 +219,12 @@ header ul .logout button:hover {
     border-bottom: 1px solid #EAEEF7;
     padding: 10px;
     height: 253px;
-    .Auteur{
+
+    .Auteur {
         font-size: 14px;
     }
-    p{
+
+    p {
         font-size: 20px;
         font-weight: 500;
         color: #1F2937;
@@ -222,8 +232,9 @@ header ul .logout button:hover {
         left: 70px;
         top: -55px;
     }
+
     // TextArea style 
-    textarea{
+    textarea {
         width: 100%;
         height: 100px;
         border: none;
@@ -239,29 +250,34 @@ header ul .logout button:hover {
         position: relative;
         top: -40px;
         transition: all 0.3s ease-in-out;
-        &:focus{
+
+        &:focus {
             border: 1px solid #7C3AED;
         }
     }
 
 }
 
-.message{
-    position: relative;
+.message {
     left: 13%;
     border-bottom: 1px solid #EAEEF7;
-    top: -6px;
-    ul{
+    width: 100%;
+    height: 10px;
+    position: fixed;
+
+    ul {
         list-style: none;
         padding: 0;
         margin: 0;
         display: flex;
-        li{
+
+        li {
             margin: 20px;
             cursor: pointer;
         }
     }
-    h1{
+
+    h1 {
         font-size: 20px;
         font-weight: 500;
         color: #1F2937;
@@ -269,30 +285,38 @@ header ul .logout button:hover {
         position: relative;
         left: 2%;
         top: 20px;
-        span{
+        width: 164px;
+
+        span {
             position: relative;
             top: -5px;
         }
     }
+
 }
 
-.message__content{
-    position: relative;
+.message__content {
+    position: fixed;
     left: 13%;
-    top: -6px;
     width: 20%;
+    top: 100px;
     padding: 10px;
     border-right: 1px solid #EAEEF7;
     height: 100vh;
-    .boite_reception{
+    z-index: -1;
+
+    .boite_reception {
         border-bottom: 1px solid #EAEEF7;
         height: 75px;
+        z-index: -1;
     }
-    .boite_reception:hover{
+
+    .boite_reception:hover {
         cursor: pointer;
         background-color: #EAEEF7;
     }
-    p{
+
+    p {
         font-size: 14px;
         font-weight: 500;
         color: #1F2937;
@@ -300,5 +324,81 @@ header ul .logout button:hover {
         left: 70px;
         top: -55px;
     }
-    
+
+}
+
+.contenu_corps {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow-y: scroll;
+    width: 50%;
+    max-height: 89vh;
+    margin: 0 auto;
+    padding: 20px 0;
+    position: relative;
+    top: -90px;
+
+    .vous {
+        background-color: #5F5BD9;
+        padding: 10px;
+        /* Utiliser le padding au lieu de margin-top */
+        color: #fff;
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+        position: relative;
+        z-index: -1;
+        width: 70%;
+        left: 20%;
+    }
+
+    .autre {
+        background-color: #EAEEF7;
+        padding: 10px;
+        /* Utiliser le padding au lieu de margin-top */
+        color: #1F2937;
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        width: 70%;
+    }
+
+    .date {
+        position: relative;
+        font-size: 12px;
+        top: 25px;
+        display: block;
+        color: #1F2937;
+
+    }
+
+    .input_send_message {
+        width: 50%;
+        position: fixed;
+        bottom: 70px;
+        left: 0;
+        padding: 10px;
+        left: 35%;
+        z-index: 1;
+    }
+
+    input {
+        width: 100%;
+        border: none;
+        outline: none;
+        resize: none;
+        font-size: 16px;
+        font-weight: 500;
+        color: #1F2937;
+        padding: 15px;
+        border-radius: 10px;
+        border: 1px solid #EAEEF7;
+        position: absolute;
+        z-index: 1;
+
+        &:focus {
+            border: 1px solid #7C3AED;
+        }
+    }
 }

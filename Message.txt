@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "sender": "compte_utilisateur_1@gmail.com",
+        "receiver": "test@gmail.com",
+        "timestamp": "2023-07-22T21:36:18.393Z",
+        "content": "Envoyer via le compte utilisateur 1"
+    },
+    {
+        "id": 2,
+        "sender": "test@gmail.com",
+        "receiver": "compte_utilisateur_1@gmail.com",
+        "timestamp": "2023-07-22T21:35:18.393Z",
+        "content": "Envoyer via le compte de test"
+    },
+    {
+        "id": 2,
+        "sender": "test@gmail.com",
+        "receiver": "compte_utilisateur_1@gmail.com",
+        "timestamp": "2023-07-22T21:35:18.393Z",
+        "content": "Envoyer via le compte de test envoyer \u00c3\u00a0 21h35 !"
+    },
+    {
+        "id": 4,
+        "sender": "test@gmail.com",
+        "receiver": "compte_utilisateur_1@gmail.com",
+        "timestamp": "2023-07-26T23:38:27.137Z",
+        "content": "Coucouu"
+    }
+]

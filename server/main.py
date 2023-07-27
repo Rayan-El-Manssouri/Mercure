@@ -24,7 +24,7 @@ def get_file():
 
 
 def save_messages_to_file(messages):
-    with open("Message.txt", "w") as file:
+    with open("./server/Message.txt", "w") as file:
         json.dump(messages, file, indent=4)
 
 messages = read_messages_from_file()
