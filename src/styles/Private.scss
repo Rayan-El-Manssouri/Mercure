@@ -13,99 +13,7 @@ $CouleurFondSecondary: #BD50BF; // Couleur principale violette
     padding: 0;
     box-sizing: border-box;
     font-family: 'Systeme UI', sans-serif;
-}
 
-header {
-    background-color: #ffffff;
-    width: 250px;
-    height: 100vh;
-    border-right: 1px solid #EAEEF7;
-    position: fixed;
-}
-
-header .logo {
-    width: 100%;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom: 1px solid #EAEEF7;
-}
-
-header .logo img {
-    width: 50px;
-    height: 50px;
-}
-
-header .logo span {
-    font-size: 20px;
-    font-weight: 500;
-    color: #1F2937;
-    margin-left: 10px;
-}
-
-header ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-header ul li {
-    padding: 20px 0;
-    text-align: left;
-    position: relative;
-    left: 15%;
-}
-
-header ul li img {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
-    position: relative;
-    top: 10px;
-}
-
-
-header ul li a {
-    text-decoration: none;
-    color: #1F2937;
-    font-size: 16px;
-    font-weight: 500;
-    border-radius: 10px;
-    padding: 20px;
-}
-
-header ul li a:hover {
-    background-color: #EAEEF7;
-}
-
-
-header ul .logout {
-    padding: 20px 0;
-    width: 100%;
-    border-top: 1px solid #EAEEF7;
-    position: relative;
-    left: 0;
-    top: 280px;
-    text-align: center;
-}
-
-
-header ul .logout button {
-    background-color: #ffffff;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 500;
-    color: #1F2937;
-    padding: 20px;
-    border-radius: 10px;
-    border: 1px solid #EAEEF7;
-}
-
-header ul .logout button:hover {
-    background-color: #EAEEF7;
 }
 
 
@@ -275,6 +183,24 @@ header ul .logout button:hover {
             margin: 20px;
             cursor: pointer;
         }
+
+        button {
+            background-color: #5F5BD9;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            color: #fff;
+            padding: 5px;
+            border-radius: 10px;
+            border: 1px solid #EAEEF7;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background-color: #7C3AED;
+        }
     }
 
     h1 {
@@ -309,6 +235,13 @@ header ul .logout button:hover {
         border-bottom: 1px solid #EAEEF7;
         height: 75px;
         z-index: -1;
+        position: relative;
+
+        .avatar {
+            position: relative;
+            left: 19%;
+            top: -50px;
+        }
     }
 
     .boite_reception:hover {
@@ -328,75 +261,54 @@ header ul .logout button:hover {
 }
 
 .contenu_corps {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
     overflow-y: scroll;
-    width: 50%;
-    max-height: 89vh;
-    margin: 0 auto;
-    padding: 20px 0;
     position: relative;
+    overflow-x: hidden;
+    left: 25%;
     top: -90px;
-
-    .vous {
-        background-color: #5F5BD9;
-        padding: 10px;
-        /* Utiliser le padding au lieu de margin-top */
-        color: #fff;
-        border-top-right-radius: 10px;
-        border-top-left-radius: 10px;
-        border-bottom-left-radius: 10px;
+    // Faire un max-height pour que le scroll apparaisse
+    max-height: 90vh;
+    .vous{
         position: relative;
-        z-index: -1;
-        width: 70%;
+        top: -90px;
+        background-color: #5F5BD9;
+        margin-top: 20px;
+        width: 30%;
+        color: #fff;
+        border-radius: 10px;
+        padding: 10px;
         left: 20%;
     }
-
-    .autre {
-        background-color: #EAEEF7;
-        padding: 10px;
-        /* Utiliser le padding au lieu de margin-top */
-        color: #1F2937;
-        border-top-right-radius: 10px;
-        border-top-left-radius: 10px;
-        border-bottom-right-radius: 10px;
-        width: 70%;
+    .date{
+       color: #1F2937;
     }
+    
+}
 
-    .date {
-        position: relative;
-        font-size: 12px;
-        top: 25px;
-        display: block;
-        color: #1F2937;
 
-    }
 
-    .input_send_message {
-        width: 50%;
-        position: fixed;
-        bottom: 70px;
-        left: 0;
-        padding: 10px;
-        left: 35%;
-        z-index: 1;
-    }
-
-    input {
+.input_send_message {
+    position: relative;
+    width: 50%;
+    position: absolute;
+    bottom: -25px;
+    left: 35%;
+    input{
         width: 100%;
+        height: 50px;
         border: none;
         outline: none;
         resize: none;
         font-size: 16px;
         font-weight: 500;
         color: #1F2937;
-        padding: 15px;
+        padding: 20px;
         border-radius: 10px;
         border: 1px solid #EAEEF7;
-        position: absolute;
-        z-index: 1;
-
+        margin: 10px;
+        position: relative;
+        top: -40px;
+        transition: all 0.3s ease-in-out;
         &:focus {
             border: 1px solid #7C3AED;
         }

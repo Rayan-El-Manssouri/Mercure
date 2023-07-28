@@ -41,14 +41,9 @@ const Messagerie = () => {
         // Trier les messages par timestamp, le plus récent d'abord
         latestMessagesWithDuplicates.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
 
-        // Afficher le contenu des derniers messages pour vérifier s'ils sont corrects
-        console.log(latestMessagesWithDuplicates);
-
         // Supprimer les doublons basés sur l'ID (conserver uniquement le dernier message de chaque utilisateur)
         const latestMessagesByUser = Array.from(new Map(latestMessagesWithDuplicates.map((message) => [message.id, message])).values());
 
-        // Afficher le contenu des derniers messages sans doublons
-        console.log(latestMessagesByUser);
 
         setLatestMessages(latestMessagesByUser);
         setAllMessages(filteredMessages); // Stocker tous les messages dans l'état allMessages
@@ -90,17 +85,19 @@ const Messagerie = () => {
     const handleClick = () => {
       // Met à jour l'email sélectionné lorsqu'une boîte de réception est cliquée
       setSelectedEmail(otherUser);
-      console.log('Email sélectionné:', otherUser);
     };
 
     return (
       <div className='boite_reception' onClick={handleClick}>
         <img src="./assets/user_default.png" alt="Avatar" />
-        <p>{otherUser}</p>
-        <p>Vous : {content} • {timestamp} </p>
+        <div className='avatar'>
+          <div>{otherUser}</div>
+          <div>Vous : {content} • {formatTimestamp(timestamp)} </div>
+        </div>
       </div>
     );
   };
+
 
   useEffect(() => {
     // Créer une instance socket.io-client et se connecter au serveur
@@ -121,6 +118,8 @@ const Messagerie = () => {
   }, []);
 
   const handleSendMessage = () => {
+    // Affichier la valeur du scroll top
+    console.log('Scroll top:', contenuCorpsRef.current.scrollTop);
     if (newMessage.trim() !== '') {
       // Créer un objet de message avec l'email de l'utilisateur connecté et le contenu du message
       const messageData = {
@@ -142,8 +141,9 @@ const Messagerie = () => {
         .then((data) => {
           // Le message a été envoyé avec succès, vous pouvez ajouter un retour visuel si nécessaire
           console.log('Message envoyé avec succès:', data.message);
+          setAllMessages((prevMessages) => [...prevMessages, newMessage]);
           // Mettre le scroll top à la fin du contenu du corps
-          contenuCorpsRef.current.scrollTop = contenuCorpsRef.current.scrollHeight - contenuCorpsRef.current.clientHeight;
+          contenuCorpsRef.current.scrollTop = contenuCorpsRef.current.scrollHeight;
         })
         .catch((error) => {
           console.error('Erreur lors de l\'envoi du message:', error);
@@ -152,11 +152,8 @@ const Messagerie = () => {
       // Réinitialiser le champ d'entrée du message
       setNewMessage('');
 
-      contenuCorpsRef.current.scrollTop = contenuCorpsRef.current.scrollHeight;          
-
     }
   };
-
 
   return (
     <>
@@ -167,6 +164,7 @@ const Messagerie = () => {
           <li>Principal</li>
           <li>Général</li>
           <li>Invitation</li>
+          <li><button className='New'>New</button></li>
         </ul>
 
         <div className='contenu_corps' ref={contenuCorpsRef}>
@@ -175,36 +173,15 @@ const Messagerie = () => {
           ) : (
             <p>Sélectionnez un utilisateur pour afficher le contenu du message.</p>
           )}
-          {/* Afficher les messages */}
           {selectedMessages.slice().reverse().map((message, index) => (
-            <p key={index} className={message.sender === email ? 'vous' : 'autre'}>
+            <div key={index} className={message.sender === email ? 'vous' : 'autre'}>
               {message.content}
               <div className='date'>
                 {formatTimestamp(message.timestamp)}
               </div>
-
-              {/* Afficher l'input seulement pour le premier message */}
-              {index === 0 && (
-                <div className='input_send_message'>
-                  <input
-                    placeholder='Écrire votre message...'
-                    value={newMessage}
-                    onChange={(e) => setNewMessage(e.target.value)}
-                    onKeyPress={(e) => {
-                      if (e.key === 'Enter') {
-                        handleSendMessage();
-                      }
-                    }}
-                  />
-                </div>
-              )}
-            </p>
+            </div>
           ))}
-
-
-
         </div>
-
       </div>
       <div className='message__content'>
         {/* Afficher les boîtes de réception avec les derniers messages */}
@@ -212,7 +189,18 @@ const Messagerie = () => {
           <BoiteReception key={message.id} message={message} />
         ))}
       </div>
-
+      <div className='input_send_message'>
+        <input
+          placeholder='Écrire votre message...'
+          value={newMessage}
+          onChange={(e) => setNewMessage(e.target.value)}
+          onKeyPress={(e) => {
+            if (e.key === 'Enter') {
+              handleSendMessage();
+            }
+          }}
+        />
+      </div>
     </>
   );
 };

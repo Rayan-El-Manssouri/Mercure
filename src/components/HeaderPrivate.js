@@ -1,22 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import './stylesComponents/HeaderPrivates.scss';
+import handleLogout from '../GestionComptes/HandleLogout.js';
 
 const HeaderPrivate = () => {
-    const handleLogout = async () => {
-        try {
-            const response = await fetch('http://localhost:8000/logout', {
-                method: 'GET',
-                credentials: 'include',
-            });
-            if (response.ok) {
-                window.location.href = '/Connect';
-            } else {
-                console.error('Erreur lors de la déconnexion côté serveur');
-            }
-        } catch (error) {
-            console.error('Erreur lors de la déconnexion :', error);
-        }
-    };
 
     return (
         <header>
@@ -61,10 +48,10 @@ const HeaderPrivate = () => {
                         Paramètre
                     </NavLink>
                 </li>
-                <div className='logout'>
-                    <button onClick={handleLogout}>Déconnexion</button>
-                </div>
             </ul>
+            <div className='logout'>
+                <button onClick={handleLogout}>Déconnexion</button>
+            </div>
         </header>
     );
 };
