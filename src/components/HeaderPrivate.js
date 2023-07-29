@@ -1,58 +1,43 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './stylesComponents/HeaderPrivates.scss';
-import handleLogout from '../GestionComptes/HandleLogout.js';
-
+// import handleLogout from '../GestionComptes/HandleLogout.js';
+import { IconHome, IconMail, IconSearch, IconBell, IconUser, IconSettings  } from '@tabler/icons-react';
 const HeaderPrivate = () => {
 
     return (
-        <header>
-            <div className='logo'>
-                <span>Mercure</span>
-                <img src="assets/logo_light.png" alt="random" />
+        <div id="sidebar">
+            <div id="logo">
+                <img src="assets/logo/color light 50.webp" alt="logo" />
+                <p>Mercure</p>
             </div>
-            <ul>
-                <li>
-                    <NavLink to="/Home">
-                        <img src="./assets/dashboard.png" alt="random" />
-                        Acceuil
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to="/Private">
-                        <img src="./assets/notification.png" alt="random" />
-                        Notification
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to="/Private">
-                        <img src="./assets/user_default.png" alt="random" />
-                        Profil
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to="/Private">
-                        <img src="./assets/search.png" alt="random" />
-                        Recherche
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to="/Messagerie">
-                        <img src="./assets/message.png" alt="random" />
-                        Message
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to="/Private">
-                        <img src="./assets/settings.png" alt="random" />
-                        Paramètre
-                    </NavLink>
-                </li>
-            </ul>
-            <div className='logout'>
-                <button onClick={handleLogout}>Déconnexion</button>
-            </div>
-        </header>
+            <nav>
+                <NavLink className="button">
+                    <IconHome />
+                    Accueil
+                </NavLink>
+                <NavLink className="button">
+                    <IconMail />
+                    Messagerie
+                </NavLink>
+                <NavLink className="button">
+                    <IconSearch />
+                    Recherche
+                </NavLink>
+                <NavLink className="button">
+                    <IconBell />
+                    Notifications
+                </NavLink>
+                <NavLink className="button">
+                    <IconUser />
+                    Mon profil
+                </NavLink>
+                <NavLink className="button">
+                    <IconSettings />
+                    Paramètres
+                </NavLink>
+            </nav>
+        </div>
     );
 };
 
