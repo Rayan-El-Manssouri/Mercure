@@ -1,0 +1,62 @@
+// Définir les variables
+$BorderSeparator: 1px solid #e6e6e6;
+$textColor: #333333;
+
+// Styles pour la barre latérale
+#sidebar {
+  flex-basis: min(25vw, 250px);
+  border-right: $BorderSeparator;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  
+  // Styles pour les enfants directs de la barre latérale
+  & > * {
+    display: flex;
+    gap: 10px;
+  }
+  
+  // Styles pour le logo
+  #logo {
+    padding: 10px 10px 20px;
+    border-bottom: $BorderSeparator;
+    margin-bottom: 10px;
+    flex-direction: row;
+    align-items: center;
+    
+    img {
+      width: 50px;
+      height: 50px;
+    }
+    
+    p {
+      font-size: 1.5rem;
+      font-family: "Carter One", system-ui;
+    }
+  }
+  
+  // Styles pour la navigation
+  nav {
+    flex-grow: 1;
+    flex-direction: column;
+    
+    a {
+      padding: 10px;
+      border-radius: 5px;
+      color: $textColor;
+      text-decoration: none;
+      transition: background-color 0.2s ease-in-out;
+      display: flex;
+      align-items: center;
+      
+      &:hover {
+        background-color: rgba(230, 226, 226, 0.553); 
+      }
+      
+      svg {
+        margin-right: 10px;
+        vertical-align: middle;
+      }
+    }
+  }
+}

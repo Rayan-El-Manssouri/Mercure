@@ -32,7 +32,7 @@ const Connect = () => {
     <div className='body'>
       <div className='central_connect_form'>
         <div className='form'>
-            <img src={process.env.PUBLIC_URL + './assets/Connect_Icon.png'} alt='' />
+            <img src={process.env.PUBLIC_URL + 'assets/logo/color light 500.png'} alt='' />
             <h1>Mercure Login</h1>
             <label htmlFor="email">Email</label>
             <input type="email" id="email" onChange={(e) => setEmail(e.target.value)} />

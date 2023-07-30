@@ -64,13 +64,11 @@ $CouleurFondSecondary: #BD50BF; // Couleur principale violette
 .central_connect_form .form img {
     width: 5rem;
     height: 5rem;
-    border-radius: 50%;
     margin-bottom: 2rem;
     object-fit: cover;
     object-position: center;
     position: relative;
     top: 1.5rem;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
 
 .central_connect_form .form label {

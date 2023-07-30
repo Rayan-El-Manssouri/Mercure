@@ -1,0 +1,46 @@
+$BorderSeparator: 1px solid #e6e6e6;
+$AccentColor: #d9b3ff;
+
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+.Header {
+    padding: 10px 15px;
+    border-bottom: $BorderSeparator;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.Header #welcome p {
+    font-size: 1.5rem;
+    font-family: "Carter One", system-ui;
+}
+
+.Header .button {
+    padding: 10px 15px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.25rem;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.Header .button:hover {
+    background-color: #e6e6e6;
+}
+
+.Header .button svg {
+    font-size: 1.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.Header .space {
+    flex-grow: 1;
+}
+

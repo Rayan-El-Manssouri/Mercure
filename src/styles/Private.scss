@@ -1,17 +1,50 @@
-// variable
-$primaryColor: #A066F2; // Couleur principale violette
-$secondaryColor: #9ca3af; // Gris
-$backgroundColor: #f3f4f6; // Gris très clair
-$textColor: #1f2937; // Gris foncé
-$errorColor: #dc2626; // Rouge pour les messages d'erreur
-$highlightColor : #7C3AED; // Couleur de surbrillance violette
-$CouleurFondPrimary: #5F5BD9; // Couleur principale violette
-$CouleurFondSecondary: #BD50BF; // Couleur principale violette
+// Import des modules de style
+@import "Header.scss";
+@import "NavBarHome.scss";
 
+// variable
+$primaryColor: #A066F2;
+$secondaryColor: #9ca3af;
+$backgroundColor: #f3f4f6;
+$textColor: #1f2937;
+$errorColor: #dc2626;
+$highlightColor : #7C3AED;
+$CouleurFondPrimary: #5F5BD9;
+$CouleurFondSecondary: #BD50BF;
+
+// Mixin
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Systeme UI', sans-serif;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: #999 #e6e6e6;
+}
 
+.body_private {
+    height: 100dvh;
+    font-family: system-ui;
+    font-size: 1rem;
+    display: flex;
+}
+
+::selection {
+    background-color: $primaryColor;
+    color: $backgroundColor;
+}
+
+::-webkit-scrollbar {
+    background-color: #e6e6e6;
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #999;
+    border-width: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #666;
 }
