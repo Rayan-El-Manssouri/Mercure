@@ -6,6 +6,7 @@
     "@tabler/core": "^1.0.0-beta19",
     "@tabler/icons": "^2.30.0",
     "@tabler/icons-react": "^2.30.0",
+    "axios": "^1.4.0",
     "date-fns": "^2.30.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

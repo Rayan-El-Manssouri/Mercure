@@ -1,0 +1,136 @@
+// Définir les variables
+$BorderSeparator: 1px solid #e6e6e6;
+$textColor: #333333;
+$primaryColor: #A066F2;
+
+.global {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 100vh;
+    flex: 1;
+
+    .Contact {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        border-right: $BorderSeparator;
+        flex: 0 0 320px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        section {
+            border-bottom: $BorderSeparator;
+            color: $textColor;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            .contact_user_section {
+                display: flex;
+                flex-direction: column;
+                margin-left: 10px;
+                white-space: nowrap;
+                
+                .pseudo {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    width: 250px;
+                    font-size: 1.2rem;
+                }
+
+                .user_message {
+                    font-size: 0.8rem;
+                }
+            }
+            &:hover {
+                background-color: rgba(230, 226, 226, 0.553);
+            }
+        }
+    }
+
+    .parent-container {
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    .scrollbar_msg {
+        overflow-y: auto;
+        overflow-x: hidden;
+        width: 100%;
+    }
+
+    .message_action {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        border: $BorderSeparator;
+        position: fixed;
+        bottom: 0;
+        form {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            input {
+                width: 100%;
+                padding: 10px;
+                font-size: 1rem;
+                outline: none;
+                border: 1px solid #e6e6e6;
+                &:focus {
+                    border: 1px solid $primaryColor;
+                }
+            }
+        }
+    }
+
+    .message_content {
+        display: flex;
+        flex-direction: column;
+        height: 88vh;
+        flex: 1;
+        .message_conteneur {
+            display: flex;
+
+            .message_send {
+                display: flex;
+                flex-direction: row;
+                margin-top: 10px;
+                vertical-align: middle;
+                word-wrap: break-word;
+                width: 250px;
+
+                p {
+                    margin-left: 10px;
+                    background-color: #e6e6e6;
+                    color: black;
+                    padding: 10px;
+                    border-radius: 5px;
+                    width: 100%;
+                }
+            }
+
+            .message_recever {
+                display: flex;
+                flex-direction: row;
+                vertical-align: middle;
+                word-wrap: break-word;
+                width: 250px;
+                margin-top: 10px;
+                margin-left: auto;
+
+                p {
+                    background-color: #A066F2;
+                    color: white;
+                    padding: 10px;
+                    border-radius: 5px;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

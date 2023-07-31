@@ -1,6 +1,7 @@
 // Import des modules de style
 @import "Header.scss";
 @import "NavBarHome.scss";
+@import "SectionMessage.scss";
 
 // variable
 $primaryColor: #A066F2;
@@ -27,6 +28,7 @@ $CouleurFondSecondary: #BD50BF;
     font-family: system-ui;
     font-size: 1rem;
     display: flex;
+    overflow-y: hidden;
 }
 
 ::selection {
@@ -34,17 +36,3 @@ $CouleurFondSecondary: #BD50BF;
     color: $backgroundColor;
 }
 
-::-webkit-scrollbar {
-    background-color: #e6e6e6;
-    width: 8px;
-    height: 8px;
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: #999;
-    border-width: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background-color: #666;
-}

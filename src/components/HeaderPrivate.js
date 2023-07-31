@@ -12,11 +12,11 @@ const HeaderPrivate = () => {
                 <p>Mercure</p>
             </div>
             <nav>
-                <NavLink className="button">
+                <NavLink className="button" to="/Private" >
                     <IconHome />
                     Accueil
                 </NavLink>
-                <NavLink className="button">
+                <NavLink className="button" to='/Messagerie'>
                     <IconMail />
                     Messagerie
                 </NavLink>

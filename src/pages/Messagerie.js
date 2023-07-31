@@ -1,25 +1,48 @@
 import React, { useState, useEffect, useRef } from 'react';
 import HeaderPrivate from '../components/HeaderPrivate';
-import '../styles/Private.scss';
-import { format } from 'date-fns';
-import { fr } from 'date-fns/locale';
+import NavBarHome from '../components/NavBarHome';
+import { IconUserCircle } from '@tabler/icons-react';
+import axios from 'axios';
 import io from 'socket.io-client';
+
+const MessageSend = ({ message }) => {
+  const { sender, content } = message;
+  const isSentByMe = sender === localStorage.getItem('email');
+
+  return (
+    <div className='message_conteneur' >
+      <div className={isSentByMe ? 'message_recever' : 'message_send'}>
+        {!isSentByMe && (
+          <div>
+            <IconUserCircle size={36} />
+          </div>
+        )}
+        <p>{content}</p>
+        {isSentByMe && (
+          <div className='separator'></div>
+        )}
+      </div>
+    </div>
+  );
+};
+
 const Messagerie = () => {
   const email = localStorage.getItem('email');
-
   // État pour stocker les derniers messages de chaque utilisateur
   const [latestMessages, setLatestMessages] = useState([]);
   const [selectedEmail, setSelectedEmail] = useState(null);
   const [selectedMessages, setSelectedMessages] = useState([]);
   const [allMessages, setAllMessages] = useState([]);
-  const [newMessage, setNewMessage] = useState('');
-  const contenuCorpsRef = useRef(null);
+  const scrollRef = useRef();
+  let latestMessagesByUser = [];
+
+  const [userAccounts, setUserAccounts] = useState([]); // État pour stocker les comptes des utilisateurs
   useEffect(() => {
     const fetchMessages = async () => {
       try {
         const response = await fetch('http://localhost:8000/Message.txt');
         const data = await response.json();
-
+        console.log('Data from Message.txt:', data);
         // Filtrer les messages en fonction de l'utilisateur connecté (email)
         const filteredMessages = data.filter(
           (message) => message.sender === email || message.receiver === email
@@ -38,12 +61,17 @@ const Messagerie = () => {
         // Obtenir les derniers messages de chaque utilisateur (avec les doublons)
         const latestMessagesWithDuplicates = Object.values(groupedMessages);
 
-        // Trier les messages par timestamp, le plus récent d'abord
-        latestMessagesWithDuplicates.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+        // Trier les messages par timestamp, le plus récent d'abord (ordre stable)
+        latestMessagesWithDuplicates.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp) || a.id - b.id);
+
+        // Afficher le contenu des derniers messages pour vérifier s'ils sont corrects
+        console.log(latestMessagesWithDuplicates);
 
         // Supprimer les doublons basés sur l'ID (conserver uniquement le dernier message de chaque utilisateur)
         const latestMessagesByUser = Array.from(new Map(latestMessagesWithDuplicates.map((message) => [message.id, message])).values());
 
+        // Afficher le contenu des derniers messages sans doublons
+        console.log(latestMessagesByUser);
 
         setLatestMessages(latestMessagesByUser);
         setAllMessages(filteredMessages); // Stocker tous les messages dans l'état allMessages
@@ -54,6 +82,57 @@ const Messagerie = () => {
 
     fetchMessages();
   }, [email]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Fetch les messages
+        const messagesResponse = await fetch('http://localhost:8000/Message.txt');
+        const messagesData = await messagesResponse.json();
+  
+        // Fetch les comptes d'utilisateurs
+        const accountsResponse = await fetch('http://localhost:8000/Compte.txt');
+        const accountsData = await accountsResponse.json();
+  
+        // Filtrer les messages en fonction de l'utilisateur connecté (email)
+        const filteredMessages = messagesData.filter(
+          (message) => message.sender === email || message.receiver === email
+        );
+  
+        // Regrouper les messages par expéditeur (sender) ou destinataire (receiver) tout en conservant les doublons
+        const groupedMessages = {};
+  
+        filteredMessages.forEach((message) => {
+          const otherUser = message.sender === email ? message.receiver : message.sender;
+          if (!groupedMessages[otherUser] || new Date(message.timestamp) > new Date(groupedMessages[otherUser].timestamp)) {
+            groupedMessages[otherUser] = message;
+          }
+        });
+  
+        // Obtenir les derniers messages de chaque utilisateur (avec les doublons)
+        const latestMessagesWithDuplicates = Object.values(groupedMessages);
+  
+        // Trier les messages par timestamp, le plus récent d'abord (ordre stable)
+        latestMessagesWithDuplicates.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp) || a.id - b.id);
+  
+        // Supprimer les doublons basés sur l'ID (conserver uniquement le dernier message de chaque utilisateur)
+        const latestMessagesByUser = Array.from(new Map(latestMessagesWithDuplicates.map((message) => [message.id, message])).values());
+  
+        setLatestMessages(latestMessagesByUser);
+        setAllMessages(filteredMessages); // Stocker tous les messages dans l'état allMessages
+        setUserAccounts(accountsData);
+      } catch (error) {
+        console.error('Erreur lors de la récupération des données:', error);
+      }
+    };
+  
+    fetchData();
+  }, [email]);
+  
+  // Mettre la scrollbar en bas par défaut
+  useEffect(() => {
+    scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+  }, [selectedMessages]);
 
   useEffect(() => {
     if (selectedEmail) {
@@ -72,136 +151,192 @@ const Messagerie = () => {
     }
   }, [selectedEmail, allMessages, email]);
 
-  const formatTimestamp = (timestamp) => {
-    const date = new Date(timestamp);
-    return format(date, 'HH:mm', { locale: fr }); // Utilise le format 'HH:mm' pour afficher l'heure
-  };
-
-  const BoiteReception = ({ message }) => {
-    // Utiliser les propriétés du message pour afficher les détails de la boîte de réception
-    const { sender, receiver, content, timestamp } = message;
-    const otherUser = sender === email ? receiver : sender; // Obtenir l'email de l'autre utilisateur
-
-    const handleClick = () => {
-      // Met à jour l'email sélectionné lorsqu'une boîte de réception est cliquée
-      setSelectedEmail(otherUser);
-    };
-
-    return (
-      <div className='boite_reception' onClick={handleClick}>
-        <img src="./assets/user_default.png" alt="Avatar" />
-        <div className='avatar'>
-          <div>{otherUser}</div>
-          <div>Vous : {content} • {formatTimestamp(timestamp)} </div>
-        </div>
-      </div>
-    );
-  };
-
-
   useEffect(() => {
     // Créer une instance socket.io-client et se connecter au serveur
     const socket = io('http://localhost:8000');
-
+  
     // Écouter l'événement 'new_message' émis par le serveur
     socket.on('new_message', (newMessage) => {
       // Traiter le nouveau message reçu du serveur
       console.log('Nouveau message reçu:', newMessage);
-      // Mettre à jour l'état des messages avec le nouveau message
-      setAllMessages((prevMessages) => [...prevMessages, newMessage]);
+  
+      setAllMessages((prevMessages) => {
+        const existingMessage = prevMessages.find((message) => message.id === newMessage.id);
+        if (existingMessage) {
+          return prevMessages.map((message) => {
+            if (message.id === newMessage.id) {
+              return newMessage;
+            } else {
+              return message;
+            }
+          });
+        } else {
+          return [...prevMessages, newMessage];
+        }
+      });
+  
+      // Update latestMessages with the new message
+      const updatedLatestMessages = latestMessages.map((message) => {
+        if (
+          (message.sender === email && message.receiver === newMessage.sender) ||
+          (message.sender === newMessage.sender && message.receiver === email)
+        ) {
+          return newMessage;
+        }
+        return message;
+      });
+  
+      setLatestMessages(updatedLatestMessages);
     });
-
+  
     // Fermer la connexion socket.io lorsque le composant est démonté pour éviter les fuites de mémoire
     return () => {
       socket.disconnect();
     };
-  }, []);
+  }, [email, latestMessages]);
+  
 
-  const handleSendMessage = () => {
-    // Affichier la valeur du scroll top
-    console.log('Scroll top:', contenuCorpsRef.current.scrollTop);
-    if (newMessage.trim() !== '') {
-      // Créer un objet de message avec l'email de l'utilisateur connecté et le contenu du message
-      const messageData = {
-        sender: localStorage.getItem('email'),
-        receiver: selectedEmail,
+  const Message = ({ message }) => {
+    const { sender, receiver } = message;
+  
+    // Find the account data for the other user (either sender or receiver)
+    const otherUserAccount = userAccounts.find(
+      (account) => account.email === (sender === email ? receiver : sender)
+    );
+  
+    const handleClick = () => {
+      setSelectedEmail(otherUserAccount?.email || '');
+      console.log('Email sélectionné:', otherUserAccount?.email || '');
+    };
+  
+    // Find the latest message for this user (either sent or received)
+    const latestMessage = latestMessages.find(
+      (msg) =>
+        (msg.sender === email && msg.receiver === otherUserAccount?.email) ||
+        (msg.sender === otherUserAccount?.email && msg.receiver === email)
+    );
+  
+    return (
+      <section onClick={handleClick}>
+        <div>
+          <IconUserCircle size={56} />
+        </div>
+        <div className='contact_user_section'>
+          {userAccounts.length === 0 ? (
+            <p className='pseudo'>Loading...</p>
+          ) : otherUserAccount ? (
+            <p className='pseudo'>{otherUserAccount.NomMessage}</p>
+          ) : (
+            <p className='pseudo'>Unknown User</p>
+          )}
+          {/* Display the latest message or "Vous : ..." */}
+          <p className='user_message'>
+            {latestMessage && latestMessage.sender === email
+              ? `Vous : ${latestMessage.content}`
+              : latestMessage?.content || "Aucun message"}
+          </p>
+        </div>
+      </section>
+    );
+  };
+
+  const sendMessageToServer = async (sender, receiver, content) => {
+    try {
+      // Mettre à jours en temps réel les messages avec socket.io
+      const response = await axios.post('http://localhost:8000/send-message', {
+        sender,
+        receiver,
+        content,
         timestamp: new Date().toISOString(),
-        content: newMessage,
-      };
-
-      // Envoyer le message au serveur
-      fetch('http://localhost:8000/send-message', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(messageData),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          // Le message a été envoyé avec succès, vous pouvez ajouter un retour visuel si nécessaire
-          console.log('Message envoyé avec succès:', data.message);
-          setAllMessages((prevMessages) => [...prevMessages, newMessage]);
-          // Mettre le scroll top à la fin du contenu du corps
-          contenuCorpsRef.current.scrollTop = contenuCorpsRef.current.scrollHeight;
-        })
-        .catch((error) => {
-          console.error('Erreur lors de l\'envoi du message:', error);
-        });
-
-      // Réinitialiser le champ d'entrée du message
-      setNewMessage('');
-
+      });
+      console.log('Réponse du serveur:', response);
+      // Utiliser socket pour faire passer le message au serveur
+    } catch (error) {
+      console.error('Erreur lors de l\'envoi du message:', error);
     }
   };
 
-  return (
-    <>
-      <HeaderPrivate />
-      <div className='message'>
-        <h1>{email} <span>⌄</span></h1>
-        <ul>
-          <li>Principal</li>
-          <li>Général</li>
-          <li>Invitation</li>
-          <li><button className='New'>New</button></li>
-        </ul>
+  const [newMessageContent, setNewMessageContent] = useState('');
 
-        <div className='contenu_corps' ref={contenuCorpsRef}>
-          {selectedEmail ? (
-            <p></p>
-          ) : (
-            <p>Sélectionnez un utilisateur pour afficher le contenu du message.</p>
-          )}
-          {selectedMessages.slice().reverse().map((message, index) => (
-            <div key={index} className={message.sender === email ? 'vous' : 'autre'}>
-              {message.content}
-              <div className='date'>
-                {formatTimestamp(message.timestamp)}
-              </div>
+  const handleNewMessageChange = (event) => {
+    setNewMessageContent(event.target.value);
+  };
+
+  const handleSendMessage = async (event) => {
+    event.preventDefault();
+    if (newMessageContent.trim() !== '') {
+      sendMessageToServer(email, selectedEmail, newMessageContent);
+      setNewMessageContent('');
+  
+      const newMessage = {
+        id: allMessages.length + 1,
+        sender: email,
+        receiver: selectedEmail,
+        content: newMessageContent,
+        timestamp: new Date().toISOString(),
+      };
+  
+      setAllMessages([...allMessages, newMessage]);
+  
+      // Update latestMessages with the new message
+      const updatedLatestMessages = latestMessages.map((message) => {
+        if (
+          (message.sender === email && message.receiver === selectedEmail) ||
+          (message.sender === selectedEmail && message.receiver === email)
+        ) {
+          return newMessage;
+        }
+        return message;
+      });
+  
+      setLatestMessages(updatedLatestMessages);
+  
+      setTimeout(() => {
+        scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+      }, 100);
+    }
+  };
+  
+
+
+  return (
+    <div className='body_private'>
+      <HeaderPrivate />
+      <main>
+        <nav>
+          <NavBarHome />
+        </nav>
+        <div className='global'>
+          <div className='Contact'>
+            {latestMessages.map((message) => (
+              <Message key={message.id} message={message} />
+            ))}
+          </div>
+          <div className='message_content'>
+            <div className='scrollbar_msg' ref={scrollRef}>
+              {/* Utilisez le composant MessageSend pour afficher les messages sélectionnés */}
+              {selectedMessages.slice().reverse().map((message, index) => (
+                <MessageSend key={index} message={message} />
+              ))}
             </div>
-          ))}
+            {/* */}
+            {/* Affichier la partie formulaire seullement si un email est clicker */}
+            {selectedEmail && (
+              <div className='message_action'>
+                <form onSubmit={handleSendMessage}>
+                  <input
+                    type='text'
+                    placeholder='Envoyer un message...'
+                    value={newMessageContent}
+                    onChange={handleNewMessageChange}
+                  />
+                </form>
+              </div>
+            )}
+          </div>
         </div>
-      </div>
-      <div className='message__content'>
-        {/* Afficher les boîtes de réception avec les derniers messages */}
-        {latestMessages.map((message) => (
-          <BoiteReception key={message.id} message={message} />
-        ))}
-      </div>
-      <div className='input_send_message'>
-        <input
-          placeholder='Écrire votre message...'
-          value={newMessage}
-          onChange={(e) => setNewMessage(e.target.value)}
-          onKeyPress={(e) => {
-            if (e.key === 'Enter') {
-              handleSendMessage();
-            }
-          }}
-        />
-      </div>
-    </>
+      </main>
+    </div>
   );
 };
 
