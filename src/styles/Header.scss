@@ -39,7 +39,9 @@ $textColor: #333333;
   nav {
     flex-grow: 1;
     flex-direction: column;
-    
+    .active {
+      background-color: #EAEEF7;
+    }
     a {
       padding: 10px;
       border-radius: 5px;
@@ -48,7 +50,7 @@ $textColor: #333333;
       transition: background-color 0.2s ease-in-out;
       display: flex;
       align-items: center;
-      
+     
       &:hover {
         background-color: rgba(230, 226, 226, 0.553); 
       }

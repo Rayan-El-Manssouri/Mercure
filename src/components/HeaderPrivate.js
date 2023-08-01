@@ -2,9 +2,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './stylesComponents/HeaderPrivates.scss';
 // import handleLogout from '../GestionComptes/HandleLogout.js';
-import { IconHome, IconMail, IconSearch, IconBell, IconUser, IconSettings  } from '@tabler/icons-react';
+import { IconHome, IconMail, IconSearch, IconBell, IconUser, IconSettings } from '@tabler/icons-react';
 const HeaderPrivate = () => {
-
     return (
         <div id="sidebar">
             <div id="logo">
@@ -12,27 +11,27 @@ const HeaderPrivate = () => {
                 <p>Mercure</p>
             </div>
             <nav>
-                <NavLink className="button" to="/Private" >
+                <NavLink exact="true" to="/Accueil">
                     <IconHome />
                     Accueil
                 </NavLink>
-                <NavLink className="button" to='/Messagerie'>
+                <NavLink exact="true" to='/Messagerie'>
                     <IconMail />
                     Messagerie
                 </NavLink>
-                <NavLink className="button">
+                <NavLink exact="true" to='/Recherche'>
                     <IconSearch />
                     Recherche
                 </NavLink>
-                <NavLink className="button">
+                <NavLink exact="true" to='/Notifications'>
                     <IconBell />
                     Notifications
                 </NavLink>
-                <NavLink className="button">
+                <NavLink exact="true" to='/Profil'>
                     <IconUser />
                     Mon profil
                 </NavLink>
-                <NavLink className="button">
+                <NavLink exact="true" to='/Parametres'>
                     <IconSettings />
                     Paramètres
                 </NavLink>
@@ -40,5 +39,6 @@ const HeaderPrivate = () => {
         </div>
     );
 };
+
 
 export default HeaderPrivate;

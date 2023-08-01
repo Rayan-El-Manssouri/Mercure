@@ -49,8 +49,6 @@ const HomeForm = () => {
             content: newMessage,
         };
     
-        console.log("New Message Data:", newMessageData);
-    
         setIsSendingMessage(true); // Désactiver le bouton "Envoyer"
     
         fetch('http://localhost:8000/send-message', {

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useRef } from 'react';
 import HeaderPrivate from '../components/HeaderPrivate';
 import NavBarHome from '../components/NavBarHome';
@@ -34,7 +35,6 @@ const Messagerie = () => {
   const [selectedMessages, setSelectedMessages] = useState([]);
   const [allMessages, setAllMessages] = useState([]);
   const scrollRef = useRef();
-  let latestMessagesByUser = [];
 
   const [userAccounts, setUserAccounts] = useState([]); // État pour stocker les comptes des utilisateurs
   useEffect(() => {
@@ -42,7 +42,6 @@ const Messagerie = () => {
       try {
         const response = await fetch('http://localhost:8000/Message.txt');
         const data = await response.json();
-        console.log('Data from Message.txt:', data);
         // Filtrer les messages en fonction de l'utilisateur connecté (email)
         const filteredMessages = data.filter(
           (message) => message.sender === email || message.receiver === email
@@ -65,13 +64,11 @@ const Messagerie = () => {
         latestMessagesWithDuplicates.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp) || a.id - b.id);
 
         // Afficher le contenu des derniers messages pour vérifier s'ils sont corrects
-        console.log(latestMessagesWithDuplicates);
 
         // Supprimer les doublons basés sur l'ID (conserver uniquement le dernier message de chaque utilisateur)
         const latestMessagesByUser = Array.from(new Map(latestMessagesWithDuplicates.map((message) => [message.id, message])).values());
 
         // Afficher le contenu des derniers messages sans doublons
-        console.log(latestMessagesByUser);
 
         setLatestMessages(latestMessagesByUser);
         setAllMessages(filteredMessages); // Stocker tous les messages dans l'état allMessages
@@ -158,7 +155,6 @@ const Messagerie = () => {
     // Écouter l'événement 'new_message' émis par le serveur
     socket.on('new_message', (newMessage) => {
       // Traiter le nouveau message reçu du serveur
-      console.log('Nouveau message reçu:', newMessage);
   
       setAllMessages((prevMessages) => {
         const existingMessage = prevMessages.find((message) => message.id === newMessage.id);
@@ -206,7 +202,6 @@ const Messagerie = () => {
   
     const handleClick = () => {
       setSelectedEmail(otherUserAccount?.email || '');
-      console.log('Email sélectionné:', otherUserAccount?.email || '');
     };
   
     // Find the latest message for this user (either sent or received)
@@ -249,8 +244,6 @@ const Messagerie = () => {
         content,
         timestamp: new Date().toISOString(),
       });
-      console.log('Réponse du serveur:', response);
-      // Utiliser socket pour faire passer le message au serveur
     } catch (error) {
       console.error('Erreur lors de l\'envoi du message:', error);
     }
