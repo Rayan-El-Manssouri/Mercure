@@ -1,17 +1,19 @@
 // Import des modules de style
-@import "Header.scss";
-@import "NavBarHome.scss";
-@import "SectionMessage.scss";
+@use "Header";
+@use "NavBarHome";
+@use "SectionMessage";
 
 // variable
-$primaryColor: #A066F2;
+SectionMessage.$primaryColor: #a066f2;
+
 $secondaryColor: #9ca3af;
 $backgroundColor: #f3f4f6;
-$textColor: #1f2937;
+Header.$textColor: #1f2937;
+
 $errorColor: #dc2626;
-$highlightColor : #7C3AED;
-$CouleurFondPrimary: #5F5BD9;
-$CouleurFondSecondary: #BD50BF;
+$highlightColor: #7c3aed;
+$CouleurFondPrimary: #5f5bd9;
+$CouleurFondSecondary: #bd50bf;
 
 // Mixin
 * {
@@ -32,7 +34,6 @@ $CouleurFondSecondary: #BD50BF;
 }
 
 ::selection {
-    background-color: $primaryColor;
+    background-color: SectionMessage.$primaryColor;
     color: $backgroundColor;
 }
-

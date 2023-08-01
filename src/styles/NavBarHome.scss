@@ -6,6 +6,7 @@ main {
     display: flex;
     flex-direction: column;
 }
+
 .Header {
     padding: 10px 15px;
     border-bottom: $BorderSeparator;
@@ -43,4 +44,3 @@ main {
 .Header .space {
     flex-grow: 1;
 }
-

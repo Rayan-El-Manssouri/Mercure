@@ -1,79 +1,58 @@
 {
-  "name": "mercure",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@tabler/core": "^1.0.0-beta19",
-    "@tabler/icons": "^2.30.0",
-    "@tabler/icons-react": "^2.30.0",
-    "axios": "^1.4.0",
-    "date-fns": "^2.30.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.14.2",
-    "react-scripts": "5.0.1",
-    "sass": "^1.64.1",
-    "socket.io-client": "^4.7.1",
-    "tabler": "^1.0.0-alpha.8"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.22.9",
-    "@babel/core": "^7.22.9",
-    "@babel/preset-env": "^7.22.9",
-    "@cspell/dict-fr-fr": "^2.2.2",
-    "@tabler/icons-webfont": "^2.26.0",
-    "autoprefixer": "^10.4.14",
-    "babel-preset-minify": "^0.5.2",
-    "commitizen": "^4.3.0",
-    "cspell": "^6.31.2",
-    "cssnano": "^6.0.1",
-    "eslint": "^8.45.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-config-standard": "^17.1.0",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-n": "^16.0.1",
-    "eslint-plugin-promise": "^6.1.1",
-    "htmlhint": "^1.1.4",
-    "npm-run-all": "^4.1.5",
-    "postcss": "^8.4.26",
-    "postcss-cli": "^10.1.0",
-    "postcss-import": "^15.1.0",
-    "postcss-preset-env": "^9.0.0",
-    "prettier": "^3.0.0",
-    "stylelint": "^15.10.2",
-    "stylelint-config-standard": "^34.0.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "babel": "babel src/main.js --out-dir dist/",
-    "cspell": "cspell lint ** --cache --show-context",
-    "eslint": "eslint . --cache --fix",
-    "htmlhint": "htmlhint",
-    "postcss": "postcss src/main.css --dir dist/",
-    "prettier": "prettier -w ** --cache",
-    "stylelint": "stylelint **.css --cache --fix",
-    "build:css": "npm-run-all -s stylelint postcss",
-    "build:js": "npm-run-all -s eslint babel"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+    "name": "mercure",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "@tabler/icons-react": "^2.30.0",
+        "axios": "^1.4.0",
+        "date-fns": "^2.30.0",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-router-dom": "^6.14.2",
+        "react-scripts": "^5.0.1",
+        "socket.io-client": "^4.7.1"
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.22.9",
+        "@babel/core": "^7.22.9",
+        "@babel/preset-env": "^7.22.9",
+        "@cspell/dict-fr-fr": "^2.2.2",
+        "autoprefixer": "^10.4.14",
+        "babel-preset-minify": "^0.5.2",
+        "cspell": "^6.31.2",
+        "eslint": "^8.46.0",
+        "eslint-config-prettier": "^8.9.0",
+        "eslint-config-standard": "^17.1.0",
+        "eslint-plugin-import": "^2.28.0",
+        "eslint-plugin-n": "^16.0.1",
+        "eslint-plugin-promise": "^6.1.1",
+        "eslint-plugin-react": "^7.33.1",
+        "npm-run-all": "^4.1.5",
+        "postcss": "^8.4.27",
+        "postcss-cli": "^10.1.0",
+        "postcss-import": "^15.1.0",
+        "postcss-preset-env": "^9.1.0",
+        "prettier": "^3.0.0",
+        "sass": "^1.64.2",
+        "stylelint": "^15.10.2",
+        "stylelint-config-standard-scss": "^10.0.0"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject",
+        "babel": "babel src/**.js --out-dir dist/",
+        "postcss": "postcss src/main.css --dir dist/",
+        "cspell": "cspell lint ** --cache --show-context",
+        "eslint": "eslint . --cache --fix",
+        "prettier": "prettier -w ** --cache",
+        "stylelint": "stylelint src/styles/**.scss src/components/stylesComponents/**.scss --cache --fix",
+        "cspell:check": "cspell lint ** --show-context",
+        "eslint:check": "eslint .",
+        "prettier:check": "prettier -c **",
+        "stylelint:check": "stylelint src/styles/**.scss",
+        "check": "npm-run-all -p cspell:check prettier:check stylelint:check eslint:check",
+        "format": "npm-run-all -p cspell prettier stylelint eslint"
+    }
 }

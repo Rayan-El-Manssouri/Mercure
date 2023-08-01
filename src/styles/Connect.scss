@@ -1,30 +1,31 @@
-*{
+@use "sass:color";
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 // Path: src\styles\Connect.scss
-$primaryColor: #A066F2; // Couleur principale violette
+$primaryColor: #a066f2; // Couleur principale violette
 $secondaryColor: #9ca3af; // Gris
 $backgroundColor: #f3f4f6; // Gris très clair
 $textColor: #1f2937; // Gris foncé
 $errorColor: #dc2626; // Rouge pour les messages d'erreur
-$highlightColor : #7C3AED; // Couleur de surbrillance violette
-$CouleurFondPrimary: #5F5BD9; // Couleur principale violette
-$CouleurFondSecondary: #BD50BF; // Couleur principale violette
+$highlightColor: #7c3aed; // Couleur de surbrillance violette
+$CouleurFondPrimary: #5f5bd9; // Couleur principale violette
+$CouleurFondSecondary: #bd50bf; // Couleur principale violette
 
 .body {
     background: linear-gradient(320deg, $CouleurFondPrimary, $CouleurFondSecondary);
     color: $textColor;
-    font-family: 'Roboto', sans-serif;
     font-size: 1.2rem;
     font-weight: 300;
     line-height: 1.5;
     margin: 0;
     padding: 0;
     text-align: center;
-    font-family: 'Systeme UI', sans-serif;
+    font-family: system-ui, sans-serif;
 }
 
 .central_connect_form {
@@ -33,10 +34,9 @@ $CouleurFondSecondary: #BD50BF; // Couleur principale violette
     justify-content: center;
     align-items: center;
     height: 100vh;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 10%);
     transform: translateY(0);
     position: static;
-
 }
 
 .central_connect_form h1 {
@@ -44,7 +44,6 @@ $CouleurFondSecondary: #BD50BF; // Couleur principale violette
     font-weight: 500;
     margin-bottom: 2rem;
     background: linear-gradient(35deg, $CouleurFondSecondary, $primaryColor);
-    -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
 }
@@ -94,10 +93,7 @@ $CouleurFondSecondary: #BD50BF; // Couleur principale violette
     &:focus {
         border: 1px solid $primaryColor;
     }
-
 }
-
-
 
 .central_connect_form .form button {
     width: 100%;
@@ -112,7 +108,11 @@ $CouleurFondSecondary: #BD50BF; // Couleur principale violette
     background: linear-gradient(135deg, $primaryColor, $highlightColor);
 
     &:hover {
-        background: linear-gradient(135deg, darken($primaryColor, 5%), darken($highlightColor, 5%));
+        background: linear-gradient(
+            135deg,
+            color.adjust($primaryColor, $lightness: -5%),
+            color.adjust($highlightColor, $lightness: -5%)
+        );
     }
 }
 
@@ -128,8 +128,7 @@ $CouleurFondSecondary: #BD50BF; // Couleur principale violette
     font-weight: 400;
 }
 
-
-.body .central_connect_form .form .central_connect_form__links  a {
+.body .central_connect_form .form .central_connect_form__links a {
     color: $primaryColor;
     text-decoration: none;
     font-size: 1.2rem;
@@ -140,6 +139,7 @@ $CouleurFondSecondary: #BD50BF; // Couleur principale violette
     padding: 10px;
     position: relative;
     top: 20px;
+
     &:hover {
         text-decoration: underline;
     }
@@ -156,7 +156,7 @@ $CouleurFondSecondary: #BD50BF; // Couleur principale violette
     margin-top: 1rem;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (width <= 768px) {
     .central_connect_form form {
         width: 90%;
     }

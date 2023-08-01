@@ -1,9 +1,9 @@
-import React from 'react';
-import { IconUser  } from '@tabler/icons-react';
+import React from "react";
+import { IconUser } from "@tabler/icons-react";
 
 const NavBarHome = () => {
     return (
-        <div className='Header'>
+        <div className="Header">
             <div id="welcome">
                 <p>Bienvenue sur Mercure !</p>
             </div>

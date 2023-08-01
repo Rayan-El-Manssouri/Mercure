@@ -1,8 +1,8 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import './stylesComponents/HeaderPrivates.scss';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import "./stylesComponents/HeaderPrivates.scss";
 // import handleLogout from '../GestionComptes/HandleLogout.js';
-import { IconHome, IconMail, IconSearch, IconBell, IconUser, IconSettings } from '@tabler/icons-react';
+import { IconHome, IconMail, IconSearch, IconBell, IconUser, IconSettings } from "@tabler/icons-react";
 const HeaderPrivate = () => {
     return (
         <div id="sidebar">
@@ -15,23 +15,23 @@ const HeaderPrivate = () => {
                     <IconHome />
                     Accueil
                 </NavLink>
-                <NavLink exact="true" to='/Messagerie'>
+                <NavLink exact="true" to="/Messagerie">
                     <IconMail />
                     Messagerie
                 </NavLink>
-                <NavLink exact="true" to='/Recherche'>
+                <NavLink exact="true" to="/Recherche">
                     <IconSearch />
                     Recherche
                 </NavLink>
-                <NavLink exact="true" to='/Notifications'>
+                <NavLink exact="true" to="/Notifications">
                     <IconBell />
                     Notifications
                 </NavLink>
-                <NavLink exact="true" to='/Profil'>
+                <NavLink exact="true" to="/Profil">
                     <IconUser />
                     Mon profil
                 </NavLink>
-                <NavLink exact="true" to='/Parametres'>
+                <NavLink exact="true" to="/Paramètres">
                     <IconSettings />
                     Paramètres
                 </NavLink>
@@ -39,6 +39,5 @@ const HeaderPrivate = () => {
         </div>
     );
 };
-
 
 export default HeaderPrivate;
