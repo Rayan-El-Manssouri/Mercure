@@ -304,6 +304,31 @@ const Messagerie = () => {
         alert("Fonctionnalité en cours de développement");
     };
 
+    const [chatContainerHeight, setChatContainerHeight] = useState();
+    
+    useEffect(() => {
+        const fixChatContainerHeight = () => {
+            const chatContainer = document.querySelector('.scrollbar_msg');
+            const messageInput = document.querySelector('.message_action input');
+            if (chatContainer && messageInput) {
+                const height =
+                    window.innerHeight -
+                    chatContainer.getBoundingClientRect().top -
+                    messageInput.getBoundingClientRect().height;
+                setChatContainerHeight(height);
+                chatContainer.scrollTo(0, chatContainer.scrollHeight, {
+                    behavior: 'initial',
+                });
+            }
+        };
+
+
+        window.addEventListener('resize', fixChatContainerHeight);
+
+        
+    }, []);
+
+
     return (
         <div className="body_private">
             <HeaderPrivate />
@@ -312,7 +337,7 @@ const Messagerie = () => {
                     <NavBarHome />
                 </nav>
                 <div className="global">
-                    <div className="Contact">
+                    <div className="Contact" >
                         <div className="contact_header">
                             <h2>Messages</h2>
                             <div className="contact_add">
@@ -323,8 +348,8 @@ const Messagerie = () => {
                             <Message key={message.id} message={message} />
                         ))}
                     </div>
-                    <div className="message_content">
-                        <div className="scrollbar_msg" ref={scrollRef}>
+                    <div className="message_content" style={{ flex: 1 }}  >
+                        <div className="scrollbar_msg" ref={scrollRef} style={{ height: `${chatContainerHeight}px` }}>
                             {/* Utilisez le composant MessageSend pour afficher les messages sélectionnés */}
                             {selectedMessages
                                 .slice()
