@@ -4,7 +4,7 @@ import HeaderPrivate from "../components/HeaderPrivate";
 import NavBarHome from "../components/NavBarHome";
 import axios from "axios";
 import io from "socket.io-client";
-import { IconCirclePlus, IconX } from "@tabler/icons-react";
+import { IconCirclePlus, IconX, IconUserCircle } from "@tabler/icons-react";
 const MessageSend = ({ message }) => {
     const { sender, content } = message;
     const isSentByMe = sender === localStorage.getItem("email");
