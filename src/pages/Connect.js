@@ -18,7 +18,7 @@ const Connect = () => {
       if (response.ok) {
         const data = await response.json();
         localStorage.setItem('email', data.email);
-        window.location.href = '/Private';
+        window.location.href = '/Accueil';
       } else {
         setError('Email ou mot de passe incorrect');
       }

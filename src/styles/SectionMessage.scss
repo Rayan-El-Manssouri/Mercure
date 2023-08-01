@@ -18,18 +18,66 @@ $primaryColor: #A066F2;
         flex: 0 0 320px;
         overflow-y: scroll;
         overflow-x: hidden;
+
+        .contact_header {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 10px;
+            border-bottom: $BorderSeparator;
+
+            svg {
+                cursor: pointer;
+
+                &:hover {
+                    color: $primaryColor;
+                }
+            }
+        }
+
         section {
             border-bottom: $BorderSeparator;
             color: $textColor;
             text-decoration: none;
             display: flex;
             align-items: center;
+
+            nav {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                padding: 10px;
+
+                .contact_user_section {
+                    display: flex;
+                    flex-direction: column;
+                    margin-left: 10px;
+                    white-space: nowrap;
+
+                    .pseudo {
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        width: 250px;
+                        font-size: 1.2rem;
+                    }
+
+                    .user_message {
+                        font-size: 0.8rem;
+                    }
+                }
+            }
+
             .contact_user_section {
                 display: flex;
                 flex-direction: column;
                 margin-left: 10px;
                 white-space: nowrap;
-                
+
                 .pseudo {
                     overflow: hidden;
                     text-overflow: ellipsis;
@@ -42,6 +90,7 @@ $primaryColor: #A066F2;
                     font-size: 0.8rem;
                 }
             }
+
             &:hover {
                 background-color: rgba(230, 226, 226, 0.553);
             }
@@ -69,18 +118,21 @@ $primaryColor: #A066F2;
         border: $BorderSeparator;
         position: fixed;
         bottom: 0;
+
         form {
             width: 100%;
             display: flex;
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
+
             input {
                 width: 100%;
                 padding: 10px;
                 font-size: 1rem;
                 outline: none;
                 border: 1px solid #e6e6e6;
+
                 &:focus {
                     border: 1px solid $primaryColor;
                 }
@@ -93,6 +145,7 @@ $primaryColor: #A066F2;
         flex-direction: column;
         height: 88vh;
         flex: 1;
+
         .message_conteneur {
             display: flex;
 
@@ -130,6 +183,52 @@ $primaryColor: #A066F2;
                     border-radius: 5px;
                     width: 100%;
                 }
+            }
+        }
+    }
+
+    .box_search_contact {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .search_contact {
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+        width: 500px;
+        height: 500px;
+        display: block;
+        h1{
+            display: flex;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+        .close{
+            position: relative;
+            justify-content: flex-end;
+            display: flex;
+            svg{
+                font-size: 1.5rem;
+            }
+        }
+        input{  
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            outline: none;
+            border: 1px solid #e6e6e6;
+            &:focus {
+                border: 1px solid $primaryColor;
             }
         }
     }

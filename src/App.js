@@ -57,7 +57,7 @@ const App = () => {
           path="/Connect"
           element={
             <React.Suspense fallback={<div>Loading...</div>}>
-              {isLoggedIn ? <Navigate to="/Private" /> : <Connect />}
+              {isLoggedIn ? <Navigate to="/Accueil" /> : <Connect />}
             </React.Suspense>
           }
         />
