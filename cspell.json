@@ -1,0 +1,11 @@
+{
+    "version": "0.2",
+    "ignorePaths": ["*.mp3", ".mp4", "*.svg", "*.txt", "*.py", "build/", "package.json"],
+    "dictionaryDefinitions": [],
+    "dictionaries": [],
+    "words": ["cssnano"],
+    "ignoreWords": [],
+    "import": ["@cspell/dict-fr-fr/cspell-ext.json"],
+    "language": "en,fr,lorem",
+    "useGitignore": true
+}
