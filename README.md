@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+<p align="center">
+  <a href="https://github.com/Rayan-El-Manssouri/Mercure#readme">
+    <img src="./public/assets/logo/color light 500.webp" alt="Mercure logo" style="max-width: 30%;" >
+  </a>
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h3 align="center">Mercure - Messagerie instannée sécuriser</h3>
 
-## Available Scripts
+# Table des matiéres
 
-In the project directory, you can run:
+- [Table des matiéres](#table-des-matiéres)
+- [Installation](#installation)
+  - [Prérequis](#prérequis)
+  - [Installation](#installation-1)
+- [Utilisation](#utilisation)
+- [LICENSE](./LICENSE)
 
-### `npm start`
+# Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Prérequis
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- [Node.js](https://nodejs.org/en/download/)
+- [python](https://www.python.org/downloads/)
+- [pip](https://pip.pypa.io/en/stable/installing/)
+- [npm](https://www.npmjs.com/get-npm)
 
-### `npm test`
+## Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Cloner le repo
+   ```sh
+   git clone https://github.com/Rayan-El-Manssouri/Mercure.git
+   ```
 
-### `npm run build`
+2. Installer les packages NPM
+   ```sh
+    npm install
+    ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Installer les packages Python
+   ```sh
+    pip install -r requirements.txt
+    ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Utilisation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Lancer le serveur python
+   ```sh
+    python server/main.py
+    ```
+2. Lancer le serveur node / npm
+   ```sh
+    npm start
+    ```
 
-### `npm run eject`
+3. Ouvrir le navigateur et aller sur [localhost:3000](http://localhost:3000)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# LICENSE
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Distribué sous la licence
+[MIT](./LICENSE)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# Auteurs
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [Rayan El Manssouri](https://github.com/Rayan-El-Manssouri) - Développeur
+- [Al Capitan](https://github.com/Al-Capitan) - Développeur
