@@ -8,6 +8,7 @@ La fonction connect permet de se connecter à un serveur distant et de récupér
 ## Exemple
 ```js
 import Majax from "../components/Majax/Majax";
+import { useEffect } from "react";
 const Private = (isLoggedIn) => {
 
     useEffect(() => {
