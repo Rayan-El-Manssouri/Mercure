@@ -21,6 +21,10 @@ def get_file():
     messages = read_messages_from_file()
     return jsonify(messages)  # Utilise jsonify pour renvoyer les données JSON avec l'en-tête approprié
 
+@app.route('/', methods=['GET'])
+def connect_succes():
+    return jsonify({"message": "Connexion réussie"}), 200, {'Content-Type': 'application/json'}
+
 def save_messages_to_file(messages):
     with open("./server/Message.txt", "w") as file:
         json.dump(messages, file, indent=4)

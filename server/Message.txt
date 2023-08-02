@@ -75,5 +75,12 @@
         "receiver": "compte_utilisateur_3@gmail.com",
         "timestamp": "2023-08-02T12:32:58.808Z",
         "content": "HEHE"
+    },
+    {
+        "id": 12,
+        "sender": "test@gmail.com",
+        "receiver": "compte_utilisateur_3@gmail.com",
+        "timestamp": "2023-08-02T16:51:40.420Z",
+        "content": "Cc"
     }
 ]
