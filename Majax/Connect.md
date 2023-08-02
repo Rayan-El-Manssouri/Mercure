@@ -3,8 +3,7 @@
 ## Description
 La fonction connect permet de se connecter à un serveur distant et de récupérer les données JSON pour un serveur de type flask.
 
-## Fonctionnement
-La fonction connect prend en paramètre l'url du serveur et le port du serveur. Elle retourne une promesse qui contient les données JSON du serveur.
+# Fonctionnement
 
 ## Exemple
 ```js
