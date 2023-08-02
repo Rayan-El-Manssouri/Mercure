@@ -14,6 +14,7 @@
   - [Installation](#installation-1)
 - [Utilisation](#utilisation)
 - [LICENSE](./LICENSE)
+- [Compilateur](#compilateur)
 
 # Installation
 
@@ -54,6 +55,10 @@
 
 3. Ouvrir le navigateur et aller sur [localhost:3000](http://localhost:3000)
 
+
+# Compilateur
+
+Nous utilisons Majax pour gérer les requêtes HTTP et les réponses JSON. Vous avez juste à regarder le fichier [Majax.md](./Majax/MAJAX.md) pour comprendre comment l'utiliser.
 
 # LICENSE
 
