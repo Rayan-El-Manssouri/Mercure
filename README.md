@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/Rayan-El-Manssouri/Mercure#readme">
-    <img src="./public/assets/logo/color light 500.webp" alt="Mercure logo" style="max-width: 30%;" >
+    <img src="./public/assets/logo/color light 500.webp" alt="Mercure logo" style="max-width: 10%;" >
   </a>
 </p>
 
