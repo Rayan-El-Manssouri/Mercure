@@ -12,4 +12,4 @@ npm install majax
 ## Listes des fonctionnalités disponibles
 
 -   [`init()`](./init.md) - Connexion à un serveur
--   [`connect()`](./connect.md) - Connexion à un compte
+-   [`connect()`](./Connect.md) - Connexion à un compte
