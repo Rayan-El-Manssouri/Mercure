@@ -14,3 +14,4 @@ npm install majax
 -   [`init()`](./init.md) - Connexion à un serveur
 -   [`connect()`](./Connect.md) - Connexion à un compte
 -   [`verifyaccount`](./verifyaccount.md) - Vérification d'un compte si il est connecté
+-   [`logout()`](./logout.md) - Déconnexion d'un compte
