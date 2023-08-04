@@ -24,6 +24,8 @@ const handleLogin = async () => {
 
 Note : La fonction `connect()` est asynchrone, il faut donc utiliser `await` ou `.then()` pour récupérer le résultat. Nous vous conseillons d'utiliser `await` pour plus de simplicité.
 
+### Exemple de serveur
+
 ```python
 from flask_session import Session  # Importation de la session
 app = Flask(__name__) # Initialisation de l'application Flask
