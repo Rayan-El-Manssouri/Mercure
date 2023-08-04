@@ -1,17 +1,8 @@
+import Majax from "../components/Majax/Majax";
 const handleLogout = async () => {
-    try {
-        const response = await fetch("http://localhost:8000/logout", {
-            method: "GET",
-            credentials: "include",
-        });
-        if (response.ok) {
-            window.location.href = "/Connect";
-        } else {
-            console.error("Erreur lors de la déconnexion côté serveur");
-        }
-    } catch (error) {
-        console.error("Erreur lors de la déconnexion :", error);
-    }
+    const majax = new Majax();
+    await majax.init("http://localhost:8000/ConnecteServer", "apikey");
+    majax.logout("http://localhost:8000/logout", "/Connect")
 };
 
 export default handleLogout;

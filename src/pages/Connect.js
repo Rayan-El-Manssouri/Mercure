@@ -1,30 +1,22 @@
 import React, { useState } from "react";
 import "../styles/Connect.scss";
+import Majax from "../components/Majax/Majax";
 const Connect = () => {
+    // const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState(undefined);
-    const handleLogin = async () => {
-        try {
-            const response = await fetch("http://localhost:8000/login", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ email, password }),
-                credentials: "include",
-            });
+    const majax = new Majax();
 
-            if (response.ok) {
-                const data = await response.json();
-                localStorage.setItem("email", data.email);
-                window.location.href = "/Accueil";
-            } else {
-                setError("Email ou mot de passe incorrect");
-            }
-        } catch (error) {
-            setError("Erreur lors de la connexion");
-        }
+    const handleLogin = async () => {
+        await majax.init("http://localhost:8000/ConnecteServer", "apikey")
+            .then(() => {
+                localStorage.setItem("email", email);
+                majax.connect(email, password, "http://localhost:8000/login", "/Accueil")
+            })
+            .catch((error) => {
+                setError(error.message);
+            });
     };
 
     return (

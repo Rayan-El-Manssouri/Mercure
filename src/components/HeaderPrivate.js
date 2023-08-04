@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./stylesComponents/HeaderPrivates.scss";
-// import handleLogout from '../GestionComptes/HandleLogout.js';
+import handleLogout from '../GestionComptes/HandleLogout.js';
 import { IconHome, IconMail, IconSearch, IconBell, IconUser, IconSettings } from "@tabler/icons-react";
 const HeaderPrivate = () => {
     return (
@@ -35,6 +35,9 @@ const HeaderPrivate = () => {
                     <IconSettings />
                     Paramètres
                 </NavLink>
+                <div onClick={handleLogout} className="logout" >
+                    <p>Déconnexion</p>
+                </div>
             </nav>
         </div>
     );

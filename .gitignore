@@ -9,3 +9,4 @@ node_modules
 
 # Build
 build/
+flask_session/

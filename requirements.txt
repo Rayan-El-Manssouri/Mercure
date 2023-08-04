@@ -2,3 +2,6 @@ flask
 flask_cors
 flask_socketio
 os
+pycryptodome 
+# Module CRYPTO de AES pour MAJAX
+Flask-Session

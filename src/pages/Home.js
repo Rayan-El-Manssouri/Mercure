@@ -1,14 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
+import Majax from "../components/Majax/Majax";
 
 const Home = () => {
-    return (
-        <div>
-            {/* Div central de message vers un utilisateur */}
-            <div className="message">
-                <p>Bienvenue sur Mercure!</p>
-            </div>
+  useEffect(() => {
+    const fetchData = async () => {
+      const majax = new Majax();
+      try {
+        await majax.init("http://localhost:8000/ConnecteServer", "apikey");
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return (
+    <div>
+      <div>
+        <div className="message">
+          <p>Bienvenue sur Mercure!</p>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default Home;

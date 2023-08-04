@@ -1,14 +1,35 @@
-from flask import Flask, request, jsonify, session, make_response
-import json
+from flask import Flask, request, jsonify, session
 from flask_cors import CORS
-from flask_socketio import SocketIO, send
+from flask_socketio import SocketIO
 import os
+import secrets
+import json
+PORT = 8000
+from flask_session import Session 
 
-SECRET_KEY = 'fq9f529er4f98re5d2c95ea4r85f2s5qe41rf95edcs'
 app = Flask(__name__)
-app.config['SECRET_KEY'] = SECRET_KEY  # Définir la clé secrète pour Flask
-CORS(app, supports_credentials=True)
-socketio = SocketIO(app, cors_allowed_origins="*", cors_allowed_methods="*")  # Ajoutez cette ligne pour configurer CORS pour SocketIO
+SECRET_KEY = "fq9f529er4f98re5d2c95ea4r85f2s5qe41rf95edcs"
+app.config['SESSION_TYPE'] = 'filesystem'
+app.config['SECRET_KEY'] = SECRET_KEY
+cors = CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
+socketio = SocketIO(app, cors_allowed_origins="*", cors_allowed_methods="*")
+Session(app)
+# Clé API valide
+VALIDE_API_KEY = "apikey"
+
+@app.route('/ConnecteServer', methods=['POST'])
+def connect_server():
+    # Récupérer les données JSON de la requête
+    data = request.get_json()
+    apiKey = data['apiKey']
+    if  apiKey != VALIDE_API_KEY:
+        # Retourner une erreur si la clé API en clair
+        return jsonify({"error": "API key invalide"}), 401, {'Content-Type': 'application/json'}
+        
+    else:
+        # Retourner une réponse réussie si la clé API est valide
+        return jsonify({"message": "API key valide"}), 200, {'Content-Type': 'application/json'}
+
 def read_messages_from_file():
     try:
         with open("./server/Message.txt", "r") as file:
@@ -71,14 +92,15 @@ with open('./server/Compte.txt', 'r', encoding='utf-8') as f:
 def get_file_compte():
     return content
 
+
 @app.route('/checkLogin', methods=['GET'])
 def check_login():
-    # Vérifier si l'utilisateur est connecté en vérifiant la présence de l'adresse e-mail dans la session
-    if 'user_email' in session:
+    user_email = request.args.get('user_email')
+    
+    if 'user_email' in session and session['user_email'] == user_email:
         return jsonify({"message": "Utilisateur connecté"}), 200
     else:
         return jsonify({"error": "Utilisateur non connecté"}), 401
-
 @app.route('/messages', methods=['GET'])
 def get_messages():
     return jsonify({"messages": messages}), 200, {'Content-Type': 'application/json', 'Indent': 4}
@@ -110,4 +132,4 @@ def send_message():
         return jsonify({"error": "Invalid JSON data"}), 400, {'Content-Type': 'application/json', 'Indent': 4}
 
 if __name__ == '__main__':
-    socketio.run(app, port=8000)
+    socketio.run(app, port=PORT)

@@ -62,5 +62,20 @@ $textColor: #333;
                 vertical-align: middle;
             }
         }
+
+        .logout {
+            margin-top: auto;
+            border-top: $BorderSeparator;
+            padding-top: 10px;
+            cursor: pointer;
+            p{
+                font-size: 0.8rem;
+                text-align: center;
+            }
+
+            &:hover {
+                background-color: rgb(230 226 226 / 55.3%);
+            }
+        }
     }
 }
