@@ -101,6 +101,8 @@ def check_login():
         return jsonify({"message": "Utilisateur connecté"}), 200
     else:
         return jsonify({"error": "Utilisateur non connecté"}), 401
+    
+    
 @app.route('/messages', methods=['GET'])
 def get_messages():
     return jsonify({"messages": messages}), 200, {'Content-Type': 'application/json', 'Indent': 4}
