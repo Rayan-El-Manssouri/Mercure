@@ -33,6 +33,7 @@ SECRET_KEY = "fq9f529er4f98re5d2c95ea4r85f2s5qe41rf95edcs" # Clé secrète de l'
 PORT = 8000 # Port de l'application
 
 app.config['SESSION_TYPE'] = 'filesystem' # Type de session ( ici, session stockée dans le système de fichiers )
+CORS(app) # Autoriser les requêtes cross-origin
 app.config['SECRET_KEY'] = SECRET_KEY # Clé secrète de l'application
 Session(app) # Initialisation de la session
 
@@ -62,6 +63,8 @@ def login(): # Fonction de connexion
 if __name__ == '__main__':
     socketio.run(app, port=PORT)
 ```
+
+Note : ici on utilise CORS pour autoriser TOUTE les requêtes cross-origin. On utilise également une session pour stocker l'email de l'utilisateur connecté. Pour plus d'informations sur les sessions, voir la documentation de Flask : https://flask.palletsprojects.com/en/1.1.x/quickstart/#sessions
 
 ## Typage
 
