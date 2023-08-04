@@ -54,3 +54,6 @@ def check_login():
 | ---- | ------- | ----------- |
 | 401 | Utilisateur non connecté | L'utilisateur n'est pas connecté |
 | 200 | Utilisateur connecté | L'utilisateur est connecté |
+
+
+Note : La fonction `verifyaccount()` renverra false ou true.
