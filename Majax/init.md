@@ -16,6 +16,8 @@ const handleLoginSever = async () => {
 };
 ```
 
+Note : on utilise une fonction asynchrone pour pouvoir utiliser le mot clé `await` qui permet d'attendre la fin de l'exécution de la fonction `init()` avant de passer à la suite du code.
+
 ### Exemple de serveur
 
 ```python
