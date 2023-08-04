@@ -5,6 +5,8 @@ La fonction `init()` permet de connecter l'application cliente à un serveur via
 ## Exemple d'utilisation
 
 ```js
+const majax = new Majax();
+
 const handleLoginSever = async () => {
     await majax.init("http://localhost:8000/ConnecteServer", "apikey") // Connexion au serveur avec la clé api
         .then(() => {
@@ -21,7 +23,13 @@ Note : on utilise une fonction asynchrone pour pouvoir utiliser le mot clé `awa
 ### Exemple de serveur
 
 ```python
+from flask import Flask, request, jsonify
+from flask_cors import CORS
 VALIDE_API_KEY = "apikey"
+
+app = Flask(__name__)
+CORS(app)
+PORT = 8000
 
 @app.route('/ConnecteServer', methods=['POST'])
 def connect_server():
@@ -35,6 +43,9 @@ def connect_server():
     else:
         # Retourner une réponse réussie si la clé API est valide
         return jsonify({"message": "API key valide"}), 200, {'Content-Type': 'application/json'}
+
+if __name__ == '__main__':
+    app.run(port=PORT)
 ```
 
 ## Typage
