@@ -9,10 +9,10 @@ const Connect = () => {
     const majax = new Majax();
 
     const handleLogin = async () => {
-        await majax.init("http://localhost:8000/ConnecteServer", "apikey")
+        await majax.init("http://localhost:8000/api", "apikey")
             .then(() => {
                 localStorage.setItem("email", email);
-                majax.connect(email, password, "http://localhost:8000/login", "/Accueil")
+                majax.connect(email, password, "http://localhost:8000/api", "/Accueil", "apikey")
             })
             .catch((error) => {
                 setError(error.message);

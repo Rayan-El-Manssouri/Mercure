@@ -2,14 +2,14 @@
     {
         "email": "test@gmail.com",
         "password": "123456",
-        "pseudo": "rayan.elmsr",
-        "NomMessage": "𝐑𝐚𝐲𝐚𝐧"
+        "pseudo": "Compte de test originial",
+        "NomMessage": "Compte de test originial"
     },
     {
         "email": "compte_utilisateur_1@gmail.com",
         "password": "123456",
-        "pseudo": "rayan.elmsr",
-        "NomMessage": "𝐑𝐚𝐲𝐚𝐧"
+        "pseudo": "Compte utilisateur 1",
+        "NomMessage": "Compte utilisateur 1"
     },
     {
         "email": "compte_utilisateur_3@gmail.com",

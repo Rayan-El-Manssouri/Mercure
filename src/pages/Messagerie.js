@@ -1,14 +1,15 @@
+
 /* eslint-disable no-unused-vars */
 import { IconCirclePlus, IconX, IconUserCircle } from "@tabler/icons-react";
-import React, { useState, useEffect, useRef } from "react";
 import HeaderPrivate from "../components/HeaderPrivate";
 import NavBarHome from "../components/NavBarHome";
-import axios from "axios";
 import io from "socket.io-client";
+import Majax from "../components/Majax/Majax";
+import React, { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { set } from "date-fns";
 
 const MessageSend = ({ message }) => {
-    const { sender, content, isNewMessage } = message;
+    const { sender, content } = message;
     const isSentByMe = sender === localStorage.getItem("email");
 
     return (
@@ -35,42 +36,39 @@ const Messagerie = () => {
     const [selectedMessages, setSelectedMessages] = useState([]);
     const [allMessages, setAllMessages] = useState([]);
     const scrollRef = useRef();
-    const [newMessageContent, setNewMessageContent] = useState("");
     const [isNewMessageReceived, setIsNewMessageReceived] = useState(false);
     const [userAccounts, setUserAccounts] = useState([]);
+    const [newMessageContent, setNewMessageContent] = useState(() => '');
+    const [load , setLoad] = useState(true);
+    const updateSelectedMessages = useCallback(() => {
+        if (selectedEmail) {
+            const filteredMessages = allMessages.filter(
+                (message) =>
+                    (message.sender === selectedEmail && message.receiver === email) ||
+                    (message.sender === email && message.receiver === selectedEmail),
+            );
+            filteredMessages.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+            setSelectedMessages(filteredMessages);
+        }
+    }, [selectedEmail, allMessages, email]);
+    useMemo(() => {
+        updateSelectedMessages();
+
+    }, [selectedEmail, allMessages, isNewMessageReceived, updateSelectedMessages]);
+
     useEffect(() => {
         const fetchData = async () => {
+            const majax = new Majax();
+            await majax.init("http://localhost:8000/api", "apikey");
             try {
-                const messagesResponse = await fetch("http://localhost:8000/Message.txt");
-                const messagesData = await messagesResponse.json();
-                const accountsResponse = await fetch("http://localhost:8000/Compte.txt");
-                const accountsData = await accountsResponse.json();
-                const filteredMessages = messagesData.filter(
-                    (message) => message.sender === email || message.receiver === email
-                );
-                const groupedMessages = {};
-
-                filteredMessages.forEach((message) => {
-                    const otherUser = message.sender === email ? message.receiver : message.sender;
-                    if (
-                        !groupedMessages[otherUser] ||
-                        new Date(message.timestamp) > new Date(groupedMessages[otherUser].timestamp)
-                    ) {
-                        groupedMessages[otherUser] = message;
-                    }
-                });
-
-                // Set latestMessages with unique messages sorted by timestamp
-                const latestMessagesWithDuplicates = Object.values(groupedMessages);
-                latestMessagesWithDuplicates.sort(
-                    (a, b) => new Date(b.timestamp) - new Date(a.timestamp) || a.id - b.id
-                );
-                const latestMessagesByUser = Array.from(
-                    new Map(latestMessagesWithDuplicates.map((message) => [message.id, message])).values()
-                );
+                const messagesResponse = await majax.fetchUser('http://localhost:8000/api', email, "apikey", "fetchUserFilter");
+                const messagesData = messagesResponse;
+                const accountsResponse = await majax.fetchUserUniqueComunity("http://localhost:8000/api", email, "apikey", "fetchUserUniqueComunity");
+                const latestMessagesByUser = Object.values(messagesData);
                 setLatestMessages(latestMessagesByUser);
-                setAllMessages(filteredMessages);
-                setUserAccounts(accountsData);
+                setAllMessages(messagesData);
+                setUserAccounts(accountsResponse);
+                setLoad(false);
             } catch (error) {
                 console.error("Erreur lors de la récupération des données:", error);
             }
@@ -82,6 +80,8 @@ const Messagerie = () => {
 
     useEffect(() => {
         // Update selectedMessages when selectedEmail changes
+        console.log("Fetching data...");
+
         if (selectedEmail) {
             const filteredMessages = allMessages.filter(
                 (message) =>
@@ -94,59 +94,45 @@ const Messagerie = () => {
     }, [selectedEmail, allMessages, email]);
 
     useEffect(() => {
-        // Créer une instance socket.io-client et se connecter au serveur
         const socket = io("http://localhost:8000");
-
-        // Écouter l'événement 'new_message' émis par le serveur
+      
         socket.on("new_message", (newMessage) => {
-            // Vérifier si le message existe déjà dans latestMessages
-            const isMessageAlreadyInList = selectedMessages.some((message) => message.id === newMessage.id);
-
-            if (!isMessageAlreadyInList) {
-                // Ajouter la propriété isNewMessage au nouveau message
-                newMessage.isNewMessage = true;
-
-                // Définir isNewMessageReceived sur true après avoir mis à jour selectedMessages
-                setIsNewMessageReceived(true);
-                const updatedLatestMessages = latestMessages.map((message) => {
-                    if (
-                        (message.sender === email && message.receiver === selectedEmail) ||
-                        (message.sender === selectedEmail && message.receiver === email)
-                    ) {
-                        return newMessage;
-                    }
-                    return message;
-                });
-                setLatestMessages(updatedLatestMessages);
-                setSelectedMessages((prevMessages) => [...prevMessages, newMessage]);
-                setIsNewMessageReceived(false);
+          const isMessageAlreadyInList = selectedMessages.some((message) => message.id === newMessage.id);
+      
+          if (!isMessageAlreadyInList) {
+            newMessage.isNewMessage = true;
+            const updatedLatestMessages = latestMessages.map((message) => {
+              if ((message.sender === email && message.receiver === selectedEmail) || (message.sender === selectedEmail && message.receiver === email)) {
+                return newMessage;
+              }
+              return message;
+            });
+            setLatestMessages(updatedLatestMessages);
+      
+            // Mettre à jour la liste des messages locaux avec le nouveau message reçu
+            setAllMessages((prevMessages) => [...prevMessages, newMessage]);
+      
+            // Faire défiler automatiquement vers le bas pour montrer le nouveau message
+            const chatContainer = document.querySelector('.scrollbar_msg');
+            if (chatContainer) {
+              chatContainer.scrollTo(0, chatContainer.scrollHeight, {
+                behavior: 'smooth',
+              });
             }
+          }
         });
-
+      
         return () => {
-            socket.disconnect();
+          socket.disconnect();
         };
-    }, [selectedEmail, latestMessages, selectedMessages, email, isNewMessageReceived]);
+      }, [selectedEmail, latestMessages, selectedMessages, email]);
+      
 
-
-
-    const Message = ({ message }) => {
-        const { sender, receiver } = message;
-
-        const otherUserAccount = userAccounts.find(
-            (account) => account.email === (sender === email ? receiver : sender),
-        );
+    const Message = ({ id }) => {
 
         const handleClick = () => {
-            setSelectedEmail(otherUserAccount?.email || "");
+            setSelectedEmail(userAccounts[id]);
         };
-
-        // Find the latest message for this user (either sent or received)
-        const latestMessage = latestMessages.find(
-            (msg) =>
-                (msg.sender === email && msg.receiver === otherUserAccount?.email) ||
-                (msg.sender === otherUserAccount?.email && msg.receiver === email),
-        );
 
         return (
             <section onClick={handleClick}>
@@ -154,69 +140,63 @@ const Messagerie = () => {
                     <IconUserCircle size={56} />
                 </div>
                 <div className="contact_user_section">
-                    {userAccounts.length === 0 ? (
-                        <p className="pseudo">Loading...</p>
-                    ) : otherUserAccount ? (
-                        <p className="pseudo">{otherUserAccount.NomMessage}</p>
-                    ) : (
-                        <p className="pseudo">Unknown User</p>
-                    )}
-                    <p className="user_message">
-                        {latestMessage && latestMessage.sender === email
-                            ? `Vous: ${latestMessage.content}`
-                            : latestMessage.content
-                        }
-                    </p>
+                    <p className="pseudo">{userAccounts[id]}</p>
                 </div>
             </section>
         );
     };
 
     const sendMessageToServer = async (sender, receiver, content) => {
+        const majax = new Majax();
+        await majax.init("http://localhost:8000/api", "apikey");
         try {
-            const response = await axios.post("http://localhost:8000/send-message", {
-                sender,
-                receiver,
-                content,
-                timestamp: new Date().toISOString(),
+          const response = await majax.sendMessage("http://localhost:8000/api", "apikey", "sendMessage", content, receiver, new Date().toISOString(), sender);
+          const responseData = response;
+          setIsNewMessageReceived(true);
+      
+          // Mise à jour des messages locaux avec le nouveau message envoyé
+          const newMessage = {
+            id: responseData.id,
+            sender: sender,
+            receiver: receiver,
+            content: content,
+            timestamp: responseData.timestamp,
+            isNewMessage: true, // Définissez cette propriété sur true pour mettre en évidence le nouveau message dans l'interface utilisateur
+          };
+      
+          // Mettre à jour la liste des messages
+          setAllMessages((prevMessages) => [...prevMessages, newMessage]);
+      
+          // Mettre à jour les messages sélectionnés si l'utilisateur est actuellement en conversation avec le destinataire
+          if (selectedEmail === receiver) {
+            setSelectedMessages((prevMessages) => [...prevMessages, newMessage]);
+          } else {
+            // Sinon, mettez à jour les derniers messages pour mettre à jour la liste de contacts
+            const updatedLatestMessages = latestMessages.map((message) => {
+              if ((message.sender === sender && message.receiver === receiver) || (message.sender === receiver && message.receiver === sender)) {
+                return newMessage;
+              }
+              return message;
             });
+            setLatestMessages(updatedLatestMessages);
+          }
+      
+          return responseData;
         } catch (error) {
-            console.error("Erreur lors de l'envoi du message:", error);
+          console.error("Erreur lors de l'envoi du message:", error);
         }
-    };
-
-
-
-    const handleNewMessageChange = (event) => {
-        setNewMessageContent(event.target.value);
-    };
+      };
+      
 
     const handleSendMessage = async (event) => {
         event.preventDefault();
-        if (newMessageContent.trim() !== "") {
-            try {
-                // Envoi du message au serveur
-                // Après l'envoi du message au serveur avec succès
-                await sendMessageToServer(email, selectedEmail, newMessageContent);
-                setNewMessageContent("");
-
-                // Créez un nouvel objet pour le nouveau message
-                const newMessage = {
-                    id: allMessages.length + 1,
-                    sender: email,
-                    receiver: selectedEmail,
-                    content: newMessageContent,
-                    timestamp: new Date().toISOString(),
-                    isNewMessage: true,
-                };
-
-                // Mettez à jour l'état "selectedMessages" en ajoutant le nouveau message au début du tableau
-
-                // Effectuer le défilement vers le bas ici, juste après avoir ajouté le nouveau message
-                scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
-            } catch (error) {
-                console.error("Erreur lors de l'envoi du message:", error);
-            }
+        try {
+            await sendMessageToServer(email, selectedEmail, newMessageContent);
+            setNewMessageContent("");
+            console.log("Message envoyé avec succès");
+            scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+        } catch (error) {
+            console.error("Erreur lors de l'envoi du message:", error);
         }
     };
 
@@ -233,12 +213,10 @@ const Messagerie = () => {
         }
     }, [selectedEmail, allMessages, email, isNewMessageReceived]);
 
-    const [selectedContactEmail, setSelectedContactEmail] = useState(null);
 
     const handleNewMembre = (email) => {
         setSelectedEmail(email);
         setSelectedMessages([]);
-        setSelectedContactEmail(email);
         handleModalClick();
     };
 
@@ -285,13 +263,6 @@ const Messagerie = () => {
         const [accounts, setAccounts] = useState([]);
         const [searchTerm, setSearchTerm] = useState('');
 
-        useEffect(() => {
-            fetch('http://localhost:8000/Compte.txt')
-                .then(response => response.json())
-                .then(data => setAccounts(data))
-                .catch(error => console.error('Erreur lors de la récupération des comptes:', error));
-        }, []);
-
         const handleDivClick = (index) => {
             setActiveIndex(index);
         };
@@ -335,7 +306,7 @@ const Messagerie = () => {
                             </div>
                             <div className='contact_user_section'>
                                 <p className='pseudo'>{account.pseudo}</p>
-                                <p className='sous_pseudo'>{account.NomMessage}</p>
+                                <p className='nom'>{account.NomMessage}</p>
                             </div>
                             {activeIndex === index && <button onClick={(event) => handleButtonClick(event, index)}>Confirmer / Discuter</button>}
                         </section>
@@ -364,8 +335,8 @@ const Messagerie = () => {
                                 <IconCirclePlus size={36} />
                             </div>
                         </div>
-                        {latestMessages.map((message) => (
-                            <Message key={message.id} message={message} />
+                        {userAccounts.map((message, index) => (
+                            <Message key={index} message={message} id={index} />
                         ))}
                     </div>
                     <div className="message_content" style={{ flex: 1 }}  >
@@ -390,7 +361,7 @@ const Messagerie = () => {
                                             type="text"
                                             placeholder="Envoyer un message..."
                                             value={newMessageContent}
-                                            onChange={handleNewMessageChange}
+                                            onChange={(event) => setNewMessageContent(event.target.value)}
                                         />
                                     </form>
                                 </div>

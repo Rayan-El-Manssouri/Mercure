@@ -3,15 +3,16 @@ import Majax from "../components/Majax/Majax";
 import "../styles/Private.scss";
 import HeaderPrivate from "../components/HeaderPrivate";
 import NavBarHome from "../components/NavBarHome";
+import { Navigate } from "react-router-dom";
 
 const Private = () => {
     const majax = new Majax();
-    const [isConnected, setIsConnected] = useState(false);
+    const [isConnected, setIsConnected] = useState();
 
     useEffect(() => {
         const handleinit = async () => {
             try {
-                await majax.init("http://localhost:8000/ConnecteServer", "apikey");
+                await majax.init("http://localhost:8000/api", "apikey");
                 const status = await majax.verifyaccount(localStorage.getItem("email"), "http://localhost:8000/checkLogin");
                 setIsConnected(status);
             } catch (error) {
@@ -22,6 +23,12 @@ const Private = () => {
 
         handleinit();
     }, []);
+
+    if (isConnected === false) {
+        return (
+            <Navigate to="/Connect" />
+        );
+    }
 
     return (
         <div className="body_private">
