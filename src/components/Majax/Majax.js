@@ -81,7 +81,6 @@ class Majax extends React.Component {
         }
     }
 
-    // http://localhost:8000/api", sender, receiver, content, "apikey", "sendMessage"
     async sendMessage(url, apikey, functionName, content, receiver, timestamp, sender) {
         if (!this.apiKey) {
             throw new Error("La clé d'API n'a pas été initialisée. Appelle d'abord la méthode 'init'. Appelle de sendMessage");

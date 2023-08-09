@@ -1,19 +1,15 @@
-
-/* eslint-disable no-unused-vars */
 import { IconCirclePlus, IconX, IconUserCircle } from "@tabler/icons-react";
+import React, { useState, useEffect, useRef } from "react";
 import HeaderPrivate from "../components/HeaderPrivate";
 import NavBarHome from "../components/NavBarHome";
-import io from "socket.io-client";
 import Majax from "../components/Majax/Majax";
-import React, { useState, useEffect, useRef, useCallback, useMemo } from "react";
-import { set } from "date-fns";
 
 const MessageSend = ({ message }) => {
     const { sender, content } = message;
     const isSentByMe = sender === localStorage.getItem("email");
 
     return (
-        <div className={`message_conteneur ${message.isNewMessage ? "new-message" : ""}`}>
+        <div className={`message_conteneur`}>
 
             <div className={isSentByMe ? "message_receipt" : "message_send"}>
                 {!isSentByMe && (
@@ -28,33 +24,16 @@ const MessageSend = ({ message }) => {
     );
 };
 
-
 const Messagerie = () => {
     const email = localStorage.getItem("email");
+    const scrollRef = useRef();
     const [latestMessages, setLatestMessages] = useState([]);
     const [selectedEmail, setSelectedEmail] = useState(null);
     const [selectedMessages, setSelectedMessages] = useState([]);
     const [allMessages, setAllMessages] = useState([]);
-    const scrollRef = useRef();
     const [isNewMessageReceived, setIsNewMessageReceived] = useState(false);
     const [userAccounts, setUserAccounts] = useState([]);
     const [newMessageContent, setNewMessageContent] = useState(() => '');
-    const [load , setLoad] = useState(true);
-    const updateSelectedMessages = useCallback(() => {
-        if (selectedEmail) {
-            const filteredMessages = allMessages.filter(
-                (message) =>
-                    (message.sender === selectedEmail && message.receiver === email) ||
-                    (message.sender === email && message.receiver === selectedEmail),
-            );
-            filteredMessages.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
-            setSelectedMessages(filteredMessages);
-        }
-    }, [selectedEmail, allMessages, email]);
-    useMemo(() => {
-        updateSelectedMessages();
-
-    }, [selectedEmail, allMessages, isNewMessageReceived, updateSelectedMessages]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -68,20 +47,14 @@ const Messagerie = () => {
                 setLatestMessages(latestMessagesByUser);
                 setAllMessages(messagesData);
                 setUserAccounts(accountsResponse);
-                setLoad(false);
             } catch (error) {
                 console.error("Erreur lors de la récupération des données:", error);
             }
         };
-
         fetchData();
     }, [email]);
 
-
     useEffect(() => {
-        // Update selectedMessages when selectedEmail changes
-        console.log("Fetching data...");
-
         if (selectedEmail) {
             const filteredMessages = allMessages.filter(
                 (message) =>
@@ -92,41 +65,6 @@ const Messagerie = () => {
             setSelectedMessages(filteredMessages);
         }
     }, [selectedEmail, allMessages, email]);
-
-    useEffect(() => {
-        const socket = io("http://localhost:8000");
-      
-        socket.on("new_message", (newMessage) => {
-          const isMessageAlreadyInList = selectedMessages.some((message) => message.id === newMessage.id);
-      
-          if (!isMessageAlreadyInList) {
-            newMessage.isNewMessage = true;
-            const updatedLatestMessages = latestMessages.map((message) => {
-              if ((message.sender === email && message.receiver === selectedEmail) || (message.sender === selectedEmail && message.receiver === email)) {
-                return newMessage;
-              }
-              return message;
-            });
-            setLatestMessages(updatedLatestMessages);
-      
-            // Mettre à jour la liste des messages locaux avec le nouveau message reçu
-            setAllMessages((prevMessages) => [...prevMessages, newMessage]);
-      
-            // Faire défiler automatiquement vers le bas pour montrer le nouveau message
-            const chatContainer = document.querySelector('.scrollbar_msg');
-            if (chatContainer) {
-              chatContainer.scrollTo(0, chatContainer.scrollHeight, {
-                behavior: 'smooth',
-              });
-            }
-          }
-        });
-      
-        return () => {
-          socket.disconnect();
-        };
-      }, [selectedEmail, latestMessages, selectedMessages, email]);
-      
 
     const Message = ({ id }) => {
 
@@ -146,34 +84,34 @@ const Messagerie = () => {
         );
     };
 
-    const sendMessageToServer = async (sender, receiver, content) => {
+    const sendMessageToServer = async (Sender, Receiver, Content) => {
         const majax = new Majax();
         await majax.init("http://localhost:8000/api", "apikey");
         try {
-          const response = await majax.sendMessage("http://localhost:8000/api", "apikey", "sendMessage", content, receiver, new Date().toISOString(), sender);
+          const response = await majax.sendMessage("http://localhost:8000/api", "apikey", "sendMessage", Content, Receiver, new Date().toISOString(), Sender);
           const responseData = response;
           setIsNewMessageReceived(true);
       
           // Mise à jour des messages locaux avec le nouveau message envoyé
           const newMessage = {
             id: responseData.id,
-            sender: sender,
-            receiver: receiver,
-            content: content,
+            sender: Sender,
+            receiver: Receiver,
+            content: Content,
             timestamp: responseData.timestamp,
-            isNewMessage: true, // Définissez cette propriété sur true pour mettre en évidence le nouveau message dans l'interface utilisateur
+            isNewMessage: true,
           };
       
           // Mettre à jour la liste des messages
           setAllMessages((prevMessages) => [...prevMessages, newMessage]);
       
           // Mettre à jour les messages sélectionnés si l'utilisateur est actuellement en conversation avec le destinataire
-          if (selectedEmail === receiver) {
+          if (selectedEmail === Receiver) {
             setSelectedMessages((prevMessages) => [...prevMessages, newMessage]);
           } else {
             // Sinon, mettez à jour les derniers messages pour mettre à jour la liste de contacts
             const updatedLatestMessages = latestMessages.map((message) => {
-              if ((message.sender === sender && message.receiver === receiver) || (message.sender === receiver && message.receiver === sender)) {
+              if ((message.sender === Sender && message.receiver === Receiver) || (message.sender === Receiver && message.receiver === Sender)) {
                 return newMessage;
               }
               return message;
@@ -185,15 +123,13 @@ const Messagerie = () => {
         } catch (error) {
           console.error("Erreur lors de l'envoi du message:", error);
         }
-      };
+    };
       
-
     const handleSendMessage = async (event) => {
         event.preventDefault();
         try {
             await sendMessageToServer(email, selectedEmail, newMessageContent);
             setNewMessageContent("");
-            console.log("Message envoyé avec succès");
             scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
         } catch (error) {
             console.error("Erreur lors de l'envoi du message:", error);
@@ -212,7 +148,6 @@ const Messagerie = () => {
             setSelectedMessages(filteredMessages);
         }
     }, [selectedEmail, allMessages, email, isNewMessageReceived]);
-
 
     const handleNewMembre = (email) => {
         setSelectedEmail(email);
@@ -260,7 +195,7 @@ const Messagerie = () => {
 
     const Contact = () => {
         const [activeIndex, setActiveIndex] = useState(-1);
-        const [accounts, setAccounts] = useState([]);
+        const [accounts] = useState([]);
         const [searchTerm, setSearchTerm] = useState('');
 
         const handleDivClick = (index) => {

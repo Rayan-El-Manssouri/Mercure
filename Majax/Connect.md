@@ -42,7 +42,7 @@ def login(): # Fonction de connexion
     data = request.get_json()
     if data and 'email' in data and 'password' in data:
         # Lire les informations d'identification à partir du fichier JSON
-        file_path = './server/Compte.txt'
+        file_path = './server/Compte.json'
         if os.path.exists(file_path):
             with open(file_path, 'r', encoding="utf-8") as file:
                 accounts_list = json.load(file)

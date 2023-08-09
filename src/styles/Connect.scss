@@ -36,117 +36,111 @@ $CouleurFondSecondary: #bd50bf; // Couleur principale violette
     height: 100vh;
     box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 10%);
     transform: translateY(0);
-    position: static;
-}
-
-.central_connect_form h1 {
-    font-size: 2.5rem;
-    font-weight: 500;
-    margin-bottom: 2rem;
-    background: linear-gradient(35deg, $CouleurFondSecondary, $primaryColor);
-    background-clip: text;
-    color: transparent;
-}
-
-.central_connect_form .form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 30rem;
-    max-width: 90%;
-    background-color: #fff;
-    border-radius: 1rem;
-    padding: 2rem;
-}
-
-.central_connect_form .form img {
-    width: 5rem;
-    height: 5rem;
-    margin-bottom: 2rem;
-    object-fit: cover;
-    object-position: center;
     position: relative;
-    top: 1.5rem;
-}
-
-.central_connect_form .form label {
-    font-size: 1.2rem;
-    font-weight: 400;
-    margin-bottom: 1rem;
-    color: $textColor;
-}
-
-.central_connect_form .form input {
-    width: 100%;
-    height: 1rem;
-    border-radius: 0.5rem;
-    margin-bottom: 1rem;
-    padding: 1rem;
-    font-size: 1.2rem;
-    font-weight: 400;
-    color: $textColor;
-    border: 1px solid $secondaryColor;
-    transition: all 0.3s ease-in-out;
-    outline: none;
-
-    &:focus {
-        border: 1px solid $primaryColor;
+    .form-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(320deg, $CouleurFondPrimary, $CouleurFondSecondary);
+        backdrop-filter: blur(10px); 
+        border-radius: 10px;
+        z-index: -1;
     }
-}
-
-.central_connect_form .form button {
-    width: 100%;
-    height: 3.5rem;
-    border-radius: 0.5rem;
-    border: none;
-    margin-top: 1rem;
-    color: #fff;
-    font-size: 1.2rem;
-    font-weight: 500;
-    cursor: pointer;
-    background: linear-gradient(135deg, $primaryColor, $highlightColor);
-
-    &:hover {
-        background: linear-gradient(
-            135deg,
-            color.adjust($primaryColor, $lightness: -5%),
-            color.adjust($highlightColor, $lightness: -5%)
-        );
+    h1 {
+        font-size: 2.5rem;
+        font-weight: 500;
+        margin-bottom: 2rem;
+        background: linear-gradient(35deg, #E889E8, #C88FF8);
+        background-clip: text;
+        color: transparent;
     }
-}
-
-.central_connect_form .form button:disabled {
-    background-color: $secondaryColor;
-    cursor: not-allowed;
-}
-
-.central_connect_form .form .error-message {
-    color: $errorColor;
-    margin-top: 0.5rem;
-    font-size: 1rem;
-    font-weight: 400;
-}
-
-.body .central_connect_form .form .central_connect_form__links a {
-    color: $primaryColor;
-    text-decoration: none;
-    font-size: 1.2rem;
-    font-weight: 400;
-    margin-top: 2rem;
-    margin-left: 10px;
-    margin-right: 10px;
-    padding: 10px;
-    position: relative;
-    top: 20px;
-
-    &:hover {
-        text-decoration: underline;
+    .form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        width: 30rem;
+        max-width: 100%;
+        border-radius: 1rem;
+        padding: 2rem;
+        border: 2px solid rgba(255, 255, 255, .2);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        background-color: #fff;
+        img {
+            width: 5rem;
+            height: 5rem;
+            margin-bottom: 2rem;
+            object-fit: cover;
+            object-position: center;
+            position: relative;
+            top: 1.5rem;
+        }
+        label {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: $textColor;
+        }
+        input {
+            width: 100%;
+            height: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: $textColor;
+            border: 1px solid $secondaryColor;
+            transition: all 0.3s ease-in-out;
+            outline: none;
+            &:focus {
+                border: 1px solid $primaryColor;
+            }
+        }
+        button {
+            width: 100%;
+            height: 3.5rem;
+            border-radius: 0.5rem;
+            border: none;
+            margin-top: 1rem;
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 500;
+            cursor: pointer;
+            background: linear-gradient(135deg, $primaryColor, $highlightColor);
+        
+            &:hover {
+                background: linear-gradient(135deg,
+                color.adjust($primaryColor, $lightness: -5%),
+                color.adjust($highlightColor, $lightness: -5%));
+            }
+        }
+        .error-message {
+            color: $errorColor;
+            margin-top: 0.5rem;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+        .central_connect_form__links a {
+            color: $primaryColor;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-top: 2rem;
+            margin-left: 10px;
+            margin-right: 10px;
+            padding: 10px;
+            position: relative;
+            top: 20px;
+        
+            &:hover {
+                text-decoration: underline;
+            }
+        }
     }
-}
-
-.body .central_connect_form.central_connect_form__links a:hover {
-    text-decoration: underline;
 }
 
 .error {
@@ -156,7 +150,8 @@ $CouleurFondSecondary: #bd50bf; // Couleur principale violette
     margin-top: 1rem;
 }
 
-@media screen and (width <= 768px) {
+
+@media screen and (width <=768px) {
     .central_connect_form form {
         width: 90%;
     }

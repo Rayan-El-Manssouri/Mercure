@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "../styles/Connect.scss";
 import Majax from "../components/Majax/Majax";
 const Connect = () => {
-    // const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState(undefined);
@@ -23,6 +22,7 @@ const Connect = () => {
         <div className="body">
             <div className="central_connect_form">
                 <div className="form">
+                    <div className="form-background"></div>
                     <img src={process.env.PUBLIC_URL + "assets/logo/color light 500.png"} alt="" />
                     <h1>Mercure Login</h1>
                     <label htmlFor="email">Email</label>

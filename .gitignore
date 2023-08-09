@@ -10,3 +10,8 @@ node_modules
 # Build
 build/
 flask_session/
+
+# Python
+**/__pycache__
+*.py[cod]
+*$py.class
