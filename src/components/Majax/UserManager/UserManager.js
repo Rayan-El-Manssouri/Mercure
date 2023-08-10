@@ -123,28 +123,6 @@ const UserManager = {
             throw new Error("Erreur lors de la récupération de l'utilisateur, vérifie que l'url est correcte, que le serveur est bien lancé et que l'API key est bien renseignée.");
         }
     },
-    async fetchUsers(url, apikey, functionName) {
-        if (!this.apiKey) {
-            throw new Error("La clé d'API n'a pas été initialisée. Appelle d'abord la méthode 'init'.");
-        }
-        try {
-            const response = await fetch(url, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    'Origin': 'http://localhost:3000'
-                },
-                body: JSON.stringify({ functionName, apikey }),
-                credentials: "include",
-            });
-            if (response.ok) {
-                const users = await response.json();
-                return users;
-            }
-        } catch (error) {
-            throw new Error("Erreur lors de la récupération de l'utilisateur, vérifie que l'url est correcte, que le serveur est bien lancé et que l'API key est bien renseignée.");
-        }
-    },
 
     async fetchUserUniqueComunity(url, UserEmail, apikey, functionName) {
         if (!this.apiKey) {
