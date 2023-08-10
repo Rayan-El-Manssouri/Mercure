@@ -36,6 +36,27 @@ def fetch_user_filter(UserEmail):
         return jsonify(content)
 ```
 
+Note : Le serveur doit retourner un tableau d'objet JSON avec les champs suivant :
+    
+```json
+{
+    "sender": "string",
+    "receiver": "string",
+    "timestamp": "string",
+    "message": "string"
+}
+```
+
+# Paramètres
+
+| Paramètre | Type | Description |
+| - | - | - |
+| url | string | URL du serveur |
+| UserEmail | string | Email de l'utilisateur ciblé |
+| apikey | string | API key ( clé d'accer aux serveur ) |
+| functionName | string | Nom de la fonction à appeller dans l'api |
+
+
 # Typage
 
 ```js
