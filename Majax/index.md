@@ -1,6 +1,6 @@
 # Majax
 
-Majax est un protocole de communication utilisé dans notre messagerie instantanée Mercure.  
+Majax est un protocole de communication utilisé dans notre messagerie instantanée Mercure.
 Elle permet simplement à l'interface de gérer les communications avec le serveur et ainsi les fonctionnalités de la messagerie.
 
 ## Listes des fonctionnalités disponibles
