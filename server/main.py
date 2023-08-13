@@ -56,6 +56,14 @@ def css():
     content_type = ExtensionFiles(extension).get_content_type()
     with open('./server/www/css/style.css', 'r', encoding='utf-8') as f:
         return f.read(), 200, {'Content-Type': content_type}
+    
+
+@route_manager.app.route('/css/admin_style.css', methods=['GET'])
+def css_admin():
+    extension = 'css'
+    content_type = ExtensionFiles(extension).get_content_type()
+    with open('./server/www/css/admin_style.css', 'r', encoding='utf-8') as f:
+        return f.read(), 200, {'Content-Type': content_type}
 
 @route_manager.app.route('/logo', methods=['GET'])
 def logo():
@@ -81,6 +89,13 @@ def home_admin():
     extension = 'html'
     content_type = ExtensionFiles(extension).get_content_type()
     with open(os.path.join('./server/www', 'admin.html'), 'r', encoding='utf-8') as f:
+        return f.read(), 200, {'Content-Type': content_type}
+
+@route_manager.app.route('/js/main.js', methods=['GET'])
+def js():
+    extension = 'js'
+    content_type = ExtensionFiles(extension).get_content_type()
+    with open('./server/www/js/main.js', 'r', encoding='utf-8') as f:
         return f.read(), 200, {'Content-Type': content_type}
 
 if __name__ == '__main__':
