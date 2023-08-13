@@ -1,9 +1,12 @@
-from Route.RouteManger import RouteManager
 from flask import request, jsonify
+from Route.RouteManger import RouteManager
 from Utils.Message import Message
+from Utils.ExtensionFiles import ExtensionFiles
+import os
 
 # Configuration du serveur
 PORT = 8000
+STATIC_FOLDER = './server/www'
 
 # Créez une instance de la classe RouteManager
 route_manager = RouteManager()
@@ -47,27 +50,31 @@ def proxy():
     
     return result
 
-@route_manager.app.route('/', methods=['GET'])
-def index():
-    with open('./server/www/index.html', 'r', encoding='utf-8') as f:
-        return f.read()
+@route_manager.app.route('/css/style.css', methods=['GET'])
+def css():
+    extension = 'css'
+    content_type = ExtensionFiles(extension).get_content_type()
+    with open('./server/www/css/style.css', 'r', encoding='utf-8') as f:
+        return f.read(), 200, {'Content-Type': content_type}
 
 @route_manager.app.route('/logo', methods=['GET'])
 def logo():
     with open('./server/www/assets/simplified.png', 'rb') as f:
         return f.read()
-    
+
 @route_manager.app.route('/logo_svg', methods=['GET'])
 def logo_svg():
-    with open('./server/www/assets/detailled light.svg', 'rb') as f:
-        svg_content = f.read()
-    return svg_content, 200, {'Content-Type': 'image/svg+xml'}
+    extension = 'svg'
+    content_type = ExtensionFiles(extension).get_content_type()
+    with open('./server/www/assets/detailled_light.svg', 'rb') as f:
+        return f.read(), 200, {'Content-Type': content_type}
 
-@route_manager.app.route('/css/style.css', methods=['GET'])
-def css():
-    with open('./server/www/css/style.css', 'r', encoding='utf-8') as f:
-        # Le faire charger comme fichier css et non comme texte
-        return  f.read(), 200, {'Content-Type': 'text/css'}
+@route_manager.app.route('/', methods=['GET'])
+def index():
+    extension = 'html'
+    content_type = ExtensionFiles(extension).get_content_type()
+    with open(os.path.join('./server/www', 'index.html'), 'r', encoding='utf-8') as f:
+        return f.read(), 200, {'Content-Type': content_type}
     
 if __name__ == '__main__':
     route_manager.run(PORT)

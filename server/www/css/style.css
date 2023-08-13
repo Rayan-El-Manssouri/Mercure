@@ -1,4 +1,9 @@
-*{
+:root {
+    --primary-color: #F30000;
+    --secondary-color: #f0f0f0;
+}
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -10,46 +15,48 @@ body {
     justify-content: center;
     align-items: flex-start;
     min-height: 100vh;
-    background-color: #f0f0f0;
+    background-color: var(--secondary-color);
     font-family: "System UI", sans-serif;
 }
 
 ::selection {
-    background-color: #f30000;
+    background-color: var(--primary-color);
     color: #fff;
 }
 
-.centre_form {
-    background-color: #fff;
+.contenaire {
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
-    flex: 1;
-    width: fit-content;
-    width: max(30%, 400px)
-}
-
-
-.contenaire {
     display: flex;
     flex-direction: column;
     align-items: center;
+    box-sizing: border-box;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: max(30%, 800px);
 }
 
-img {
+.centre_form {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    width: 100%;
+}
+
+.majax_inscription {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.majax_inscription img {
     width: 100px;
     height: 100px;
     margin-bottom: 10px;
 }
 
-.majax_connect {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-}
-
+.majax_connect,
 .contenu_form {
     display: flex;
     flex-direction: column;
@@ -62,20 +69,21 @@ img {
     align-self: flex-start;
 }
 
+
+
 input[type="text"],
 input[type="password"] {
     padding: 10px;
     margin: 5px 0;
-    border:  1px solid #ccc;
+    border: 1px solid #ccc;
     border-radius: 5px;
     width: 100%;
-    box-sizing: border-box;
     transition: border 0.3s ease;
 }
 
 input[type="submit"] {
     padding: 10px 20px;
-    background-color: #F30000;
+    background-color: var(--primary-color);
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -85,15 +93,12 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #f30000aa;
+    background-color: #c30000;
+    
 }
 
-input[type="text"]:focus{
+input[type="text"]:focus,
+input[type="password"]:focus {
     outline: none;
-    border: 1px solid #f30000;
-}
-
-input[type="password"]:focus{
-    outline: none;
-    border: 1px solid #f30000;
+    border: 1px solid var(--primary-color);
 }

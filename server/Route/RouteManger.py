@@ -4,6 +4,7 @@ from flask_cors import CORS
 from flask_socketio import SocketIO
 import json
 
+# Configuration du serveur Flask
 SECRET_KEY = "fq9f529er4f98re5d2c95ea4r85f2s5qe41rf95edcs"
 
 class RouteManager:
