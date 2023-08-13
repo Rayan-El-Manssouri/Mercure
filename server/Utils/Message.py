@@ -85,6 +85,27 @@ class Message:
                 return jsonify({"error": "Fichier de comptes introuvable"}), 500
         else:
             return jsonify({"error": "Données de connexion invalides"}), 400
+        
+    def login_admin():
+        data = request.get_json()
+        if data and 'email' in data and 'password' in data:
+            # Lire les informations d'identification à partir du fichier JSON
+            file_path = './server/www/admin/admin_accounts.json'
+            if os.path.exists(file_path):
+                with open(file_path, 'r', encoding="utf-8") as file:
+                    accounts_list = json.load(file)
+
+                # Vérifier si l'e-mail et le mot de passe correspondent
+                for account in accounts_list:
+                    if account['email'] == data['email'] and account['password'] == data['password']:
+                        session['user_email'] = data['email']
+                        return jsonify({"message": "Connexion réussie", "email": data['email']}), 200
+                # Si on sort de la boucle, cela signifie que les informations d'identification sont incorrectes
+                return jsonify({"error": "Email ou mot de passe incorrect (admin) "}), 401
+            else:
+                return jsonify({"error": "Fichier de comptes introuvable"}), 500
+        else:
+            return jsonify({"error": "Données de connexion invalides"}), 400
 
     def send_message():
         data = request.get_json()

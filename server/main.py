@@ -6,7 +6,6 @@ import os
 
 # Configuration du serveur
 PORT = 8000
-STATIC_FOLDER = './server/www'
 
 # Créez une instance de la classe RouteManager
 route_manager = RouteManager()
@@ -15,6 +14,7 @@ messages = Message.read_messages_from_file()
 function_mapping = {
     'init': Message.init,
     'connect': Message.login,
+    'connect_admin': Message.login_admin,
     'fetchUser': lambda data: Message.fetch_user(data['UserEmail']),
     'fetchUserFilter': lambda data: Message.fetch_user_filter(data['UserEmail']),
     'Message': Message.message,
@@ -76,5 +76,12 @@ def index():
     with open(os.path.join('./server/www', 'index.html'), 'r', encoding='utf-8') as f:
         return f.read(), 200, {'Content-Type': content_type}
     
+@route_manager.app.route('/home', methods=['GET'])
+def home_admin():
+    extension = 'html'
+    content_type = ExtensionFiles(extension).get_content_type()
+    with open(os.path.join('./server/www', 'admin.html'), 'r', encoding='utf-8') as f:
+        return f.read(), 200, {'Content-Type': content_type}
+
 if __name__ == '__main__':
     route_manager.run(PORT)

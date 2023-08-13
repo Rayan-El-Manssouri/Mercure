@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Majax - Admin panel</title>
+    <link rel="icon" href="/logo">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Systeme UI', sans-serif;
+        }
+
+        body{
+            background-color: #f5f5f5;
+        }
+
+        p{
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+            margin: 1rem;
+        }
+    </style>
+</head>
+  
+<body>
+    <p>Vous êtes connecté en tant que <span id="email"></span></p>
+    <script>
+        const email = localStorage.getItem("email_admi");
+        document.getElementById("email").innerHTML = email;
+    </script>
+</body>
+
+</html>
