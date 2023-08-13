@@ -76,6 +76,13 @@ def logo_svg():
     content_type = ExtensionFiles(extension).get_content_type()
     with open('./server/www/assets/detailled_light.svg', 'rb') as f:
         return f.read(), 200, {'Content-Type': content_type}
+    
+@route_manager.app.route('/notif_logo', methods=['GET'])
+def notif_svg():
+    extension = 'svg'
+    content_type = ExtensionFiles(extension).get_content_type()
+    with open('./server/www/assets/notification.svg', 'rb') as f:
+        return f.read(), 200, {'Content-Type': content_type}
 
 @route_manager.app.route('/', methods=['GET'])
 def index():
@@ -96,6 +103,14 @@ def js():
     extension = 'js'
     content_type = ExtensionFiles(extension).get_content_type()
     with open('./server/www/js/main.js', 'r', encoding='utf-8') as f:
+        return f.read(), 200, {'Content-Type': content_type}
+    
+
+@route_manager.app.route('/js/admin.js', methods=['GET'])
+def admin():
+    extension = 'js'
+    content_type = ExtensionFiles(extension).get_content_type()
+    with open('./server/www/js/admin.js', 'r', encoding='utf-8') as f:
         return f.read(), 200, {'Content-Type': content_type}
 
 if __name__ == '__main__':
