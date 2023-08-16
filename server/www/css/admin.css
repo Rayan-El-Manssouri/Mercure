@@ -22,44 +22,6 @@ main {
     height: 100vh;
 }
 
-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    background-color: #333;
-    color: #fff;
-    transition: background-color 0.3s ease-in-out;
-}
-
-header img {
-    width: 50px;
-    height: 50px;
-}
-
-header h1 {
-    font-size: 24px;
-    margin-left: 10px;
-}
-
-header ul {
-    list-style: none;
-    display: flex;
-}
-
-header li {
-    margin-right: 20px;
-}
-
-header a {
-    text-decoration: none;
-    color: #fff;
-    transition: color 0.3s ease-in-out;
-}
-
-header a:hover {
-    color: #ff9900;
-}
 
 .deconnect {
     background-color: #ff9900;

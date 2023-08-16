@@ -1,4 +1,15 @@
 import json
+import re
+
+def render_custom_tags(content):
+    def custom_tag_replacer(match):
+        src = match.group(1)
+        with open(src, "rb") as file:
+            return file.read()
+
+    content_rendered = re.sub(b'<Majax src="([^"]+)" />', custom_tag_replacer, content)
+    return content_rendered
+
 
 def serve_static_file(route):
     with open("./server/www/admin/route.json", "r") as json_file:
@@ -24,6 +35,8 @@ def serve_static_file(route):
 
         with open(emplacement, 'rb') as f:
             content = f.read()
+
+        content = render_custom_tags(content)
 
         return content, 200, {'Content-Type': content_type}
     else:

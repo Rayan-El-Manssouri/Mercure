@@ -21,6 +21,9 @@
             },
             "css_admin": {
                 "path": "css/admin.css"
+            },
+            "header_css":{
+                "path": "css/header.css"
             }
         },
         "js": {

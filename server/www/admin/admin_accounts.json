@@ -1,8 +1,8 @@
 [
     {
         "id": 1,
-        "email": "jhoneexample@gmail.com",
-        "password": "idsjfhdsifbqg6sr1f6q4r8516dvqe5r64df19qe56r1sdf651df98Z4516ES",
+        "email": "admin",
+        "password": "root",
         "type": "admin"
     }
 ]
