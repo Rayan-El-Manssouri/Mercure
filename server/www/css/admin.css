@@ -22,7 +22,6 @@ main {
     height: 100vh;
 }
 
-
 .deconnect {
     background-color: #ff9900;
     padding: 8px 16px;
@@ -44,11 +43,8 @@ main {
 .main {
     display: flex;
     flex-direction: row;
-    /* Mettre les éléments en ligne */
     align-items: flex-start;
-    /* Aligner les éléments en haut */
     justify-content: flex-start;
-    /* Aligner les éléments à gauche */
     margin-top: 50px;
 }
 
@@ -305,15 +301,12 @@ svg:hover {
     padding: 10px;
 }
 
-/* Stats */
-/* Style de base pour la div Statistiques */
 .Statistiques {
     padding: 20px;
     border-radius: 10px;
     border-radius: 0px;
 }
 
-/* Style pour le texte "Serveur statue" */
 .Statistiques p {
     font-size: 18px;
     font-weight: bold;
@@ -321,7 +314,6 @@ svg:hover {
     display: flex;
 }
 
-/* Style pour les div contenant les cercles de statut */
 .Statistiques .statut-container {
     display: flex;
     align-items: center;
@@ -336,7 +328,6 @@ svg:hover {
     text-align: center;
 }
 
-/* Style pour les cercles de statut */
 .nouveaux_messages_rond_green,
 .nouveaux_messages_rond_red,
 .nouveaux_messages_rond_yellow {
@@ -345,20 +336,16 @@ svg:hover {
     border-radius: 50%;
     margin: 5px;
     background-color: red;
-    /* Défaut, sera écrasé par les styles spécifiques */
 }
 
-/* Style pour le cercle de statut rouge */
 .nouveaux_messages_rond_red {
     background-color: red;
 }
 
-/* Style pour le cercle de statut vert */
 .nouveaux_messages_rond_green {
     background-color: rgb(0, 255, 0);
 }
 
-/* Style pour le cercle de statut jaune */
 .nouveaux_messages_rond_yellow {
     background-color: yellow;
 }
@@ -366,31 +353,43 @@ svg:hover {
 .container_json_code {
     border-radius: 8px;
     width: 100dvh;
+    border: 1px solid #ccc;
+
 }
 
 .container_json_code h1 {
     color: #333333;
     font-size: 24px;
     margin-bottom: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
 }
 
 .container_json_code p {
     color: #666666;
     font-size: 16px;
     margin-bottom: 20px;
+    padding: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .container_json_code pre {
     background-color: #f5f5f5;
-    border: 1px solid #ccc;
     border-radius: 4px;
     padding: 10px;
     overflow: auto;
 }
 
+.container_json_code svg{
+    position: relative;
+    float: right;
+    color: #666666;
+    margin-right: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
 
-.log {
-    width: 100%;
-    height: 100vh;
-    background-color: #333;
+.container_json_code svg:hover{
+    color: #333333;
 }

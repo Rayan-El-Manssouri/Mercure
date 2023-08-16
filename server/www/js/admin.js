@@ -2,6 +2,7 @@
 const monthYearElement = document.getElementById('monthYear');
 const prevMonthBtn = document.getElementById('prevMonthBtn');
 const nextMonthBtn = document.getElementById('nextMonthBtn');
+const svgclipboad = document.getElementById('svgclipboad')
 
 const months = [
     "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
@@ -103,3 +104,20 @@ fetch('config')
     .catch(error => {
         console.error('Une erreur est survenue lors du chargement du fichier JSON :', error);
     });
+
+svgclipboad.addEventListener('click', () => {
+    fetch('config') // Charger le fichier JSON
+        .then(response => response.text()) // Convertir la réponse en texte
+        .then(text => {
+            navigator.clipboard.writeText(text)
+                .then(() => {
+                    console.log('JSON copié avec succès !');
+                })
+                .catch(err => {
+                    console.error('Une erreur est survenue lors de la copie du JSON :', err);
+                });
+        })
+        .catch(error => {
+            console.error('Une erreur est survenue lors du chargement du fichier JSON :', error);
+        });
+});
