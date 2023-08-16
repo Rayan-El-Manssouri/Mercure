@@ -1,7 +1,6 @@
 from flask import Flask
 from flask_session import Session
 from flask_cors import CORS
-from flask_socketio import SocketIO
 import json
 
 # Ouverture du fichier JSON
@@ -19,10 +18,7 @@ class RouteManager:
         self.app.config['SESSION_COOKIE_SAMESITE'] = SESSION_COOKIE_SAMESITE
         self.app.config['SECRET_KEY'] = VALIDE_API_KEY
         CORS(self.app, resources={r"/*": {"origins": "http://localhost:3000"}}, supports_credentials=True)
-        self.VALIDE_API_KEY = "apikey"
-        self.messages = self.read_messages_from_file()
         Session(self.app)
-        self.socketio = SocketIO(self.app, cors_allowed_origins="*", cors_allowed_methods="*")
 
     def read_messages_from_file(self):
         try:
