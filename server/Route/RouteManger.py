@@ -5,6 +5,9 @@ from flask_socketio import SocketIO
 import json
 import logging
 
+# Ouverture du fichier JSON
+with open('./server/www/config.json') as f:
+    data = json.load(f)
 
 class RouteManager:
     def __init__(self):
@@ -12,14 +15,14 @@ class RouteManager:
         self.app = Flask(__name__)
         self.load_config()
         self.app.logger.setLevel(logging.ERROR)
-        CORS(self.app, resources={r"/*": {"origins": "http://localhost:3000"}}, supports_credentials=True)
+        CORS(self.app, resources={r"/*": {"origins": data['CORS_ORIGIN']}}, supports_credentials=True)
+        Session(self.app)
         self.VALIDE_API_KEY = self.config["API_KEY_DECRYPT"]
         self.messages = self.read_messages_from_file()
-        Session(self.app)
         self.socketio = SocketIO(self.app, cors_allowed_origins="*", cors_allowed_methods="*")
 
     def load_config(self):
-        with open("./server/config.json", "r") as config_file:
+        with open("./server/www/config.json", "r") as config_file:
             self.config = json.load(config_file)
 
     def read_messages_from_file(self):

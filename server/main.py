@@ -5,7 +5,7 @@ from Utils.static import serve_static_file
 import json
 
 # Ouverture du fichier JSON
-with open('./server/config.json') as f:
+with open('./server/www/config.json') as f:
     data = json.load(f)
 
 # Configuration du serveur
@@ -60,9 +60,4 @@ def index(route):
     return serve_static_file(route)
 
 if __name__ == '__main__':
-    print("Nom du serveur: " + data['name'])
-    print("Port du serveur: " + data['PORT'])
-    print("Clé API: " + data['API_KEY_DECRYPT'])
-    print('Log')
-    print('----------------------------------')
     route_manager.run(PORT)

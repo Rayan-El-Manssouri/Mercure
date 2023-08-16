@@ -10,7 +10,6 @@ def render_custom_tags(content):
     content_rendered = re.sub(b'<Majax src="([^"]+)" />', custom_tag_replacer, content)
     return content_rendered
 
-
 def serve_static_file(route):
     with open("./server/www/admin/route.json", "r") as json_file:
         data = json.load(json_file)

@@ -83,29 +83,23 @@ function createCalendarDays(year, month) {
 
 updateCalendar();
 
-// Le JSON de configuration
-const  configJson = {
-    "name": "Siv",
-    "version": "0.1.0",
-    "PORT_SERVER": "8000",
-    "password": "12547987465138465348651",
-    "API_KEY_DECRYPT": "dsiqmudhqsfs5d1f65se4fr865qs41df5qe6s4df15d1f",
-    "CORS_ORIGIN": "local",
-    "TYPE_SITE_WEB": "local",
-    "ENDPOINT": "api",
-    "SESSION_TYPE": "filsysteme",
-    "SESSION_COOKIE_SAMESITE": "Lax"
-};
+// Chargement du fichier JSON de configuration
+fetch('config')
+    .then(response => response.json())
+    .then(configJson => {
+        // Sélectionnez l'élément où vous voulez afficher les paramètres
+        const jsonParamsContainer = document.getElementById('jsonParams');
 
-// Sélectionnez l'élément où vous voulez afficher les paramètres
-const jsonParamsContainer = document.getElementById('jsonParams');
-
-// Parcourez les propriétés du JSON et affichez-les dans le format souhaité
-for (const key in configJson) {
-    if (configJson.hasOwnProperty(key)) {
-        const keyValue = configJson[key];
-        const paramElement = document.createElement('p');
-        paramElement.textContent = key + ' = ' + keyValue;
-        jsonParamsContainer.appendChild(paramElement);
-    }
-}
+        // Parcourez les propriétés du JSON et affichez-les dans le format souhaité
+        for (const key in configJson) {
+            if (configJson.hasOwnProperty(key)) {
+                const keyValue = configJson[key];
+                const paramElement = document.createElement('p');
+                paramElement.textContent = key + ' = ' + keyValue;
+                jsonParamsContainer.appendChild(paramElement);
+            }
+        }
+    })
+    .catch(error => {
+        console.error('Une erreur est survenue lors du chargement du fichier JSON :', error);
+    });

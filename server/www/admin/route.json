@@ -52,6 +52,14 @@
             "logo_svg": {
                 "path": "assets/detailled_light.svg"
             }
+        },
+        "json": {
+            "_common": {
+                "mine-type": "application/json"
+            },
+            "config": {
+                "path": "config.json"
+            }
         }
     }
 }
