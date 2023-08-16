@@ -1,9 +1,11 @@
 import json
 import re
 
-def render_custom_tags(content):
+def render_custom_tags(content, base_path):
     def custom_tag_replacer(match):
         src = match.group(1)
+        src = "./server/www" + src.decode("utf-8")
+
         with open(src, "rb") as file:
             return file.read()
 
@@ -15,7 +17,7 @@ def serve_static_file(route):
         data = json.load(json_file)
 
     # Extract the base path and files information from the JSON
-    base_path = data.get("base_path", "")
+    base_path = data['base_path']
     files = data.get("route", {})
 
     # Determine the file category and route within the category
@@ -35,7 +37,7 @@ def serve_static_file(route):
         with open(emplacement, 'rb') as f:
             content = f.read()
 
-        content = render_custom_tags(content)
+        content = render_custom_tags(content, '.')
 
         return content, 200, {'Content-Type': content_type}
     else:
