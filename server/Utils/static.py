@@ -1,7 +1,7 @@
 import json
 
 def serve_static_file(route):
-    with open("./server/Utils/files_patchs.json", "r") as json_file:
+    with open("./server/www/admin/route.json", "r") as json_file:
         data = json.load(json_file)
 
     # Extract the base path and files information from the JSON
