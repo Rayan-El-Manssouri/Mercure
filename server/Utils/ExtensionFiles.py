@@ -10,5 +10,6 @@ class ExtensionFiles:
             'ico': 'image/x-icon'
         }
 
+
     def get_content_type(self):
         return self.content_type.get(self.extension, 'application/octet-stream')

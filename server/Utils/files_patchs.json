@@ -1,0 +1,34 @@
+{
+    "Connect": {
+        "path": "./server/www/index.html",
+        "extension": "html"
+    },
+    "home": {
+        "path": "./server/www/admin.html",
+        "extension": "html"
+    },
+    "css": {
+        "path": "./server/www/css/style.css",
+        "extension": "text/css"
+    },
+    "css_admin": {
+        "path": "./server/www/css/admin.css",
+        "extension": "text/css"
+    },
+    "js": {
+        "path": "./server/www/js/main.js",
+        "extension": "text/javascript"
+    },
+    "adminjs": {
+        "path": "./server/www/js/admin.js",
+        "extension": "text/javascript"
+    },
+    "logo": {
+        "path": "./server/www/assets/simplified.png",
+        "extension": "image/png"
+    },
+    "logo_svg": {
+        "path": "./server/www/assets/detailled_dark.svg",
+        "extension": "image/svg+xml"
+    }
+}
