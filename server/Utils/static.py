@@ -6,7 +6,7 @@ def serve_static_file(route):
 
     # Extract the base path and files information from the JSON
     base_path = data.get("base_path", "")
-    files = data.get("files", {})
+    files = data.get("route", {})
 
     # Determine the file category and route within the category
     file_category = None

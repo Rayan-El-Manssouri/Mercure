@@ -1,6 +1,6 @@
 {
     "base_path": "./server/www/",
-    "files": {
+    "route": {
         "html": {
             "_common": {
                 "mine-type": "text/html"
@@ -47,7 +47,7 @@
                 "mine-type": "image/svg+xml"
             },
             "logo_svg": {
-                "path": "assets/detailled_dark.svg"
+                "path": "assets/detailled_light.svg"
             }
         }
     }
