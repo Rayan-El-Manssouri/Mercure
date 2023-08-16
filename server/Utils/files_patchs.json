@@ -1,34 +1,54 @@
 {
-    "Connect": {
-        "path": "./server/www/index.html",
-        "extension": "html"
-    },
-    "home": {
-        "path": "./server/www/admin.html",
-        "extension": "html"
-    },
-    "css": {
-        "path": "./server/www/css/style.css",
-        "extension": "text/css"
-    },
-    "css_admin": {
-        "path": "./server/www/css/admin.css",
-        "extension": "text/css"
-    },
-    "js": {
-        "path": "./server/www/js/main.js",
-        "extension": "text/javascript"
-    },
-    "adminjs": {
-        "path": "./server/www/js/admin.js",
-        "extension": "text/javascript"
-    },
-    "logo": {
-        "path": "./server/www/assets/simplified.png",
-        "extension": "image/png"
-    },
-    "logo_svg": {
-        "path": "./server/www/assets/detailled_dark.svg",
-        "extension": "image/svg+xml"
+    "base_path": "./server/www/",
+    "files": {
+        "html": {
+            "_common": {
+                "mine-type": "text/html"
+            },
+            "Connect": {
+                "path": "index.html"
+            },
+            "home": {
+                "path": "admin.html"
+            }
+        },
+        "css": {
+            "_common": {
+                "mine-type": "text/css"
+            },
+            "css": {
+                "path": "css/style.css"
+            },
+            "css_admin": {
+                "path": "css/admin.css"
+            }
+        },
+        "js": {
+            "_common": {
+                "mine-type": "text/javascript"
+            },
+            "js": {
+                "path": "js/main.js"
+            },
+            "adminjs": {
+                "path": "js/admin.js"
+            }
+        },
+        "images": {
+            "_common": {
+                "mine-type": "application/octet-stream"
+            },
+            "logo": {
+                "path": "assets/simplified.png"
+            }
+        },
+        "svg": {
+            "_common": {
+                "mine-type": "image/svg+xml"
+            },
+            "logo_svg": {
+                "path": "assets/detailled_dark.svg"
+            }
+        }
     }
 }
