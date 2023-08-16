@@ -6,10 +6,10 @@ import json
 
 # Ouverture du fichier JSON
 with open('./server/www/config.json') as f:
-    data = json.load(f)
+    dataconfig = json.load(f)
 
 # Configuration du serveur
-PORT = data['PORT']
+PORT = dataconfig['PORT']
 
 # Créez une instance de la classe RouteManager
 route_manager = RouteManager()
@@ -34,9 +34,10 @@ def proxy():
     # Récupérer les données JSON de la requête
     data = request.get_json()
     apiKey = data['apikey']
+    apiKeyDecrypt = dataconfig['API_KEY_DECRYPT']
     
     # Vérifier la clé API
-    if apiKey != route_manager.VALIDE_API_KEY:
+    if apiKey != apiKeyDecrypt:
         return jsonify({"error": "API key invalide"}), 401, {'Content-Type': 'application/json'}
     
     # Chercher le nom de la fonction à appeler

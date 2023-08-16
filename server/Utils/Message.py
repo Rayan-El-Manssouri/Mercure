@@ -106,7 +106,6 @@ class Message:
                 return jsonify({"error": "Fichier de comptes introuvable"}), 500
         else:
             return jsonify({"error": "Données de connexion invalides"}), 400
-
     def send_message():
         data = request.get_json()
         if data and isinstance(data, dict):

@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                apikey: "apikey",
+                apikey: "dsiqmudhqsfs5d1f65se4fr865qs41df5qe6s4df15d1f",
                 functionName: "connect_admin",  // Nom de la fonction côté serveur
                 // Autres données requises pour la connexion
                 email: email,
