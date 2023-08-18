@@ -1,7 +1,6 @@
-import re
 from bs4 import BeautifulSoup
 
-def render_custom_tags(emplacement, content_type, base_path):
+def render_custom_tags(emplacement, content_type, base_path, route):
     if content_type == "application/octet-stream":
         with open(emplacement, 'rb') as f:
             content = f.read()
@@ -20,6 +19,19 @@ def render_custom_tags(emplacement, content_type, base_path):
                     with open(base_path + src, "r", encoding='utf-8') as file:
                         content_import = file.read()
                         tag.replace_with(BeautifulSoup(content_import, 'html.parser'))
-                    # Retourner le code html en text/html
-                    content = str(soup)
+                    
+                # Trouve toutes les balises "a" avec l'attribut "exact"
+                target_links = soup.find_all('a', attrs={'exact': True})
+
+                for link in target_links:
+                    if link.get('href') == route:
+                        link['class'] = 'active'
+                        
+
+                # Une fois fini de remplacer l'attribue excact par active, on peut supprimer l'attribue exact
+                for link in target_links:
+                    del link['exact']
+                
+                return soup.prettify()
+                    
         return content

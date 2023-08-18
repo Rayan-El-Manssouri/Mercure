@@ -78,16 +78,10 @@ main {
 }
 
 .notif .close {
-    margin-left: 10px;
-    cursor: pointer;
-    position: absolute;
-    display: inline-block;
-    font-size: 20px;
-    color: #fff;
-    transition: color 0.3s ease-in-out;
-    text-align: right;
-    right: 20px;
-    transition: background-color 0.3s ease-in-out;
+   position: relative;
+   display: flex;
+   float: right;
+   left: 100%;
 }
 
 .notif .close:hover {
