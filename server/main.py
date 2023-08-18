@@ -1,7 +1,7 @@
 from flask import request, jsonify
+from Utils.static import serve_static_file
 from Route.RouteManger import RouteManager
 from Utils.Message import Message
-from Utils.static import serve_static_file
 import json
 
 # Ouverture du fichier JSON

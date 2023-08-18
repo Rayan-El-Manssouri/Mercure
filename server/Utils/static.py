@@ -1,5 +1,7 @@
 import json
 from Utils.render_custom_tags import render_custom_tags
+from bs4 import BeautifulSoup
+files_log_txt = './server/www/log/text.txt'
 
 def serve_static_file(route):
     with open("./server/www/admin/route.json", "r") as json_file:
@@ -22,12 +24,8 @@ def serve_static_file(route):
         file_info = files[file_category][file_route]
         emplacement = base_path + file_info["path"]
         content_type = file_info.get("mine-type", files[file_category]["_common"]["mine-type"])
-
-        with open(emplacement, 'rb') as f:
-            content = f.read()
-
-        content = render_custom_tags(content, base_path=base_path)
-
+            
+        content =  render_custom_tags(emplacement, content_type, base_path)
         return content, 200, {'Content-Type': content_type}
     else:
-        return "File not found", 404, {'Content-Type': 'text/plain'}
+        return "Fichier non trouvé code error : 404", 404, {'Content-Type': 'text/plain'}
