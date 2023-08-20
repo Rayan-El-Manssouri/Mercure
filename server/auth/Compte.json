@@ -3,18 +3,21 @@
         "email": "test@gmail.com",
         "password": "123456",
         "pseudo": "Compte de test originial",
-        "NomMessage": "Compte de test originial"
+        "NomMessage": "Compte de test originial",
+        "role": "admin"
     },
     {
         "email": "compte_utilisateur_1@gmail.com",
         "password": "123456",
         "pseudo": "Compte utilisateur 1",
-        "NomMessage": "Compte utilisateur 1"
+        "NomMessage": "Compte utilisateur 1",
+        "role": "Membre"
     },
     {
         "email": "compte_utilisateur_3@gmail.com",
         "password": "123456",
         "pseudo": "Compte utilisateur 3",
-        "NomMessage": "Compte utilisateur 3"
+        "NomMessage": "Compte utilisateur 3",
+        "role": "Membre"
     }
 ]

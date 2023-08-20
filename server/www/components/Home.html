@@ -1,0 +1,57 @@
+<main>
+    <div class="notification">
+        <div class="notif">
+            <p>Vous avez 3 nouveaux messages | <a href="">Voir</a> <span class="close">X</span></p>
+        </div>
+    </div>
+    <div class="calendar_container">
+        <h1>Evenement à venir</h1>
+        <table class="calendar">
+            <thead>
+                <tr class="header">
+                    <th colspan="3">
+                        <button id="prevMonthBtn">&lt;</button>
+                        <h2 id="monthYear">Août 2023</h2>
+                        <button id="nextMonthBtn">&gt;</button>
+                    </th>
+                </tr>
+                <tr class="days">
+                    <th>
+                        <span>Lun</span>
+                        <span>Mar</span>
+                        <span>Mer</span>
+                        <span>Jeu</span>
+                        <span>Ven</span>
+                        <span>Sam</span>
+                        <span>Dim</span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="days-container">
+            </tbody>
+        </table>
+        <div class="notif_jours">
+            <div class="separator"></div>
+            <div class="notif_contenaire">
+                <p class="jour">Lundi 12</p>
+                <p class="notif_jour">Vous avez 3 nouveaux messages
+                <p class="nouveaux_messages_rond"></p>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container_sc">
+        <div class="container_json_code">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"  id="svgclipboad">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M8 8m0 2a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2z"/>
+                <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2"/>
+              </svg>
+            <div>
+                <h1>Configuration du config.json trouvée !</h1>
+                <p>Vous pouvez modifier les paramètres de votre serveur <a href="">Ici</a> </p>
+                <pre id="jsonParams"></pre>
+            </div>
+        </div>
+    </div>
+</main>

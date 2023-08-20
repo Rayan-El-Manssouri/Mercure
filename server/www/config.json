@@ -2,7 +2,7 @@
     "name": "Siv",
     "version": "0.1.0",
     "PORT": "8000",
-    "password": 12547987465138465348651,
+    "password": "12547987465138465348651",
     "API_KEY_DECRYPT": "dsiqmudhqsfs5d1f65se4fr865qs41df5qe6s4df15d1f",
     "CORS_ORIGIN": "http://localhost:3000",
     "TYPE_SITE_WEB": "local",

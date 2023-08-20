@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Majax - Utilisateur</title>
+    <link rel="icon" href="/logo">
+    <link rel="stylesheet" href="css_admin">
+    <link rel="stylesheet" href="css_users">
+</head>
+
+<body>
+    <import src="./components/Header.html" />
+    <section id="user-list">
+        <header>
+            <h2>Liste des Utilisateurs</h2>
+            <div class="user-admin-info">
+                <button id="btn-add-user">Ajouter un Utilisateur</button>
+            </div>
+        </header>
+        <input type="text" placeholder="Rechercher un Utilisateur existant ..."  id="search-user" />
+        <p id="user-count-message" style="display: none;"></p>
+        <p id="no-user-found-message" style="display: none;">Aucun utilisateur trouvé</p>
+        <ul id="users"></ul>
+
+    </section>
+    
+    <section id="user-details">
+        <h2>Détails de l'Utilisateur</h2>
+        <div id="user-info"></div>
+    </section>
+
+    <script type="text/javascript" src="users"></script>
+</body>
+
+</html>

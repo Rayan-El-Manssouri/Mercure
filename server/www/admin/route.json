@@ -10,6 +10,9 @@
             },
             "home": {
                 "path": "admin.html"
+            },
+            "Utilisateurs": {
+                "path": "Utilisateurs.html"
             }
         },
         "css": {
@@ -24,6 +27,9 @@
             },
             "header_css":{
                 "path": "css/header.css"
+            },
+            "css_users": {
+                "path": "css/Users.css"
             }
         },
         "js": {
@@ -35,6 +41,9 @@
             },
             "adminjs": {
                 "path": "js/admin.js"
+            },
+            "users": {
+                "path": "js/users.js"
             }
         },
         "images": {
@@ -59,6 +68,9 @@
             },
             "config": {
                 "path": "config.json"
+            },
+            "users_account": {
+                "path": "../auth/Compte.json"
             }
         }
     }
