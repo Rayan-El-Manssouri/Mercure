@@ -1,4 +1,3 @@
-// Simulons une liste d'utilisateurs (à remplacer par une requête à une base de données)
 const inputsearch = document.getElementById("search-user");
 let usersData = [];
 
@@ -16,6 +15,12 @@ function displayUserList(users = usersData ) { // Utilise la liste filtrée si e
         listItem.addEventListener("click", () => displayUserInfo(user));
         userList.appendChild(listItem);
     });
+
+    // Affichier un message lors que y'a aucun utilisateur sélectionné
+    if (users.length === 0) {
+        const userInfo = document.getElementById("user-info");
+        userInfo.innerHTML = '<p style="text-align: center" >Aucun utilisateur sélectionné.</p>';
+    }
 }
 
 // Fonction pour rechercher un utilisateur
@@ -50,12 +55,8 @@ function displayUserInfo(user) {
         <p><strong>Email :</strong> ${user.email}</p>
         <p><strong>Password :</strong> ${user.password}</p>
         <p><strong>Rôle :</strong> ${user.role}</p>
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-circle" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-            <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"/>
-            <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"/>
-            <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855"/>
-        </svg>
+        <p><strong>Id :</strong> ${user.id}</p>
+        <p><strong>Nombre de rapport :</strong> ${user.Nombrederapport}</p>
         <div>
             <button onclick="editUser(${user.id})">Modifier le rôle</button>
             <button onclick="editUser(${user.id})">Bannir</button>
