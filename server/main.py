@@ -3,6 +3,7 @@ from Utils.static import serve_static_file
 from Route.RouteManger import RouteManager
 from Utils.Message import Message
 import json
+import webbrowser
 
 # Ouverture du fichier JSON
 with open('./server/www/config.json') as f:
@@ -61,4 +62,5 @@ def index(route):
     return serve_static_file(route)
 
 if __name__ == '__main__':
-    route_manager.run(PORT)
+    webbrowser.open(f'http://localhost:{PORT}/Connect')
+    route_manager.run(PORT, 'localhost')

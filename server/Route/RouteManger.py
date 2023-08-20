@@ -31,5 +31,5 @@ class RouteManager:
         with open("./server/Message.json", "w") as file:
             json.dump(messages, file, indent=4)
 
-    def run(self, port):
-        self.app.run(port=port)
+    def run(self, port, host):
+        self.app.run(host=host, port=port)

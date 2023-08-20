@@ -68,9 +68,9 @@
     border-bottom: 1px solid #ccc;
 }
 
-
-
-
+#users .active_user {
+    background-color: #f0f0f0;
+}
 
 #user-details svg {
     color: black;

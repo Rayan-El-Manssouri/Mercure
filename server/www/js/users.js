@@ -2,7 +2,7 @@ const inputsearch = document.getElementById("search-user");
 let usersData = [];
 
 // Fonction pour afficher la liste des utilisateurs
-function displayUserList(users = usersData ) { // Utilise la liste filtrée si elle est fournie, sinon utilise usersData par défaut
+function displayUserList(users = usersData) {
     const userList = document.getElementById("users");
 
     // Efface la liste actuelle d'utilisateurs
@@ -12,11 +12,26 @@ function displayUserList(users = usersData ) { // Utilise la liste filtrée si e
     users.forEach(user => {
         const listItem = document.createElement("li");
         listItem.textContent = `${user.pseudo} - ${user.role}`;
-        listItem.addEventListener("click", () => displayUserInfo(user));
+
+        // Ajoute un gestionnaire d'événements click à chaque élément <li>
+        listItem.addEventListener("click", () => {
+            // Supprime la classe "active" de tous les éléments <li>
+            const allListItems = document.querySelectorAll("#users li");
+            allListItems.forEach(item => {
+                item.classList.remove("active_user");
+            });
+
+            // Ajoute la classe "active" à l'élément cliqué
+            listItem.classList.add("active_user");
+
+            // Affiche les détails de l'utilisateur sélectionné
+            displayUserInfo(user);
+        });
+
         userList.appendChild(listItem);
     });
 
-    // Affichier un message lors que y'a aucun utilisateur sélectionné
+    // Afficher un message lorsqu'aucun utilisateur n'est sélectionné
     if (users.length === 0) {
         const userInfo = document.getElementById("user-info");
         userInfo.innerHTML = '<p style="text-align: center" >Aucun utilisateur sélectionné.</p>';
@@ -26,26 +41,37 @@ function displayUserList(users = usersData ) { // Utilise la liste filtrée si e
 // Fonction pour rechercher un utilisateur
 function searchUser() {
     const searchValue = inputsearch.value.toLowerCase();
-    const filteredUsers =  usersData.filter(user => {
+    const filteredUsers = usersData.filter(user => {
         return user.pseudo.toLowerCase().includes(searchValue);
     });
 
     const userCountMessage = document.getElementById("user-count-message");
+    const userList = document.getElementById("users");
+    // Si le champ de recherche est vide, réinitialise tout
+    if (searchValue === ""){
+        userCountMessage.style.display = "none";
+        userList.style.display = "block";
+        displayUserList();
+        return;
+    }
 
     if (filteredUsers.length === 0) {
         // Aucun utilisateur trouvé, affiche le message et cache la liste
         userCountMessage.style.display = "block";
         userCountMessage.textContent = "Aucun utilisateur trouvé.";
-        document.getElementById("users").style.display = "none";
+        userList.style.display = "none";
+
+        // Efface les détails de l'utilisateur
+        const userInfo = document.getElementById("user-info");
+        userInfo.innerHTML = '<p style="text-align: center;">Aucun utilisateur sélectionné.</p>';
     } else {
         // Des utilisateurs ont été trouvés, affiche le nombre d'utilisateurs et la liste
         userCountMessage.style.display = "block";
         userCountMessage.textContent = `Nombre d'utilisateurs trouvés : ${filteredUsers.length}`;
-        document.getElementById("users").style.display = "block";
+        userList.style.display = "block";
         displayUserList(filteredUsers); // Appelle displayUserList avec la liste filtrée
     }
 }
-
 
 // Fonction pour afficher les détails d'un utilisateur sélectionné
 function displayUserInfo(user) {
