@@ -12,23 +12,42 @@
 
 <body>
     <import src="./components/Header.html" />
-    <section id="user-list">
-        <header>
-            <h2>Liste des Utilisateurs</h2>
-            <div class="user-admin-info">
-                <button id="btn-add-user">Ajouter un Utilisateur</button>
+    <div class="contenaire">
+        <!-- Liste des utilisateurs -->
+        <section id="user-list">
+            <div class="padding_list">
+                <div class="header_section_users_list">
+                    <h2>Liste des Utilisateurs</h2>
+                    <div class="user-admin-info">
+                        <button id="btn-add-user">Ajouter un Utilisateur</button>
+                    </div>
+                </div>
             </div>
-        </header>
-        <input type="text" placeholder="Rechercher un Utilisateur existant ..."  id="search-user" />
-        <p id="user-count-message" style="display: none;"></p>
-        <p id="no-user-found-message" style="display: none;">Aucun utilisateur trouvé</p>
-        <ul id="users"></ul>
 
-    </section>
-    
-    <section id="user-details">
+            <div class="list">
+                <div class="serach_padding">
+                    <div class="search_svg">
+                        <import src="./svg/account.svg" />
+                        <input type="text" placeholder="Rechercher un Utilisateur existant via son pseudo..."
+                            id="search-user" />
+                    </div>
+                </div>
+
+                <p id="no-user-found-message" style="display: none;">Aucun utilisateur trouvé</p>
+                <div class="users-list-height">
+                    <p id="user-count-message" style="display: none;"></p>
+                    <ul id="users"></ul>
+                </div>
+                <footer>
+                    <import src="./svg/account.svg" />
+                    <p>Connecter en tant que <span id="user-name"></span></p>
+                </footer>
+            </div>
+           
+        </section>
+
         <div id="user-info"></div>
-    </section>
+    </div>
 
     <script type="text/javascript" src="users"></script>
 </body>

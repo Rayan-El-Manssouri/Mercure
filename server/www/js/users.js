@@ -28,6 +28,8 @@ function displayUserList(users = usersData) {
             displayUserInfo(user);
         });
 
+
+
         userList.appendChild(listItem);
     });
 
@@ -48,7 +50,7 @@ function searchUser() {
     const userCountMessage = document.getElementById("user-count-message");
     const userList = document.getElementById("users");
     // Si le champ de recherche est vide, réinitialise tout
-    if (searchValue === ""){
+    if (searchValue === "") {
         userCountMessage.style.display = "none";
         userList.style.display = "block";
         displayUserList();
@@ -77,19 +79,24 @@ function searchUser() {
 function displayUserInfo(user) {
     const userInfo = document.getElementById("user-info");
     userInfo.innerHTML = `
-        <p><strong>Nom :</strong> ${user.pseudo}</p>
-        <p><strong>Email :</strong> ${user.email}</p>
-        <p><strong>Password :</strong> ${user.password}</p>
-        <p><strong>Rôle :</strong> ${user.role}</p>
-        <p><strong>Id :</strong> ${user.id}</p>
-        <p><strong>Nombre de rapport :</strong> ${user.Nombrederapport}</p>
+    <div class="users-info">
         <div>
-            <button onclick="editUser(${user.id})">Modifier le rôle</button>
-            <button onclick="editUser(${user.id})">Bannir</button>
-            <button onclick="editUser(${user.id})">Voir tous les messages de l'utilisateur</button>
-            <button onclick="editUser(${user.id})">Supprimer l'utilisateur</button>
-            <button onclick="editUser(${user.id})">Envoyer un rapport</button>
-        </div>
+                <p><strong>Nom :</strong> ${user.pseudo}</p>
+                <p><strong>Email :</strong> ${user.email}</p>
+                <p><strong>Password :</strong> ${user.password}</p>
+                <p><strong>Rôle :</strong> ${user.role}</p>
+                <p><strong>Id :</strong> ${user.id}</p>
+                <p><strong>Nombre de rapport :</strong> ${user.Nombrederapport}</p>
+            </div>
+            <div>
+                <button onclick="editUser(${user.id})">Modifier le rôle</button>
+                <button onclick="editUser(${user.id})">Bannir</button>
+                <button onclick="editUser(${user.id})">Voir tous les messages de l'utilisateur</button>
+                <button onclick="editUser(${user.id})">Supprimer l'utilisateur</button>
+                <button onclick="editUser(${user.id})">Envoyer un rapport</button>
+            </div>
+    </div>
+        
     `;
 }
 

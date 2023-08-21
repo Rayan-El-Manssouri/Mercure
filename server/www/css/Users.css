@@ -1,117 +1,204 @@
 /* Style de base pour la liste des utilisateurs */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.contenaire {
+    width: 100%;
+    height: calc(100vh - 70px);
+    display: flex;
+    flex-direction: row;
+}
+
 #user-list {
-    background-color: #f5f5f5;
-    padding: 20px;
     position: relative;
-    width: 35%;
     float: left;
     border-right: 1px solid #ccc;
-    height: 100vh;
-    display: block;
+    height: 100%;
 }
 
-#user-details {
-    background-color: #f5f5f5;
-    padding: 20px;
-    border-radius: 10px;
-    position: relative;
-    float: left;
-    width: 60%;
-    height: 100vh;
-    overflow-y: scroll;
-}
 
-#user-list input[type="text"] {
+#user-list .padding_list {
     padding: 5px;
-    border: 2px solid #ccc;
-    border-radius: 3px;
-    width: 100%;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-    margin-top: 10px;
 }
 
-#user-list input[type="text"]:focus {
+#user-list .header_section_users_list {
+    width: 100%;
+    height: 70px;
+    background-color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+#user-list .header_section_users_list h2 {
+    font-size: 1.5em;
+    font-weight: 400;
+    margin-left: 20px;
+    color: #fff;
+}
+
+#user-list .header_section_users_list button {
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: #ff9900;
+    padding: 8px 16px;
+    border-radius: 5px;
+    border: none;
+    color: #333;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    border: 1px solid #ff9900;
+}
+
+#user-list .header_section_users_list button:hover {
+    background-color: #fff;
+    border: 1px solid #ff9900;
+    color: #ff9900;
+}
+
+#user-list .list {
+    width: 100%;
+    height: calc(100vh - 270px);
+}
+
+#user-list .serach_padding {
+    padding: 5px;
+}
+
+#user-list .search_svg {
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+    padding: 5px;
+}
+
+#user-list .search_svg svg {
+    fill: #333;
+}
+
+#user-list .search_svg input[type="text"] {
+    border: none;
     outline: none;
+    font-size: 16px;
+    width: 100%;
+    padding: 2px;
+    background-color: transparent;
+}
+
+#user-list .search_svg input[type="text"]::placeholder {
+    color: #999;
+}
+
+#user-list .search_svg:focus-within {
     border: 2px solid #ff9900;
 }
 
-#user-list li {
-    background-color: #fff;
-    padding: 10px;
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-}
-
-#user-list li:hover {
-    background-color: #f0f0f0;
-}
-
-#user-list header {
-    background-color: #333;
-    padding: 10px;
-    border-radius: 5px;
-}
-
 #users {
-    overflow-y: scroll;
-    position: relative;
-    float: left;
-    top: 10px;
     width: 100%;
-    height: calc(85vh - 100px);
-    scrollbar-width: thin;
-    scrollbar-color: #ccc #f5f5f5;
-    border-bottom: 1px solid #ccc;
+    height: 100%;
+    overflow-y: scroll;
 }
+
+
+#user-list .users-list-height {
+    height: 100%;
+}
+
+#user-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+#user-list ul li {
+    background-color: #fff;
+    font-size: 1em;
+    font-weight: 400;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 10px;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+#user-list ul li:hover {
+    background-color: #dad9d9;
+}
+
 
 #users .active_user {
-    background-color: #f0f0f0;
+    background-color: #dad9d9;
 }
 
-#user-details svg {
-    color: black;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    cursor: pointer;
-    transition: color 0.3s ease-in-out;
+#user-count-message {
+    opacity: 0.5;
+    font-size: 1em;
+    font-weight: 400;
+    margin: 5px 0;
+    width: 100%;
+    text-align: center;
+    position: relative;
+}
+
+
+/* Mettre la scrolbbar en thin */
+#users {
+    scrollbar-width: thin;
+    scrollbar-color: #ccc #fff;
+}
+
+#user-info{
+    position: relative;
+    flex: 1;
 }
 
 #user-info {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
     padding: 10px;
     background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
-}
-
-#user-info h2 {
-    margin: 0;
-    padding: 0;
-    font-size: 1.5em;
-    margin-bottom: 10px;
 }
 
 #user-info p {
-    margin: 0;
-    padding: 0;
-    margin-bottom: 10px;
+    font-size: 1em;
+    font-weight: 400;
+    margin: 5px 0;
 }
 
-button {
-    padding: 5px 10px;
+#user-info button {
     background-color: #ff9900;
-    color: #fff;
-    border: none;
+    padding: 8px 16px;
     border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
+    border: none;
+    color: #333;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    border: 1px solid #ff9900;
 }
 
-button:hover {
-    background-color: #ff6600;
+#user-info button:hover {
+    background-color: #fff;
+    border: 1px solid #ff9900;
+    color: #ff9900;
+}
+
+footer {
+    position: relative;
+    border-top: 1px solid #ccc;
+    width: 100%;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+footer svg {
+    color: #333;
+    margin-right: 5px;
 }
