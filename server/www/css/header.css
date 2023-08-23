@@ -1,38 +1,91 @@
-header {
+:root {
+    --border-primary: 1px solid #ccc;
+    --backgroundColorHover: rgba(230, 226, 226, 0.553);
+}
+
+.body_private {
+    height: 100dvh;
+    font-family: system-ui;
+    font-size: 1rem;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    overflow-y: hidden;
+}
+
+.body_private header {
+    flex-basis: min(100vw, 370px);
+    border-right: var(--border-primary);
+    flex-direction: column;
     padding: 10px;
+}
+
+header{
+    display: flex;
     background-color: #333;
     color: #fff;
-    transition: background-color 0.3s ease-in-out;
 }
 
-header img {
-    width: 50px;
-    height: 50px;
-}
-
-header h1 {
-    font-size: 24px;
-    margin-left: 10px;
-}
-
-header ul {
-    list-style: none;
+#logo {
+    padding: 5px 5px 15px;
+    border-bottom: var(--border-primary);
+    margin-bottom: 10px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     display: flex;
 }
 
-header li {
-    margin-right: 20px;
+#logo img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
 }
 
-header a {
+#logo p {
+    font-size: 1.5rem;
+    font-family: "Carter One", system-ui;
+}
+
+nav{
+    flex-grow: 1;
+    flex-direction: column;
+    display: flex;
+}
+
+nav a {
+    padding: 10px;
+    border-radius: 5px;
+    color: var(--border-primary);
     text-decoration: none;
-    color: #fff;
-    transition: color 0.3s ease-in-out;
+    transition: background-color 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
 }
 
-header a:hover {
-    color: #ff9900;
+nav a:hover{
+    background-color: var(--backgroundColorHover);
+}
+
+.logout {
+    margin-top: auto;
+    border-top:var(--border-primary);
+    padding-top: 10px;
+    height: 4%;
+    cursor: pointer;
+}
+
+.logout p{
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+.logout:hover {
+    background-color: rgb(230 226 226 / 55.3%);
+}
+
+nav .active {
+    background-color: var(--backgroundColorHover);
+    color: #FF9000;
 }

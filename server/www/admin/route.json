@@ -30,6 +30,9 @@
             },
             "css_users": {
                 "path": "css/Users.css"
+            },
+            "home_css": {
+                "path": "css/Home.css"
             }
         },
         "js": {

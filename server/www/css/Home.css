@@ -1,0 +1,26 @@
+:root {
+    --BackgroundColor: #333;
+    --BorderColor: 1px solid #ccc;
+}
+
+
+main {
+    width: 100%;
+    height: 100%;
+}
+
+#user-welcome {
+    background-color: var(--BackgroundColor);
+    border-bottom: var(--BorderColor);
+    width: 100%;
+    color: #fff;
+    display: flex;
+    padding: 10px 10px 10px 10px;
+}
+
+.contenaire{
+    display: flex;
+    flex-direction: row;
+    background-color: var(--BackgroundColor);
+    height: 100%;
+}

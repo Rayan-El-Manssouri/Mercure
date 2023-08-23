@@ -7,12 +7,22 @@
     <title>Majax - Admin panel</title>
     <link rel="icon" href="/logo">
     <link rel="stylesheet" href="css_admin">
+    <link rel="stylesheet" href="home_css">
 </head>
 
 <body>
     <!-- Balise spécial Majax import -->
-    <import src="./components/Header.html"/>
-    <import src="./components/Home.html" />
+    <div class="body_private">
+        <import src="./components/Header.html" />
+        
+        <main>
+            <section id="user-welcome">
+                <h2>Bienvenue sur majax !</h2>
+            </section>
+            <section class="contenaire">
+            </section>
+        </main>
+    </div>
     <script src="adminjs" type="text/javascript"></script>
 </body>
 

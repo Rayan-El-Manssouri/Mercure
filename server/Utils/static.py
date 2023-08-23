@@ -28,4 +28,4 @@ def serve_static_file(route):
         content =  render_custom_tags(emplacement, content_type, base_path, route)
         return content, 200, {'Content-Type': content_type}
     else:
-        return "Fichier non trouvé code error : 404", 404, {'Content-Type': 'text/plain'}
+        return '[{"error": "Fichier non trouver"}]', 404, {'Content-Type': 'application/json'}

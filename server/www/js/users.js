@@ -36,7 +36,7 @@ function displayUserList(users = usersData) {
     // Afficher un message lorsqu'aucun utilisateur n'est sélectionné
     if (users.length === 0) {
         const userInfo = document.getElementById("user-info");
-        userInfo.innerHTML = '<p style="text-align: center" >Aucun utilisateur sélectionné.</p>';
+        userInfo.innerHTML = '<p style="text-align: center; width: 100%;" >Aucun utilisateur sélectionné.</p>';
     }
 }
 
@@ -65,7 +65,7 @@ function searchUser() {
 
         // Efface les détails de l'utilisateur
         const userInfo = document.getElementById("user-info");
-        userInfo.innerHTML = '<p style="text-align: center;">Aucun utilisateur sélectionné.</p>';
+        userInfo.innerHTML = '<p style="text-align: center; width: 100%;">Aucun utilisateur sélectionné.</p>';
     } else {
         // Des utilisateurs ont été trouvés, affiche le nombre d'utilisateurs et la liste
         userCountMessage.style.display = "block";
@@ -90,14 +90,20 @@ function displayUserInfo(user) {
             </div>
             <div>
                 <button onclick="editUser(${user.id})">Modifier le rôle</button>
-                <button onclick="editUser(${user.id})">Bannir</button>
-                <button onclick="editUser(${user.id})">Voir tous les messages de l'utilisateur</button>
                 <button onclick="editUser(${user.id})">Supprimer l'utilisateur</button>
+                <button onclick="editUser(${user.id})">Bannir</button>
                 <button onclick="editUser(${user.id})">Envoyer un rapport</button>
+                <button onclick="editUser(${user.id})">Voir tous les messages de l'utilisateur</button>
             </div>
     </div>
-        
     `;
+
+    const editUserButton = document.getElementById("edit-user-button");
+    const editUserForm = document.getElementById("edit-user-form");
+
+    editUserButton.addEventListener("click", function () {
+        editUserForm.style.display = "block";
+    });
 }
 
 function fetchUsersData() {
@@ -124,4 +130,19 @@ window.addEventListener("load", () => {
 
     // Ajoute un événement de clic au bouton de recherche
     document.getElementById("search-user").addEventListener("input", searchUser);
+});
+
+const addFormUsers = document.getElementById('btn-add-user');
+const formUsers = document.getElementById('add-user-form');
+const userInfo = document.getElementById('user-info');
+
+addFormUsers.addEventListener('click', (e) => {
+    if (formUsers.style.display === 'none') {
+        formUsers.style.display = 'block';
+        userInfo.style.display = 'none';
+    } else {
+        formUsers.style.display = 'none';
+        userInfo.style.display = 'block';
+    }
+
 });

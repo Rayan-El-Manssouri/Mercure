@@ -11,42 +11,31 @@
 </head>
 
 <body>
-    <import src="./components/Header.html" />
-    <div class="contenaire">
-        <!-- Liste des utilisateurs -->
-        <section id="user-list">
-            <div class="padding_list">
-                <div class="header_section_users_list">
-                    <h2>Liste des Utilisateurs</h2>
-                    <div class="user-admin-info">
-                        <button id="btn-add-user">Ajouter un Utilisateur</button>
-                    </div>
+    <div class="body_private">
+        <import src="./components/Header.html" />
+        <main>
+            <section id="user-list">
+                <h2>Liste des Utilisateurs</h2>
+                <div class="users-action-add-delete">
+                    <button id="btn-add-user">Reset</button>
+                    <button id="btn-add-user">Ajout un Utilisateur</button>
                 </div>
-            </div>
-
-            <div class="list">
-                <div class="serach_padding">
-                    <div class="search_svg">
+            </section>
+            <section id="list">
+                <div class="list-users">
+                    <div class="search">
                         <import src="./svg/account.svg" />
-                        <input type="text" placeholder="Rechercher un Utilisateur existant via son pseudo..."
-                            id="search-user" />
+                        <input type="text" placeholder="Rechercher un compte via son pseudo ..." id="search-user">
+                    </div>
+                    <p id="user-count-message" ></p>
+                    <div class="users-overflow">
+                        <ul id="users"></ul>
                     </div>
                 </div>
 
-                <p id="no-user-found-message" style="display: none;">Aucun utilisateur trouvé</p>
-                <div class="users-list-height">
-                    <p id="user-count-message" style="display: none;"></p>
-                    <ul id="users"></ul>
-                </div>
-                <footer>
-                    <import src="./svg/account.svg" />
-                    <p>Connecter en tant que <span id="user-name"></span></p>
-                </footer>
-            </div>
-           
-        </section>
-
-        <div id="user-info"></div>
+                <p id="user-info"></p>
+            </section>
+        </main>
     </div>
 
     <script type="text/javascript" src="users"></script>
