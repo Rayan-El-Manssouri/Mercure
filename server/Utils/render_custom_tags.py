@@ -1,37 +1,33 @@
 from bs4 import BeautifulSoup
+from Utils.RenderCustomTags import RenderCustomTags
+def render_custom_tags(emplacement: str, content_type: str, base_path: str, route: str) -> str:
+    """Rendre le contenu en fonction du type de contenu."""
+    content = RenderCustomTags.read_file(emplacement, content_type)
+    
+    if content_type == "text/html":
+        soup = BeautifulSoup(content, 'html.parser')
+        process_imports(soup, base_path)
+        RenderCustomTags.add_active_class_to_links(soup, route)
+        return soup.prettify()
+    
+    return content
 
-def render_custom_tags(emplacement, content_type, base_path, route):
-    if content_type == "application/octet-stream":
-        with open(emplacement, 'rb') as f:
-            content = f.read()
-        return content
-    else:
-        with open(emplacement, 'r', encoding='utf-8') as f:
-            content = f.read()
-            if content_type == "text/html":
-                # Cercher tous les balise import du code html
-                soup = BeautifulSoup(content, 'html.parser')
-                import_tags = soup.find_all('import')
-                # Chercher le contnu src de chaque balise import
-                for tag in import_tags:
-                    src = tag.get('src')
-                    # Ouvrir le fichier src et remplacer le contenu de la balise import par le contenu du fichier
-                    with open(base_path + src, "r", encoding='utf-8') as file:
-                        content_import = file.read()
-                        tag.replace_with(BeautifulSoup(content_import, 'html.parser'))
-                    
-                # Trouve toutes les balises "a" avec l'attribut "exact"
-                target_links = soup.find_all('a', attrs={'exact': True})
+def process_imports(soup: BeautifulSoup, base_path: str):
+    """Traite les balises <import> dans le contenu HTML."""
+    import_tags = soup.find_all('import')
+    import_list = []
 
-                for link in target_links:
-                    if link.get('href') == route:
-                        link['class'] = 'active'
-                        
+    for import_tag in import_tags:
+        src = import_tag.get('src')
+        if src:
+            with open(base_path + src, "r", encoding='utf-8') as file:
+                content_import = file.read()
+                import_list.append((import_tag, content_import))
 
-                # Une fois fini de remplacer l'attribue excact par active, on peut supprimer l'attribue exact
-                for link in target_links:
-                    del link['exact']
-                
-                return soup.prettify()
-                    
-        return content
+    # Remplacer les balises <import> par le contenu des fichiers importés
+    for import_tag, content_import in import_list:
+        import_tag.replace_with(BeautifulSoup(content_import, 'html.parser'))
+
+    # Vérifier si le contenu importé contient des balises <import> imbriquées
+    while soup.find('import'):
+        process_imports(soup, base_path)
