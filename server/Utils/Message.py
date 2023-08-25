@@ -15,33 +15,56 @@ class Message:
             return content
     
     def fetchUserUniqueComunity(user_email):
-        unique_communicators = set()  # Use a set to store unique email accounts
+        unique_communicators = []  # Utilisez une liste pour stocker les communicateurs uniques
         with open('./server/Message.json', 'r', encoding='utf-8') as f:
             content = json.load(f)
             for message in content:
-                # Check if the message involves the specified user_email
-                if message['sender'] == user_email:
-                    unique_communicators.add(message['receiver'])
+                if message['sender']['email'] == user_email:
+                    communicator = {
+                        'role': message['sender']['role'],
+                        'email': message['sender']['email'],
+                        'pseudo': message['sender']['pseudo'],
+                        'content': message['content'],
+                        'sender': message['sender'],
+                        'receiver': message['receiver']
+                    }
+                    if communicator not in unique_communicators:
+                        unique_communicators.append(communicator)
                 elif message['receiver'] == user_email:
-                    unique_communicators.add(message['sender'])
-        
-        # Convert the set back to a list before returning
-        return list(unique_communicators)
+                    communicator = {
+                        'role': message['sender']['role'],
+                        'email': message['sender']['email'],
+                        'pseudo': message['sender']['pseudo'],
+                        'content': message['content'],
+                        'sender': message['sender'],
+                        'receiver': message['receiver']
+                    }
+                    if communicator not in unique_communicators:
+                        unique_communicators.append(communicator)
 
+        # Convertissez la liste de dictionnaires en une chaîne JSON avant de la renvoyer
+        return json.dumps(unique_communicators)
+
+    
     def fetch_compte():
         with open('./server/auth/Compte.json', 'r', encoding='utf-8') as f:
             content = f.read()
             content = json.loads(content)
             return jsonify(content)
         
-    def fetch_user_filter(UserEmail):
+    def fetch_user_filter(UserEmail, AdminEmail):
         with open('./server/Message.json', 'r', encoding='utf-8') as f:
-            # Trier avec l'email est le timestamp
+            # Charger les données JSON
             content = json.loads(f.read())
-            content = [message for message in content if message['sender'] == UserEmail or message['receiver'] == UserEmail]
+            
+            # Filtrer les messages où l'utilisateur est l'expéditeur ou le destinataire
+            content = [message for message in content if (message['sender']['email'] == UserEmail or message['receiver'] == UserEmail) and (message['sender']['email'] == AdminEmail or message['receiver'] == AdminEmail)]
+            
             # Trier par timestamp
             content = sorted(content, key=lambda k: k['timestamp'])
+        
         return jsonify(content)
+
 
     def message():
         messages = Message.read_messages_from_file()

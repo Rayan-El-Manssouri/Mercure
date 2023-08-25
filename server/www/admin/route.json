@@ -13,6 +13,9 @@
             },
             "Utilisateurs": {
                 "path": "Utilisateurs.html"
+            },
+            "Messages": {
+                "path": "Messages.html"
             }
         },
         "css": {
@@ -33,6 +36,9 @@
             },
             "home_css": {
                 "path": "css/Home.css"
+            },
+            "css_message": {
+                "path": "css/Message.css"
             }
         },
         "js": {
@@ -47,6 +53,9 @@
             },
             "users": {
                 "path": "js/users.js"
+            },
+            "message_js" : {
+                "path": "js/message_js.js"
             }
         },
         "images": {

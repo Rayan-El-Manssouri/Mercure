@@ -21,7 +21,7 @@ function_mapping = {
     'connect': Message.login,
     'connect_admin': Message.login_admin,
     'fetchUser': lambda data: Message.fetch_user(data['UserEmail']),
-    'fetchUserFilter': lambda data: Message.fetch_user_filter(data['UserEmail']),
+    'fetchUserFilter': lambda data: Message.fetch_user_filter(data['UserEmail'], data['AdminEmail']),
     'Message': Message.message,
     'fetchCompte': Message.fetch_compte,
     'fetchUserUniqueComunity': lambda data: Message.fetchUserUniqueComunity(data['UserEmail']),

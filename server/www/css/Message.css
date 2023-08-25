@@ -1,0 +1,175 @@
+main {
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    display: flex;
+}
+
+:root {
+    --border-primary: 1px solid #ccc;
+    --backgroundColorHover: rgba(230, 226, 226, 0.553);
+}
+
+/* Style de base pour la section des messages */
+#messages {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.message {
+    clear: both;
+    margin-bottom: 5px; /* Espace entre les messages */
+}
+
+/* Style des messages utilisateur */
+.message.user-message {
+    background-color: #e6e2e2;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    text-align: left;
+    flex-direction: row;
+    float: left;
+    width: 40%;
+    margin-bottom: 10px auto;
+}
+
+/* Style des messages de l'administrateur */
+.message.admin-message {
+    background-color: #fff;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    text-align: right;
+    flex-direction: row;
+    float: right;
+    width: 40%;
+}
+
+.message.input{
+    border-radius: 5px;
+    margin-top: auto;
+}
+
+/* Style du nom de l'expéditeur */
+.message-sender {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Style de l'heure du message */
+.message-time {
+    font-size: 0.8rem;
+    color: #999;
+}
+
+.message.overflow{
+    overflow-y: scroll;
+    height: 99%;
+    border-bottom: var(--border-primary);
+    width: 100%;
+}
+
+/* Style de la zone de saisie de message */
+.message-input {
+    margin-top: 10px;
+    padding: 5px;
+    border: var(--border-primary);
+    border-radius: 5px;
+    width: 100%;
+    transition: border-color 0.3s ease; /* Ajout d'une transition pour une animation en douceur */
+}
+
+.message-input:focus {
+    outline: none;
+    border-color: #FF9000; /* Changement de la couleur de la bordure au focus */
+}
+
+
+/* Style de la section des utilisateurs */
+#user-list {
+    flex-basis: 400px; /* Ajustez la largeur selon vos besoins */
+    border-right: var(--border-primary);
+    padding: 10px;
+    overflow-y: auto;
+}
+
+/* Style de la liste des utilisateurs */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Style des éléments de la liste des utilisateurs */
+li {
+    margin: 5px 0;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    
+}
+
+/* Style lorsque l'utilisateur est actif ou sélectionné */
+li.active_user {
+    background-color: var(--backgroundColorHover);
+    color: #FF9000;
+}
+
+/* Style lorsque survolé par la souris */
+li:hover {
+    background-color: rgba(230, 226, 226, 0.553);
+}
+/* Style pour le conteneur principal */
+.user-list-header {
+    background-color: #f2f2f2; 
+    padding: 10px;
+    border-bottom: 1px solid #d1d1d1; 
+    margin-top: auto;
+    border-radius: 5px;
+
+}
+
+/* Style pour la zone de recherche */
+.user-list-search {
+    display: flex; 
+    align-items: center; 
+}
+
+/* Style pour le champ de recherche input */
+.user-list-search-input {
+    border: 1px solid #d1d1d1; 
+    border-radius: 5px; 
+    background-color: #ffffff; 
+    color: #333333; 
+    font-size: 16px; 
+    padding: 8px 12px; 
+    width: 100%; 
+    outline: none; 
+    display: flex;
+}
+
+    
+.user-list-search-input svg {
+    color: #333;
+    margin-right: 5px;
+}
+
+.user-list-search-input input {
+    border: none;
+    outline: none;
+    width: 100%;
+}
+
+/* Style pour le placeholder du champ de recherche */
+.user-list-search-input::placeholder {
+    color: #999999; 
+}
+
+/* Effet focus sur le champ de recherche */
+.user-list-search-input:focus-within {
+    border-color: #FF9000;  
+}

@@ -1,1 +1,862 @@
-[]
+[
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:00:00.000Z"
+    },
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:00:00.000Z"
+    },
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:00:00.000Z"
+    },
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:00:00.000Z"
+    },
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:00:00.000Z"
+    },
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:00:00.000Z"
+    },
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:00:00.000Z"
+    },
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:00:00.000Z"
+    },
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:00:00.000Z"
+    },
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:00:00.000Z"
+    },
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:00:00.000Z"
+    },
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:00:00.000Z"
+    },
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:00:00.000Z"
+    },
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:00:00.000Z"
+    },
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:00:00.000Z"
+    },
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:00:00.000Z"
+    },
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:00:00.000Z"
+    },
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:00:00.000Z"
+    },
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:00:00.000Z"
+    },
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:00:00.000Z"
+    },
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:00:00.000Z"
+    },
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:00:00.000Z"
+    },
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:00:00.000Z"
+    },
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:00:00.000Z"
+    },
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:00:00.000Z"
+    },
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:00:00.000Z"
+    },
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:00:00.000Z"
+    },
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:00:00.000Z"
+    },
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:00:00.000Z"
+    },
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:00:00.000Z"
+    },
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:00:00.000Z"
+    },
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:00:00.000Z"
+    },
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:00:00.000Z"
+    },
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:00:00.000Z"
+    },
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:00:00.000Z"
+    },
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:00:00.000Z"
+    },
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:00:00.000Z"
+    },
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:00:00.000Z"
+    },
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:00:00.000Z"
+    },
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:00:00.000Z"
+    },
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:00:00.000Z"
+    },
+    {
+        "receiver": "admin@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "sender@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the sender.",
+        "timestamp": "2019-12-04T15:00:01.000Z"
+    },
+    {
+        "receiver": "sender@gmail.com",
+        "sender": {
+            "role": "Membre",
+            "email": "admin@gmail.com",
+            "pseudo": "Sender"
+        },
+        "content": "Hello, this is a test email. I'm the admin.",
+        "timestamp": "2019-12-04T15:01:00.00Z"
+    }
+]

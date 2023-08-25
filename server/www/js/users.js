@@ -28,8 +28,6 @@ function displayUserList(users = usersData) {
             displayUserInfo(user);
         });
 
-
-
         userList.appendChild(listItem);
     });
 
