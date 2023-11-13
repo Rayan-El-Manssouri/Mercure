@@ -1,19 +1,46 @@
 import React from "react";
-import { IconUser } from "@tabler/icons-react";
+import { NavLink } from "react-router-dom";
+import { IconHome, IconMail, IconSearch, IconBell, IconUser, IconSettings } from "@tabler/icons-react";
 
-const NavBarHome = () => {
+const HeaderPrivate = ({ logo }) => {
     return (
-        <div className="Header">
-            <div id="welcome">
-                <p>Bienvenue sur Mercure !</p>
+        <div id="sidebar">
+            <div id="logo">
+                <img src={logo} alt="logo" />
+                <p>Mercure</p>
             </div>
-            <div className="space"></div>
-            <div className="button">
-                <IconUser />
-                <p>Compte</p>
-            </div>
+            <nav>
+                <NavLink exact="true" to="/Accueil">
+                    <IconHome />
+                    Accueil
+                </NavLink>
+                <NavLink exact="true" to="/Messagerie">
+                    <IconMail />
+                    Messagerie
+                </NavLink>
+                <NavLink exact="true" to="/Recherche">
+                    <IconSearch />
+                    Recherche
+                </NavLink>
+                <NavLink exact="true" to="/Notifications">
+                    <IconBell />
+                    Notifications
+                </NavLink>
+                <NavLink exact="true" to="/Profil">
+                    <IconUser />
+                    Mon profil
+                </NavLink>
+                <NavLink exact="true" to="/Paramètres">
+                    <IconSettings />
+                    Paramètres
+                </NavLink>
+                <div className="logout" >
+                    <IconUser />
+                    <p>Nom d'utilisateur</p>
+                </div>
+            </nav>
         </div>
     );
 };
 
-export default NavBarHome;
+export default HeaderPrivate;

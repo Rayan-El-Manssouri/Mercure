@@ -1,6 +1,0 @@
-flask
-flask_cors
-flask_socketio
-# Module CRYPTO de AES pour MAJAX
-pycryptodome 
-Flask-Session

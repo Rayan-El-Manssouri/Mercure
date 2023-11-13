@@ -1,0 +1,70 @@
+@import url('./Header.scss');
+@import url('./Form_Connect.scss');
+@import url('./nav.scss');
+@import url('./BodyPrivate.scss');
+@import url('./contenaire.scss');
+
+// variable
+$primaryColor: #a066f2;
+$backgroundColor: #f3f4f6;
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+::selection {
+    background-color: $primaryColor;
+    color: $backgroundColor;
+}
+
+body {
+    height: 100vh;
+    width: 100%;
+}
+
+
+#root {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+img {
+    width: 32px;
+    height: 32px;
+}
+
+h1 {
+    border-bottom: 1px solid $primaryColor;
+    font-size: 1.5rem;
+    font-weight: 100;
+    color: #333;
+    margin-bottom: 12px;
+}
+
+.notification {
+    background-color: rgba(160, 102, 242, 0.58);
+    border: 1px solid #a066f2;
+    color: #fff;
+    width: 99%;
+    padding: 10px;
+    margin: 6px;
+    border-radius: 3px;
+}
+
+a {
+    color: #a066f2;
+    width: 100%;
+    text-decoration: none;
+    padding: 10px;
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+        text-underline-offset: 8px;
+    }
+}

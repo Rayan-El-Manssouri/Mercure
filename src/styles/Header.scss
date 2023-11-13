@@ -1,33 +1,19 @@
-// Définir les variables
-$BorderSeparator: 1px solid #e6e6e6;
-$textColor: #333;
-
-// Styles pour la barre latérale
-#sidebar {
-    flex-basis: min(25vw, 250px);
-    border-right: $BorderSeparator;
+header {
+    background-color: #f4f5f7;
+    border-bottom-left-radius: 5px;
+    padding: 5px;
     display: flex;
-    flex-direction: column;
-    padding: 10px;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
 
-    // Styles pour les enfants directs de la barre latérale
-    & > * {
-        display: flex;
-        gap: 10px;
+    img {
+        margin-right: 5px;
     }
 
-    // Styles pour le logo
-    #logo {
-        padding: 10px 10px 20px;
-        border-bottom: $BorderSeparator;
-        margin-bottom: 10px;
-        flex-direction: row;
+    .header-top {
+        display: flex;
         align-items: center;
-
-        img {
-            width: 50px;
-            height: 50px;
-        }
 
         p {
             font-size: 1.5rem;
@@ -35,47 +21,60 @@ $textColor: #333;
         }
     }
 
-    // Styles pour la navigation
-    nav {
-        flex-grow: 1;
-        flex-direction: column;
+    .header-ul {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
 
-        .active {
-            background-color: #eaeef7;
-        }
-
-        a {
-            padding: 10px;
-            border-radius: 5px;
-            color: $textColor;
-            text-decoration: none;
-            transition: background-color 0.2s ease-in-out;
+        ul {
             display: flex;
+            list-style: none;
+            padding: 5px;
             align-items: center;
 
-            &:hover {
-                background-color: rgb(230 226 226 / 55.3%);
-            }
-
-            svg {
+            li {
+                display: flex;
                 margin-right: 10px;
-                vertical-align: middle;
+                font-family: inherit;
+                font-weight: 500;
+                align-items: center;
+                text-align: center;
+                padding: 5px;
+                border-radius: 3px;
+                border: 1px solid transparent;
+
+                &:hover {
+                    background-color: #eee2ff;
+                    border: 1px solid #a066f2;
+
+                    color: #a066f2;
+                    cursor: pointer;
+                }
             }
         }
 
-        .logout {
-            margin-top: auto;
-            border-top: $BorderSeparator;
-            padding-top: 10px;
+
+    }
+
+    .header-right {
+        margin-right: 5px;
+
+        button {
+            border: 1px solid transparent;
+            background-color: #8d59d5;
+            color: #fff;
+            padding: 10px;
+            border-radius: 3px;
             cursor: pointer;
-            p{
-                font-size: 0.8rem;
-                text-align: center;
-            }
+            margin-left: 10px;
 
             &:hover {
-                background-color: rgb(230 226 226 / 55.3%);
+                background-color: #ad72ff;
             }
+        }
+
+        &.none {
+            display: none;
         }
     }
 }

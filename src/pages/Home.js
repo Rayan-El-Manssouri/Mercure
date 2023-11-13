@@ -1,30 +1,32 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import '../styles/Home.scss'
+import React from 'react';
+import Header from '../components/Header';
+import logo from '../assets/color light 500.png'
+import { useNavigate } from 'react-router-dom';
+
 const Home = () => {
-  return (
-    <div>
-      <div>
-        <div>
-          <div className="HeaderHome">
-            <img src="assets/logo/color light 50.webp" alt="logo" />
-            <h1>Mercure</h1>
-            <ul>
-              <li>
-                <NavLink to="/login">Login</NavLink>
-              </li>
-              <li>
-                <NavLink to="/register">Register</NavLink>
-              </li>
-              <li>
-                <NavLink>API</NavLink>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+
+    const navigate = useNavigate()
+    
+    const handleRefresh = ((redirect) => {
+        navigate(redirect)
+    })
+    
+    return (
+        <>
+            <Header />
+            <div className='contenaire'>
+                <div>
+                    <img src={logo} alt='Icon Mercure Logo' />
+                    <p>Bievenue sur Mercure !</p>
+                </div>
+
+                <div>
+                    <button onClick={() => handleRefresh("dowload")}>Télécharger</button>
+                    <button onClick={() => handleRefresh("Accueil")}>Acceder aux site web</button>
+                </div>
+            </div>
+        </>
+    );
 };
 
 export default Home;

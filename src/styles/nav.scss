@@ -1,0 +1,94 @@
+// Définir les variables
+$BorderSeparator: 1px solid #e6e6e6;
+$textColor: #333;
+
+// Styles pour la barre latérale
+#sidebar {
+    flex-basis: min(25vw, 250px);
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 100%;
+
+    // Styles pour les enfants directs de la barre latérale
+    &>* {
+        display: flex;
+        gap: 10px;
+    }
+
+    // Styles pour le logo
+    #logo {
+        padding: 10px 10px 20px;
+        border-bottom: $BorderSeparator;
+        margin-bottom: 10px;
+        flex-direction: row;
+        align-items: center;
+
+        img {
+            width: 50px;
+            height: 50px;
+        }
+
+        p {
+            font-size: 1.5rem;
+            font-family: "Carter One", system-ui;
+        }
+    }
+
+    // Styles pour la navigation
+    nav {
+        flex-grow: 1;
+        flex-direction: column;
+
+        .active {
+            background-color: rgb(235, 236, 240);
+            color: #a066f2;
+        }
+
+        a {
+            align-items: center;
+            border-radius: 3px;
+            color: inherit;
+            cursor: pointer;
+            display: flex;
+            height: 40px;
+            outline: none;
+            text-align: left;
+            text-decoration: none;
+            width: 100%;
+            padding-left: 12px;
+            padding-right: 12px;
+            border: 1px solid transparent;
+
+            &:hover {
+                background-color: rgb(235, 236, 240);
+                border: 1px solid #a066f2;
+            }
+
+            svg {
+                margin-right: 10px;
+                vertical-align: middle;
+            }
+        }
+
+        .logout {
+            margin-top: auto;
+            border-top: $BorderSeparator;
+            padding: 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            p {
+                margin-right: 5px;
+                margin-left: 5px;
+            }
+
+            &:hover {
+                background-color: rgb(235, 236, 240);
+            }
+        }
+    }
+}

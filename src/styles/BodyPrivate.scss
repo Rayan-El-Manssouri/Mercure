@@ -1,0 +1,94 @@
+.body_private {
+    height: 100dvh;
+    font-family: system-ui;
+    font-size: 1rem;
+    display: flex;
+    overflow-y: hidden;
+    width: 100%;
+    background-color: #f4f5f7;
+
+    .Header-contenaire {
+        width: 100%;
+
+        .contenaire-aceuil {
+            display: flex;
+            flex-direction: row;
+            border: 1px solid #e6e6e6;
+            height: 100%;
+            border-top-left-radius: 5px;
+            background-color: #fff;
+
+            .contenaire-users {
+                display: flex;
+                flex-direction: column;
+                border-right: 1px solid #e6e6e6;
+
+                .header-users {
+                    display: flex;
+                    flex-direction: row;
+                    border-bottom: 1px solid #a066f2;
+                    padding: 10px;
+
+                    .border-header-users {
+                        display: flex;
+                        flex-direction: row;
+                        border: 1px solid #e6e6e6;
+                        border-radius: 5px;
+                        padding: 3px;
+
+                        &:focus-within {
+                            border: 1px solid #a066f2;
+                        }
+                    }
+
+                    input {
+                        width: 100%;
+                        outline: none;
+                        border: 1px solid transparent;
+                    }
+                }
+
+                .contenaire-users-list-users {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1;
+
+                    .scrollbar {
+                        display: flex;
+                        flex-direction: column;
+                        overflow-y: scroll;
+                        height: 800px;
+                        border-bottom: 1px solid #a066f2;
+                    }
+                }
+
+                ul {
+                    list-style: none;
+                    display: flex;
+                    flex-direction: column;
+                    margin-top: 5;
+                    width: 100%;
+                    padding: 3px;
+
+                    li {
+                        display: flex;
+                        flex-direction: row;
+                        width: 100%;
+                        padding: 5px;
+                        cursor: pointer;
+                        border-radius: 5px;
+
+                        svg {
+                            margin-right: 5px;
+                        }
+
+                        &:hover {
+                            background-color: #EBECF0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
