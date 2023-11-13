@@ -18,16 +18,107 @@
             border-top-left-radius: 5px;
             background-color: #fff;
 
+            .contenaire-sender-recevier {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+
+                .contenaire-sender-recevier-list {
+                    display: flex;
+                    flex-direction: column;
+                    border-bottom: 1px solid #EBECF0;
+                    overflow-x: auto;
+                }
+
+                .tools {
+                    display: flex;
+                    padding: 3px;
+
+                    .tools-icons {
+                        display: flex;
+
+                        svg {
+                            border-radius: 5px;
+                            cursor: pointer;
+                            margin-left: 3px;
+                            margin-right: 3px;
+
+                            &:hover {
+                                background-color: #EBECF0;
+                            }
+                        }
+                    }
+
+                    input {
+                        width: 100%;
+                        outline: none;
+                        border: 1px solid #e6e6e6;
+                        border-radius: 3px;
+                        padding: 5px;
+
+                        &:focus {
+                            border: 1px solid #a066f2;
+                        }
+                    }
+                }
+
+                .sender {
+                    display: flex;
+                    flex-direction: row;
+                    margin-right: auto;
+                    padding: 3px;
+                    align-items: center;
+
+                    p {
+                        border: 1px solid #e6e6e6;
+                        padding: 3px;
+                        border-radius: 3px;
+                    }
+                }
+
+                .recevier {
+                    display: flex;
+                    flex-direction: row;
+                    margin-left: auto;
+                    margin-right: 5px;
+                    padding: 3px;
+                    align-items: center;
+
+                    p {
+                        border: 1px solid #e6e6e6;
+                        padding: 3px;
+                        border-radius: 3px;
+                    }
+                }
+
+
+            }
+
             .contenaire-users {
                 display: flex;
                 flex-direction: column;
                 border-right: 1px solid #e6e6e6;
+                flex-basis: min(27vw, 280px);
 
                 .header-users {
                     display: flex;
                     flex-direction: row;
+                    align-items: center;
                     border-bottom: 1px solid #a066f2;
                     padding: 10px;
+                    width: 100%;
+
+                    .users-add-plus {
+                        margin-left: 5px;
+                        border-radius: 3px;
+                        cursor: pointer;
+                        padding: 2px;
+
+                        &:hover {
+                            background-color: #EBECF0;
+                            border-radius: 3px;
+                        }
+                    }
 
                     .border-header-users {
                         display: flex;
@@ -35,6 +126,7 @@
                         border: 1px solid #e6e6e6;
                         border-radius: 5px;
                         padding: 3px;
+                        flex: 1;
 
                         &:focus-within {
                             border: 1px solid #a066f2;
@@ -49,42 +141,66 @@
                 }
 
                 .contenaire-users-list-users {
-                    width: 100%;
                     display: flex;
                     flex-direction: column;
                     flex: 1;
-
+                    
                     .scrollbar {
                         display: flex;
                         flex-direction: column;
                         overflow-y: scroll;
+                        width: 100%;
                         height: 800px;
                         border-bottom: 1px solid #a066f2;
-                    }
-                }
 
-                ul {
-                    list-style: none;
-                    display: flex;
-                    flex-direction: column;
-                    margin-top: 5;
-                    width: 100%;
-                    padding: 3px;
-
-                    li {
-                        display: flex;
-                        flex-direction: row;
-                        width: 100%;
-                        padding: 5px;
-                        cursor: pointer;
-                        border-radius: 5px;
-
-                        svg {
-                            margin-right: 5px;
+                        .date {
+                            color: #898686;
+                            margin-bottom: auto;
                         }
 
-                        &:hover {
-                            background-color: #EBECF0;
+                        ul {
+                            list-style: none;
+                            display: flex;
+                            flex-direction: column;
+                            margin-top: 5;
+                            width: 100%;
+                            padding: 3px;
+
+                            li {
+                                display: flex;
+                                flex-direction: row;
+                                width: 100%;
+                                padding: 5px;
+                                cursor: pointer;
+                                border-radius: 5px;
+                                align-items: center;
+                                font-size: 14px;
+
+                                h1 {
+                                    border: none;
+                                    font-size: 16px;
+                                    margin-bottom: 0px;
+                                    font-weight: bold;
+                                    font-weight: 400;
+                                }
+
+                                p {
+                                    text-overflow: ellipsis;
+                                    white-space: nowrap;
+                                    overflow: hidden;
+                                    font-size: 12px;
+                                    color: #898686;
+                                    width: 80%;
+                                }
+
+                                svg {
+                                    margin-right: 5px;
+                                }
+
+                                &:hover {
+                                    background-color: #EBECF0;
+                                }
+                            }
                         }
                     }
                 }

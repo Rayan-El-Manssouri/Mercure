@@ -2,8 +2,9 @@ import '../../styles/main.scss';
 import Header from '../../components/Header';
 import HeaderPrivate from '../../components/NavBarHome';
 import logo from '../../assets/color light 500.png';
-import { IconSearch, IconUserCircle } from '@tabler/icons-react';
+import { IconDownload, IconMicrophone, IconMoodHappy, IconSearch, IconUserCircle, IconUsersPlus } from '@tabler/icons-react';
 import { useEffect } from 'react';
+import UsersList from './ListUsersComponents/UsersList';
 
 const Messagerie = () => {
 
@@ -14,7 +15,10 @@ const Messagerie = () => {
 
     const handleRefresh = (() => {
         const ListUsersScroll = document.getElementById("scrollbar-ul-users-list")
-        ListUsersScroll.style.height = window.innerHeight - 200 + 'px'
+        const SenderReceiverList = document.getElementById("contenaire-sender-recevier-list")
+        ListUsersScroll.style.height = window.innerHeight - 140 + 'px'
+        SenderReceiverList.style.height = window.innerHeight - 87 + 'px'
+        SenderReceiverList.style.overflowY = 'srcoll'
     })
 
     return (
@@ -22,9 +26,6 @@ const Messagerie = () => {
             <HeaderPrivate logo={logo} />
             <div className='Header-contenaire'>
                 <Header active="none" />
-                <div className='notification'>
-                    <p>Des nouveaux messages sont disponible ...</p>
-                </div>
                 <div
                     className='contenaire-aceuil'
                 >
@@ -34,144 +35,84 @@ const Messagerie = () => {
                                 <IconSearch />
                                 <input placeholder='Rechercher un utilisateur' />
                             </div>
+                            <IconUsersPlus className='users-add-plus' />
                         </div>
-                        <div className='contenaire-users-list-users'>
+                        <div className='contenaire-users-list-users' id='ConteneurUsersListUsersId'>
                             <div className='scrollbar' id='scrollbar-ul-users-list'>
                                 <ul>
-                                    <li>
-                                        <div><IconUserCircle /> </div>
-                                        <div>Utilisateur 1</div>
-                                    </li>
-                                    <li>
-                                        <div><IconUserCircle /> </div>
-                                        <div>Utilisateur 1</div>
-                                    </li>
-                                    <li>
-                                        <div><IconUserCircle /> </div>
-                                        <div>Utilisateur 1</div>
-                                    </li>
-                                    <li>
-                                        <div><IconUserCircle /> </div>
-                                        <div>Utilisateur 1</div>
-                                    </li>
-                                    <li>
-                                        <div><IconUserCircle /> </div>
-                                        <div>Utilisateur 1</div>
-                                    </li>
-                                    <li>
-                                        <div><IconUserCircle /> </div>
-                                        <div>Utilisateur 1</div>
-                                    </li>
-                                    <li>
-                                        <div><IconUserCircle /> </div>
-                                        <div>Utilisateur 1</div>
-                                    </li>
-                                    <li>
-                                        <div><IconUserCircle /> </div>
-                                        <div>Utilisateur 1</div>
-                                    </li>
-                                    <li>
-                                        <div><IconUserCircle /> </div>
-                                        <div>Utilisateur 1</div>
-                                    </li>
-                                    <li>
-                                        <div><IconUserCircle /> </div>
-                                        <div>Utilisateur 1</div>
-                                    </li>
-                                    <li>
-                                        <div><IconUserCircle /> </div>
-                                        <div>Utilisateur 1</div>
-                                    </li>
-                                    <li>
-                                        <div><IconUserCircle /> </div>
-                                        <div>Utilisateur 1</div>
-                                    </li>
-                                    <li>
-                                        <div><IconUserCircle /> </div>
-                                        <div>Utilisateur 1</div>
-                                    </li>
-                                    <li>
-                                        <div><IconUserCircle /> </div>
-                                        <div>Utilisateur 1</div>
-                                    </li>
-                                    <li>
-                                        <div><IconUserCircle /> </div>
-                                        <div>Utilisateur 1</div>
-                                    </li>
-                                    <li>
-                                        <div><IconUserCircle /> </div>
-                                        <div>Utilisateur 1</div>
-                                    </li>
-                                    <li>
-                                        <div><IconUserCircle /> </div>
-                                        <div>Utilisateur 1</div>
-                                    </li>
-                                    <li>
-                                        <div><IconUserCircle /> </div>
-                                        <div>Utilisateur 1</div>
-                                    </li>
-                                    <li>
-                                        <div><IconUserCircle /> </div>
-                                        <div>Utilisateur 1</div>
-                                    </li>
-                                    <li>
-                                        <div><IconUserCircle /> </div>
-                                        <div>Utilisateur 1</div>
-                                    </li>
-                                    <li>
-                                        <div><IconUserCircle /> </div>
-                                        <div>Utilisateur 1</div>
-                                    </li>
-                                    <li>
-                                        <div><IconUserCircle /> </div>
-                                        <div>Utilisateur 1</div>
-                                    </li>
-                                    <li>
-                                        <div><IconUserCircle /> </div>
-                                        <div>Utilisateur 1</div>
-                                    </li>
-                                    <li>
-                                        <div><IconUserCircle /> </div>
-                                        <div>Utilisateur 1</div>
-                                    </li>
-                                    <li>
-                                        <div><IconUserCircle /> </div>
-                                        <div>Utilisateur 1</div>
-                                    </li>
-                                    <li>
-                                        <div><IconUserCircle /> </div>
-                                        <div>Utilisateur 1</div>
-                                    </li>
-                                    <li>
-                                        <div><IconUserCircle /> </div>
-                                        <div>Utilisateur 1</div>
-                                    </li>
-                                    <li>
-                                        <div><IconUserCircle /> </div>
-                                        <div>Utilisateur 1</div>
-                                    </li>
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
+                                    <UsersList pseudo="Pseudo" message="Salut j'ai une question pour le stage du 09" />
                                 </ul>
                             </div>
                         </div>
                     </div>
 
                     <div className='contenaire-sender-recevier'>
-                        <div className='sender'>
-                            <p><IconUserCircle /></p>
-                            <p>Pseudo</p>
-                            <p>Saluut !</p>
-                            <p>10h12</p>
-                        </div>
+                        <div className='contenaire-sender-recevier-list' id='contenaire-sender-recevier-list'>
+                            <div className='sender'>
+                                <div><IconUserCircle /></div>
+                                <p>Coucou !!</p>
+                            </div>
+                            <div className='recevier'>
+                                <p>Salut !!</p>
+                                <div><IconUserCircle /></div>
+                            </div>
 
-                        <div className='recevier'>
-                            <p><IconUserCircle /></p>
-                            <p>Pseudo</p>
-                            <p>Saluut !</p>
-                            <p>10h12</p>
                         </div>
 
                         <div className='tools'>
-                            <input />
+                            <div className='tools-icons'>
+                                <IconDownload />
+                                <IconMoodHappy />
+                                <IconMicrophone />
+                            </div>
+                            <input placeholder='Vôtre message ...' />
                         </div>
                     </div>
                 </div>
