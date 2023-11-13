@@ -1,6 +1,5 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
-import { IconHome, IconMail, IconSearch, IconBell, IconUser, IconSettings } from "@tabler/icons-react";
+import { IconHome, IconMail, IconSearch, IconBell, IconUser, IconSettings, IconGift } from "@tabler/icons-react";
 
 const HeaderPrivate = ({ logo }) => {
     return (
@@ -34,6 +33,11 @@ const HeaderPrivate = ({ logo }) => {
                     <IconSettings />
                     Paramètres
                 </NavLink>
+                <NavLink exact="true" to="/Paramètres">
+                    <IconGift />
+                    Don
+                </NavLink>
+
                 <div className="logout" >
                     <IconUser />
                     <p>Nom d'utilisateur</p>
