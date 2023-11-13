@@ -4,22 +4,27 @@ import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 import { useState } from 'react';
 
-
 // Inscription
-const Connect = () => {
+const Inscription = () => {
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
+    const [pseudo, setPseudo] = useState('');
+    const [error, setError] = useState('')
+    const [success, setSucess] = useState('')
 
     const handleLogin = async () => {
         try {
-            const response = await axios.post('http://localhost:5000/login', {
+            const response = await axios.post('http://localhost:5000/Subscribe', {
                 password: password,
+                pseudo: pseudo,
                 email: email
             });
-
-            console.log('Login successful:', response.data.message);
+            console.log('Login successful:');
+            setError("")
+            setSucess(response.data.message)
         } catch (error) {
-            console.error('Error during login:', error.response.data.message);
+            setSucess("")
+            setError(error.response.data.message)
         }
     };
 
@@ -40,6 +45,12 @@ const Connect = () => {
                             <label>Mot de passe</label>
                             <input type='password' placeholder='Votre mot de passe' value={password} onChange={(e) => setPassword(e.target.value)} />
                         </div>
+                        <div>
+                            <label>Pseudo</label>
+                            <input type='text' placeholder='Votre pseudo' value={pseudo} onChange={(e) => setPseudo(e.target.value)} />
+                        </div>
+                        {error && <p className='error'>{error}</p>}
+                        {success && <p className='success'>{success}</p>}
                     </div>
                     <div className='footer'>
                         <NavLink to="/" className="compte-active-a">
@@ -59,4 +70,4 @@ const Connect = () => {
     );
 };
 
-export default Connect;
+export default Inscription;
