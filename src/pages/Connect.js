@@ -4,20 +4,20 @@ import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 import { useState } from 'react';
 
-
 // Inscription
 const Connect = () => {
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
 
     const handleLogin = async () => {
-        try {
-            const response = await axios.post('http://localhost:5000/login', {
-                password: password,
-                email: email
-            });
+        const response = await axios.post('http://localhost:5000/login', {
+            password: password,
+            email: email
+        });
 
-            console.log('Login successful:', response.data.message);
+        try {
+            console.log('Login successful:', response.data.access_token);
+            localStorage.setItem('Token', response.data.access_token);
         } catch (error) {
             console.error('Error during login:', error.response.data.message);
         }

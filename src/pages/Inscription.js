@@ -18,6 +18,10 @@ const Inscription = () => {
                 password: password,
                 pseudo: pseudo,
                 email: email
+            }, {
+                headers: {
+                    'Authorization': `85115s61d54df899f4es5d1f`
+                }
             });
             console.log('Login successful:');
             setError("")

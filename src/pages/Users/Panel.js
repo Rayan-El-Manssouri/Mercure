@@ -16,10 +16,7 @@ const Panel = () => {
         <div
           className='contenaire-aceuil'
         >
-
-
           <div>
-
           </div>
         </div>
       </div>
