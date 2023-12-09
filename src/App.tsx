@@ -4,12 +4,14 @@ import Connect from './pages/Connect';
 import Panel from './pages/Users/Panel';
 import Messagerie from './pages/Users/Messagerie';
 import Inscription from './pages/Inscription';
+import Loader from './components/toast/Loader';
 const Home = lazy(() => import('./pages/Home'));
 
 const App = () => {
+
     return (
         <BrowserRouter>
-            <Suspense fallback={<div>La page se charge ...</div>}>
+            <Suspense fallback={<Loader />}>
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/Connect" element={<Connect />} />

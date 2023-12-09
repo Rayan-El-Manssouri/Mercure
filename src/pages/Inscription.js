@@ -1,34 +1,23 @@
 import '../styles/main.scss';
 import logo from '../assets/color light 500.png';
 import { NavLink } from 'react-router-dom';
-import axios from 'axios';
 import { useState } from 'react';
+import Majax from '../Modules/Majax/Majax';
 
-// Inscription
 const Inscription = () => {
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const [pseudo, setPseudo] = useState('');
-    const [error, setError] = useState('')
-    const [success, setSucess] = useState('')
+
 
     const handleLogin = async () => {
-        try {
-            const response = await axios.post('http://localhost:5000/Subscribe', {
-                password: password,
-                pseudo: pseudo,
-                email: email
-            }, {
-                headers: {
-                    'Authorization': `85115s61d54df899f4es5d1f`
-                }
-            });
-            console.log('Login successful:');
-            setError("")
-            setSucess(response.data.message)
-        } catch (error) {
-            setSucess("")
-            setError(error.response.data.message)
+        const MajaxInit = new Majax()
+        const response = await MajaxInit.subscribe(password, pseudo, email)
+        if (response === 200) {
+            alert("Inscription réussie .")
+            window.location.href = "Connect"
+        } else {
+            alert(response.message)
         }
     };
 
@@ -53,8 +42,6 @@ const Inscription = () => {
                             <label>Pseudo</label>
                             <input type='text' placeholder='Votre pseudo' value={pseudo} onChange={(e) => setPseudo(e.target.value)} />
                         </div>
-                        {error && <p className='error'>{error}</p>}
-                        {success && <p className='success'>{success}</p>}
                     </div>
                     <div className='footer'>
                         <NavLink to="/" className="compte-active-a">

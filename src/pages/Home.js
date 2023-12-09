@@ -1,16 +1,19 @@
-import React from 'react';
 import Header from '../components/Header';
 import logo from '../assets/color light 500.png'
 import { useNavigate } from 'react-router-dom';
-
+import Majax from '../Modules/Majax/Majax';
+import '../styles/main.scss'
 const Home = () => {
 
     const navigate = useNavigate()
-    
+
     const handleRefresh = ((redirect) => {
         navigate(redirect)
     })
-    
+
+    // const MajaxInit = new Majax()
+    // MajaxInit.CheckLogin(localStorage.getItem("Email"))
+
     return (
         <>
             <Header />

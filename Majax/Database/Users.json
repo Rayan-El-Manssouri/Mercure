@@ -1,7 +1,0 @@
-[
-    {
-        "Pseudo": "Pseudo compte 1",
-        "Password_Hash": "pbkdf2:sha256:600000$SIjbD001Qenb0uwH$6383f8650f7dfc0c1d5ab60c84f4711bf9c43f5fb3f2d0215a1046a2189619fe",
-        "email": "compte_utilisateur_1@gmail.com"
-    }
-]

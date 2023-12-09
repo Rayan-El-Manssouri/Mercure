@@ -1,86 +1,164 @@
-.form-contenaire {
+.login-container {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    justify-content: center;
     align-items: center;
+    flex: 1;
+    background: linear-gradient(320deg, #3d68ff, #8845ff 80%);
 
-    .form {
-        border: 1px solid #EBECF0;
-        width: 70%;
-        height: 50%;
+    .login-form {
+        background-color: #fff;
+        border-radius: 8px;
+        backdrop-filter: blur(20px);
+        padding: 20px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+        width: 600px;
+        height: 600px;
         display: flex;
         flex-direction: column;
-        padding: 10px;
-        margin-top: 10px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        align-items: center;
 
-        .form-contenaire-header {
+        .logo-container {
             display: flex;
-            align-items: center;
-            margin-left: 10px;
-            margin-top: 10px;
-
-            p {
-                margin-left: 10px;
-                font-size: 1.5em;
-            }
-        }
-
-        .button-connect {
-            display: flex;
+            flex-direction: row;
+            width: 70%;
+            border-bottom: 1px solid #aaa;
             justify-content: center;
-            align-items: center;
-            width: 100%;
-            margin-top: 10px;
+            padding: 15px;
 
-            button {
-                border: 1px solid #a066f2;
-                background-color: transparent;
-                padding: 10px;
-                margin-right: 5px;
-                margin-top: 5px;
-                border-radius: 3px;
-                cursor: pointer;
-                transition: all 0.3s ease;
-                width: 50%;
+            .logo {
+                display: flex;
+                align-items: center;
+                justify-content: center;
 
-                &:hover {
-                    background-color: #a066f22b;
+                img {
+                    width: 40px;
+                    height: 40px;
+                }
+
+                p {
+                    font-size: 20px;
+                    margin-left: 5px;
+                    font-size: 2rem;
+                    color: #253858;
                 }
             }
         }
 
-        .inscription {
+
+        .form-group-contenaire {
             display: flex;
             flex-direction: column;
+            flex: 1;
+            width: 100%;
 
-            .inscription-header {
+
+            .sous-register {
                 display: flex;
                 flex-direction: column;
+                width: 100%;
+                justify-content: center;
+                text-align: center;
+                margin-top: 40px;
+                align-items: center;
 
-                div {
+                .brand {
+                    margin-top: 15px;
+                    border: 1px solid #aaa;
+                    width: 60%;
+                    padding: 5px;
+                    color: #fff;
                     display: flex;
-                    flex-direction: column;
-                    padding: 10px;
+                    align-items: center;
+                    color: #000;
+                    border-radius: 3px;
 
-                    label {
-                        margin-bottom: 10px;
+                    span {
+                        margin-left: 5px;
+                    }
+
+                    &:hover {
+                        background-color: #aaaaaa53;
+                    }
+                }
+
+
+                hr {
+                    width: 70%;
+                    color: #aaa;
+                    position: absolute;
+                    top: 47.5%;
+                }
+
+                p {
+                    z-index: 10000;
+                    background-color: #fff;
+                    width: 10%;
+                }
+            }
+
+
+            .form-group {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+
+                label {
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                }
+
+                .input-container {
+                    display: flex;
+                    flex-direction: row;
+                    width: 100%;
+                    border: 1.5px solid #aaa;
+                    padding: 5px;
+                    border-radius: 3px;
+
+                    svg {
+                        margin-right: 3px;
                     }
 
                     input {
-                        border: 1px solid #EBECF0;
-                        padding: 10px;
-                        border-radius: 3px;
+                        border: none;
                         outline: none;
+                        width: 100%;
+                        background-color: transparent;
+                    }
 
-                        &:focus {
-                            border: 1px solid #a066f2;
-                        }
+                    &:hover {
+                        border: 1.5px solid #6d6c6c;
+                    }
+
+                    &:focus-within {
+                        border: 1.5px solid #a066f2;
                     }
                 }
             }
+        }
 
-            .footer {
-                margin-top: 10px;
+        .tools {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+
+            button {
+                border: 1px solid #a066f2;
+                padding: 5px;
+                border-radius: 3px;
+                background-color: transparent;
+
+                &:hover {
+                    background-color: #a066f25f;
+                    color: #fff;
+                    cursor: pointer;
+                }
+            }
+
+            .link-container {
+                margin-left: auto;
             }
         }
     }

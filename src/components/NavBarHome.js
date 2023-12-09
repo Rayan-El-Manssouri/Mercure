@@ -1,27 +1,22 @@
 import { NavLink } from "react-router-dom";
 import { IconHome, IconMail, IconSearch, IconBell, IconUser, IconSettings, IconGift } from "@tabler/icons-react";
-import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const HeaderPrivate = ({ logo }) => {
     const [pseudo, setPseudo] = useState()
 
     const handleLogginGet = async () => {
-        const response = await axios.post('http://localhost:5000/Fetch_Pseudo', {
-            user_email: "compte_utilisateur_1@gmail.com"
-        } , {
-            headers : {
-                'Authorization': `Bearer ${localStorage.getItem('Token')}`
-            }
-        })
-        try {
-            setPseudo(response.data.pseudo)
-        } catch {
-            return 'Une erreur s"est passée...'
+        if (localStorage.getItem("Pseudo") == null) {
+            alert("Une erreur et survenu ...")
+            window.location.href = "/Accueil"
+        } else {
+            setPseudo(localStorage.getItem("Pseudo"))
         }
     }
 
-    handleLogginGet()
+    useEffect(() => {
+        handleLogginGet()
+    })
 
     return (
         <div id="sidebar">

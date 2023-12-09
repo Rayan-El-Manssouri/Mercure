@@ -13,13 +13,30 @@ const Messagerie = () => {
         window.addEventListener('resize', handleRefresh)
     })
 
-    const handleRefresh = (() => {
-        const ListUsersScroll = document.getElementById("scrollbar-ul-users-list")
-        const SenderReceiverList = document.getElementById("contenaire-sender-recevier-list")
-        ListUsersScroll.style.height = window.innerHeight - 140 + 'px'
-        SenderReceiverList.style.height = window.innerHeight - 87 + 'px'
-        SenderReceiverList.style.overflowY = 'srcoll'
-    })
+    const handleRefresh = () => {
+        adjustHeight("scrollbar-ul-users-list", 140);
+        adjustHeightWithOverflow("contenaire-sender-recevier-list", 87, 'scroll');
+    };
+
+    const adjustHeight = (elementId, offset) => {
+        const element = document.getElementById(elementId);
+
+        if (element) {
+            element.style.height = window.innerHeight - offset + 'px';
+        }
+    };
+
+    const adjustHeightWithOverflow = (elementId, offset, overflowType) => {
+        const element = document.getElementById(elementId);
+
+        if (element) {
+            element.style.height = window.innerHeight - offset + 'px';
+            element.style.overflowY = overflowType;
+        }
+    };
+
+    // Utilisation de la fonction
+    handleRefresh();
 
     return (
         <div className='body_private'>

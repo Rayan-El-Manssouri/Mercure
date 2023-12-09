@@ -1,0 +1,42 @@
+.toast {
+    border: 2px solid #EAEAEB;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 5px;
+    padding: 20px;
+    display: flex;
+    background-color: #fff;
+    color: #BAC1C8;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    margin: 5px;
+
+    .toast-box {
+        display: flex;
+        flex-direction: row;
+
+        svg.sucess {
+            color: #45BF57;
+        }
+
+        div {
+            margin-right: 5px;
+            margin-left: 5px;
+        }
+
+        .title {
+            color: #45BF57;
+        }
+
+        .close {
+            margin-left: auto;
+            margin-left: 5px;
+            cursor: pointer;
+
+            svg:hover {
+                background-color: #bac1c84d;
+                border-radius: 3px;
+            }
+        }
+    }
+}
