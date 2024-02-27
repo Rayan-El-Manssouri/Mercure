@@ -8,3 +8,7 @@
     font-family: 'System UI', sans-serif;
     box-sizing: border-box;
 }
+
+#__next {
+    height: 100%;
+}

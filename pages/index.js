@@ -1,6 +1,6 @@
-import Image from 'next/image';
 import { useState } from 'react';
-import { IoCheckmark } from "react-icons/io5";
+import Header from './components/Header';
+import Image from 'next/image';
 
 export default function Home() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -16,41 +16,11 @@ export default function Home() {
   return (
     <main>
       {/* Header */}
-      <header className='p-3 border flex items-center justify-between text-sl w-full shadow-sm'>
-        <div className='flex items-center space-x-4 w-full'>
-          {/* Logo */}
-          <Image
-            src="/assets/color light 500.png"
-            width={50}
-            height={50}
-            alt="Logo"
-          />
-
-          {/* Navigation */}
-          <ul className="flex space-x-2 ">
-            <li className="text-gray-500 hover:bg-gray-200 px-2 py-1 rounded  cursor-pointer transition-all">Accueil</li>
-            <li className="text-gray-500 hover:bg-gray-200 px-2 py-1 rounded  cursor-pointer transition-all">Message</li>
-            <li className="text-gray-500 hover:bg-gray-200 px-2 py-1 rounded  cursor-pointer transition-all">API</li>
-            <li className="text-gray-500 hover:bg-gray-200 px-2 py-1 rounded  cursor-pointer transition-all">Support</li>
-            <li className="text-gray-500 hover:bg-gray-200 px-2 py-1 rounded  cursor-pointer transition-all">Nouveauté</li>
-            <li className="text-gray-500 hover:bg-gray-200 px-2 py-1 rounded  cursor-pointer transition-all">Hébergeur</li>
-          </ul>
-
-          <div className='w-full mr-auto text-right'>
-            <button
-              className="group relative justify-center py-2 px-4 text-gray-500 text-sm font-medium rounded-md border border-gray-300 hover:bg-[#F6F8FA] transition"
-              onClick={openModal}
-            >
-              Connexion
-            </button>
-          </div>
-
-        </div>
-      </header>
+      <Header openModal={openModal} />
 
       {/* Modal */}
       <div className={`fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-40 ${modalOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-        <div className="bg-white p-4 rounded-md w-[30%]">
+        <div className="bg-white p-4 rounded-md w-[70%]">
           <div>
             <div className='flex items-center w-full'>
               {/* Logo */}
@@ -130,89 +100,7 @@ export default function Home() {
         </div>
 
       </div>
-      <div className='w-full justify-center items-center flex flex-col'>
-        <div className='flex flex-1 p-4 flex-row items-center w-full justify-center'>
-          <div className='max-w-md mx-auto bg-white rounded border'>
 
-            <div className='px-4 py-2 border border-t-0 border-l-0 border-r-0 flex w-full'>
-              <h1 className=''>Forfait Gratuit</h1>
-              <h1 className='ml-auto'>0€</h1>
-            </div>
-
-            <ul className='px-4 py-2'>
-              <li className='flex items-center'> <IoCheckmark></IoCheckmark> <p className='ml-1'>Partager</p></li>
-              <li className='flex items-center'> <IoCheckmark></IoCheckmark> <p className='ml-1'>Discuter avec vos amis</p></li>
-              <li className='flex items-center'> <IoCheckmark></IoCheckmark> <p className='ml-1'>Envoyer des images de différentes tailles</p></li>
-              <li className='flex items-center'> <IoCheckmark></IoCheckmark> <p className='ml-1'>Envoyer des images de différentes tailles</p></li>
-              <li className='flex items-center'> <IoCheckmark></IoCheckmark> <p className='ml-1'>Envoyer des images de différentes tailles</p></li>
-              <li className='flex items-center'> <IoCheckmark></IoCheckmark> <p className='ml-1'>Envoyer des images de différentes tailles</p></li>
-              <li className='flex items-center'> <IoCheckmark></IoCheckmark> <p className='ml-1'>Envoyer des images de différentes tailles</p></li>
-              <li className='flex items-center'> <IoCheckmark></IoCheckmark> <p className='ml-1'>Envoyer des images de différentes tailles</p></li>
-              <li className='flex items-center'> <IoCheckmark></IoCheckmark> <p className='ml-1'>Envoyer des images de différentes tailles</p></li>
-              <li className='flex items-center'> <IoCheckmark></IoCheckmark> <p className='ml-1'>Envoyer des images de différentes tailles</p></li>
-            </ul>
-
-            <div className='px-4 py-2'>
-              <button className='bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600'>Payer</button>
-            </div>
-          </div>
-
-          <div className='max-w-md mx-auto bg-white rounded- border'>
-
-            <div className='px-4 py-2 border border-t-0 border-l-0 border-r-0 flex w-full'>
-              <h1 className=''>Forfait Gratuit</h1>
-              <h1 className='ml-auto'>0€</h1>
-            </div>
-
-            <ul className='px-4 py-2'>
-              <li className='flex items-center'> <IoCheckmark></IoCheckmark> <p className='ml-1'>Partager</p></li>
-              <li className='flex items-center'> <IoCheckmark></IoCheckmark> <p className='ml-1'>Discuter avec vos amis</p></li>
-              <li className='flex items-center'> <IoCheckmark></IoCheckmark> <p className='ml-1'>Envoyer des images de différentes tailles</p></li>
-              <li className='flex items-center'> <IoCheckmark></IoCheckmark> <p className='ml-1'>Envoyer des images de différentes tailles</p></li>
-              <li className='flex items-center'> <IoCheckmark></IoCheckmark> <p className='ml-1'>Envoyer des images de différentes tailles</p></li>
-              <li className='flex items-center'> <IoCheckmark></IoCheckmark> <p className='ml-1'>Envoyer des images de différentes tailles</p></li>
-              <li className='flex items-center'> <IoCheckmark></IoCheckmark> <p className='ml-1'>Envoyer des images de différentes tailles</p></li>
-              <li className='flex items-center'> <IoCheckmark></IoCheckmark> <p className='ml-1'>Envoyer des images de différentes tailles</p></li>
-              <li className='flex items-center'> <IoCheckmark></IoCheckmark> <p className='ml-1'>Envoyer des images de différentes tailles</p></li>
-              <li className='flex items-center'> <IoCheckmark></IoCheckmark> <p className='ml-1'>Envoyer des images de différentes tailles</p></li>
-            </ul>
-
-            <div className='px-4 py-2'>
-              <button className='bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600'>Payer</button>
-            </div>
-
-          </div>
-
-          <div className='max-w-md mx-auto bg-white rounded- border'>
-
-            <div className='px-4 py-2 border border-t-0 border-l-0 border-r-0 flex w-full'>
-              <h1 className=''>Forfait Gratuit</h1>
-              <h1 className='ml-auto'>0€</h1>
-            </div>
-
-            <ul className='px-4 py-2'>
-              <li className='flex items-center'> <IoCheckmark></IoCheckmark> <p className='ml-1'>Partager</p></li>
-              <li className='flex items-center'> <IoCheckmark></IoCheckmark> <p className='ml-1'>Discuter avec vos amis</p></li>
-              <li className='flex items-center'> <IoCheckmark></IoCheckmark> <p className='ml-1'>Envoyer des images de différentes tailles</p></li>
-              <li className='flex items-center'> <IoCheckmark></IoCheckmark> <p className='ml-1'>Envoyer des images de différentes tailles</p></li>
-              <li className='flex items-center'> <IoCheckmark></IoCheckmark> <p className='ml-1'>Envoyer des images de différentes tailles</p></li>
-              <li className='flex items-center'> <IoCheckmark></IoCheckmark> <p className='ml-1'>Envoyer des images de différentes tailles</p></li>
-              <li className='flex items-center'> <IoCheckmark></IoCheckmark> <p className='ml-1'>Envoyer des images de différentes tailles</p></li>
-              <li className='flex items-center'> <IoCheckmark></IoCheckmark> <p className='ml-1'>Envoyer des images de différentes tailles</p></li>
-              <li className='flex items-center'> <IoCheckmark></IoCheckmark> <p className='ml-1'>Envoyer des images de différentes tailles</p></li>
-              <li className='flex items-center'> <IoCheckmark></IoCheckmark> <p className='ml-1'>Envoyer des images de différentes tailles</p></li>
-            </ul>
-
-            <div className='px-4 py-2'>
-              <button className='bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600'>Payer</button>
-            </div>
-
-          </div>
-
-
-        </div>
-
-      </div>
     </main>
   );
 }
