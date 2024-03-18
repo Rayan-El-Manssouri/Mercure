@@ -20,6 +20,7 @@ const menuItems = [
 const SideBar = ({ activeItem }) => {
     const [activeItemState] = useState(activeItem);
     const [userInfo, setUserInfo] = useState(null);
+    const [hoveredIndex, setHoveredIndex] = useState(null);
 
     useEffect(() => {
         const fetchUserInfo = async () => {
@@ -45,6 +46,13 @@ const SideBar = ({ activeItem }) => {
         fetchUserInfo();
     }, []);
 
+    const handleMouseEnter = index => {
+        setHoveredIndex(index);
+    };
+
+    const handleMouseLeave = () => {
+        setHoveredIndex(null);
+    };
     return (
         <header className='flex flex-col h-full border p-2 bg-[#F4F5F7]'>
             <div className='w-full flex text-center items-center justify-center border border-r-0 border-l-0 border-t-0 p-1 mb-2'>
@@ -58,20 +66,31 @@ const SideBar = ({ activeItem }) => {
                 <h1 className='font-normal text-xl ml-2'>Mercure</h1>
             </div>
             <ul>
-                <ul className='mt+2'>
+                <ul className='mt-2'>
                     {menuItems.map((item, index) => (
-                        <li key={index} >
-                            <NavLink className={`${HeaderLiCST} mr-16 ${activeItemState === index ? 'bg-white-400' : ''}`} href={item.link}>
-                                <p className='ml-1 mr-1 font-normal'>
-                                    {item.icon}
-                                </p>
-                                <p style={{ fontFamily: 'inherit' }}>{item.label}</p>
+                        <li key={index}>
+                            <NavLink
+                                className={`${HeaderLiCST} mr-16 ${activeItemState === index ? 'bg-purple-100' : ''}`}
+                                href={item.link}
+                                onMouseEnter={() => handleMouseEnter(index)}
+                                onMouseLeave={handleMouseLeave}
+                            >
+                                <div className="flex items-center">
+                                    <div
+                                        className={`transition-all border h-[15px] ${activeItemState === index ? 'border-purple-500' : 'border-transparent'} w-0 rounded`}
+                                    ></div>
+                                    <p className='ml-1 mr-1 font-normal'>
+                                        {item.icon}
+                                    </p>
+                                    <p style={{ fontFamily: 'inherit' }}>{item.label}</p>
+                                </div>
+
                             </NavLink>
                         </li>
                     ))}
                 </ul>
-
             </ul>
+
             <div className='mt-auto border border-l-0 border-r-0 border-b-0 '>
                 <div className={HeaderLiCST}>
                     <p className='ml-1 mr-1 text-lg'><CiSettings /></p>
@@ -86,6 +105,7 @@ const SideBar = ({ activeItem }) => {
                 </div>
 
             </div>
+
         </header>
     );
 };
