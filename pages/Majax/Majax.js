@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export class Majax {
     async getToken() {
         try {
@@ -18,6 +20,34 @@ export class Majax {
         } catch (error) {
             console.error(error);
             return null;
+        }
+    }
+
+    async getUsers() {
+        try {
+            const token = localStorage.getItem('token');
+            const response = await axios.get('/api/getUsers', {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            return response.data;
+        } catch (error) {
+            console.error('Erreur lors de la récupération des utilisateurs :', error);
+            return null;
+        }
+    }
+
+    async getConv(token) {
+        try {
+            const response = await axios.post('/api/conversation/conv', null, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            return response.data;
+        } catch (err) {
+            throw new Error('Error fetching conversations: ' + err.message);
         }
     }
 }

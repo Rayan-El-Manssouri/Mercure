@@ -14,7 +14,7 @@ export default function Connect() {
             const response = await axios.post('/api/auth/login', { email, password });
             const token = response.data.token;
             localStorage.setItem('token', token);
-            router.push('/home'); // Utilisation du router pour rediriger vers la route /home après une connexion réussie
+            router.push('/Home'); // Utilisation du router pour rediriger vers la route /home après une connexion réussie
         } catch (error) {
             setError('Email ou mot de passe incorrect');
         }

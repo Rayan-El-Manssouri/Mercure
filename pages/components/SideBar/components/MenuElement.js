@@ -14,9 +14,6 @@ const MenuElement = ({ item, index, activeItem }) => {
         setIsHovered(false);
     };
 
-    // Removed unnecessary if condition
-    // setIsHovered(activeItem === item.id);
-
     const isActive = activeItem === item.id;
 
     return (

@@ -35,12 +35,13 @@ const SideBar = ({ activeItem }) => {
 
     const subMenuItems = [
         { label: 'Paramètres', link: '#', icon: <IconSettings className='w-4 stroke-1' /> },
-        { label: userInfo && <p>{userInfo.name}</p>, link: '#', icon: <IconUser className='w-4 stroke-1' /> },
+        { label: userInfo && <>{userInfo.name}</>, link: '#', icon: <IconUser className='w-4 stroke-1' /> },
         { label: 'Forfait', link: '#', icon: <IconCreditCard className='w-4 stroke-1' /> }
     ];
 
     return (
         <header className='flex flex-col h-full border p-2 bg-[#F4F5F7]'>
+          
             <div className='w-full flex text-center items-center justify-center border border-r-0 border-l-0 border-t-0 p-1 mb-2'>
                 <Image
                     src="/assets/color light 500.png"
@@ -51,6 +52,7 @@ const SideBar = ({ activeItem }) => {
                 />
                 <h1 className='font-normal text-xl ml-2'>Mercure</h1>
             </div>
+
             <ul className='mt-2'>
                 {menuItems?.map((item, index) => (
                     <MenuElement
@@ -70,6 +72,7 @@ const SideBar = ({ activeItem }) => {
                     />
                 ))}
             </div>
+            
         </header>
     );
 };

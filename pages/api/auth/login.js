@@ -18,10 +18,21 @@ export default function login(req, res) {
   if (!fs.existsSync(usersFilePath)) {
     return res.status(500).json({ error: 'Le fichier des utilisateurs n\'existe pas' });
   }
-
+  
   // Lecture des utilisateurs depuis le fichier JSON
   const usersData = fs.readFileSync(usersFilePath, 'utf-8');
-  let users = JSON.parse(usersData);
+  let users;
+
+  try {
+    users = JSON.parse(usersData).users;
+  } catch (error) {
+    return res.status(500).json({ error: 'Erreur lors de la lecture des données des utilisateurs' });
+  }
+
+  // Vérifier si users est un tableau
+  if (!Array.isArray(users)) {
+    return res.status(500).json({ error: 'Les données des utilisateurs ne sont pas valides' });
+  }
 
   // Recherche de l'utilisateur dans la liste
   const userIndex = users.findIndex((user) => user.email === email);
@@ -32,13 +43,19 @@ export default function login(req, res) {
   }
 
   // Mettre à jour la propriété isLoggedIn à true
-  users[userIndex].isLoggedIn = true;
+  users[userIndex].is_logged_in = true;
 
   // Enregistrer les modifications dans le fichier JSON
-  fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2));
+  const updatedData = JSON.stringify({ users }, null, 2);
+  fs.writeFileSync(usersFilePath, updatedData);
 
   // Générer un token JWT avec le secret JWT
-  const token = jwt.sign({ email: users[userIndex].email, name: users[userIndex].UsersName, prenium: users[userIndex].prenium, connected: users[userIndex].isLoggedIn}, process.env.JWT_SECRET);
+  const token = jwt.sign({
+    email: users[userIndex].email,
+    name: users[userIndex].username,
+    premium: users[userIndex].premium,
+    connected: users[userIndex].is_logged_in
+  }, process.env.JWT_SECRET);
 
   // Répondre avec le token
   res.status(200).json({ token });

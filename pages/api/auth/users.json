@@ -1,18 +1,20 @@
-[
-  {
-    "UsersName": "Admin users",
-    "email": "test@gmail.com",
-    "password": "Livi.200",
-    "prenium": false,
-    "isLoggedIn": true,
-    "admin": "true"
-  },
-  {
-    "UsersName": "Utilisateur 2",
-    "email": "Utilisateur@gmail.com",
-    "password": "users.200",
-    "prenium": false,
-    "isLoggedIn": true,
-    "admin": "false"
-  }
-]
+{
+  "users": [
+    {
+      "username": "Admin users",
+      "email": "test@gmail.com",
+      "password": "Livi.200",
+      "premium": false,
+      "is_logged_in": true,
+      "admin": true
+    },
+    {
+      "username": "Utilisateur 2",
+      "email": "Utilisateur@gmail.com",
+      "password": "users.200",
+      "premium": false,
+      "is_logged_in": true,
+      "admin": false
+    }
+  ]
+}
