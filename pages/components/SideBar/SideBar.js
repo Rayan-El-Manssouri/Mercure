@@ -1,52 +1,36 @@
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import { IconBell, IconCards, IconCreditCard, IconGif, IconGift, IconHome, IconMessage, IconSearch, IconSettings, IconUser  } from '@tabler/icons-react';
-
-import { CiMail } from "react-icons/ci";
-import { IoSearchOutline } from "react-icons/io5";
-import { IoIosNotificationsOutline } from "react-icons/io";
-import { BsPerson } from "react-icons/bs";
-import { CiGift, CiSettings } from "react-icons/ci";
-import CreditCard from '../CreaditCard';
+import { IconBell, IconCreditCard, IconGift, IconHome, IconMessage, IconSearch, IconSettings, IconUser } from '@tabler/icons-react';
 
 // Élément du side bar
 import MenuElement from './components/MenuElement';
 import SubMenuElement from './components/SubMenuElement';
+import { Majax } from '../../Majax/Majax'
 
 const SideBar = ({ activeItem }) => {
     const [activeItemState] = useState(activeItem);
     const [userInfo, setUserInfo] = useState(null);
 
     useEffect(() => {
-        const fetchUserInfo = async () => {
-            try {
-                const storedToken = localStorage.getItem('token');
-                if (!storedToken) {
-                    throw new Error('Token non trouvé dans sessionStorage');
-                }
-                const response = await fetch('/api/auth/users', {
-                    headers: {
-                        'Authorization': `Bearer ${storedToken}`
-                    }
-                });
-                if (!response.ok) {
-                    throw new Error('Échec de la récupération des informations de l\'utilisateur');
-                }
-                const userData = await response.json();
+        const majaxInstance = new Majax();
+        
+        const fetchData = async () => {
+            const userData = await majaxInstance.getToken();
+            if(userData) {
                 setUserInfo(userData);
-            } catch (error) {
-                console.error(error);
             }
         };
-        fetchUserInfo();
+
+        fetchData();
     }, []);
 
+
     const menuItems = [
-        { label: 'Accueil', link: '/home', icon: <IconHome  className='w-4 stroke-1' />, id: 0 },
+        { label: 'Accueil', link: '/Home', icon: <IconHome className='w-4 stroke-1' />, id: 0 },
         { label: 'Messagerie', link: '/Direct', icon: <IconMessage className='w-4 stroke-1' />, id: 1 },
         { label: 'Recherche', link: '#', icon: <IconSearch className='w-4 stroke-1' />, id: 2 },
-        { label: 'Notifications', link: '#', icon: <IconBell className='w-4 stroke-1' />, id: 3},
-        { label: 'Don', link: '#', icon: <IconGift className='w-4 stroke-1'/>, id: 4 },
+        { label: 'Notifications', link: '#', icon: <IconBell className='w-4 stroke-1' />, id: 3 },
+        { label: 'Don', link: '#', icon: <IconGift className='w-4 stroke-1' />, id: 4 },
     ];
 
     const subMenuItems = [
