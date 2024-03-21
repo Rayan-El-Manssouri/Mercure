@@ -1,0 +1,22 @@
+{
+    "Utilisateur@gmail.com": {
+        "participants": ["Admin users"],
+        "messages": [
+            {
+                "messageTime": "12h00",
+                "content": "Test organisation",
+                "sender": "Admin users"
+            }
+        ]
+    },
+    "test@gmail.com": {
+        "participants": ["Admin users"],
+        "messages": [
+            {
+                "messageTime": "12h00",
+                "content": "Test organisation",
+                "sender": "Admin users"
+            }
+        ]
+    }
+}

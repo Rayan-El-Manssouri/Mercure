@@ -1,9 +1,18 @@
 [
   {
-    "UsersName": "Test",
+    "UsersName": "Admin users",
     "email": "test@gmail.com",
     "password": "Livi.200",
     "prenium": false,
-    "isLoggedIn": true
+    "isLoggedIn": true,
+    "admin": "true"
+  },
+  {
+    "UsersName": "Utilisateur 2",
+    "email": "Utilisateur@gmail.com",
+    "password": "users.200",
+    "prenium": false,
+    "isLoggedIn": true,
+    "admin": "false"
   }
 ]
