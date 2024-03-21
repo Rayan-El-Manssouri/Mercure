@@ -1,17 +1,15 @@
-// Import modules
 import React, { useEffect, useState } from 'react';
 import SideBar from "../components/SideBar/SideBar";
 import NewConversationDialog from './components/NewConversationDialog';
 import Search from './components/Search';
 import Info from './components/Info';
 import ConversationData from './components/ConversationData';
+import MessageView from './components/MessageView'; // Importez le composant pour afficher les messages
 
-// Import class
-import { Majax } from '../Majax/Majax'; // Importer la classe Majax
+import { Majax } from '../Majax/Majax';
 
 export default function Direct() {
-    const [conversationData, setConversationData] = useState({ participants: [] }); // Initialize state with an empty array
-
+    const [conversationData, setConversationData] = useState({ participants: [], messages: [] });
     const [showNewConversationDialog, setShowNewConversationDialog] = useState(false);
     const [users, setUsers] = useState([]);
 
@@ -20,7 +18,7 @@ export default function Direct() {
     const openNewConversationDialog = () => {
         setShowNewConversationDialog(true);
         majax.getUsers()
-            .then(data => setUsers(data)) // Fixer les data de users
+            .then(data => setUsers(data))
             .catch(error => console.error('Error fetching users:', error));
     };
 
@@ -28,7 +26,6 @@ export default function Direct() {
         setShowNewConversationDialog(false);
     };
 
-    // Récupérer les conversations depuis l'api
     const getConv = async () => {
         try {
             const token = localStorage.getItem('token');
@@ -41,15 +38,20 @@ export default function Direct() {
 
     useEffect(() => {
         getConv();
-    }, []); // Added empty dependency array to run once on mount
+    }, []);
 
+    const handleConversationClick = (conversationId) => {
+        console.log(conversationId);
+    };
 
     return (
         <div className="flex flex-1 h-full">
             <SideBar activeItem={1} />
             <div className="flex flex-col">
                 <Search openNewConversationDialog={openNewConversationDialog} />
-                <ConversationData conversationData={conversationData} /> {/* Utilisation du nouveau composant */}
+
+                <ConversationData conversationData={conversationData} handleConversationClick={handleConversationClick} />
+
             </div>
             <Info openNewConversationDialog={openNewConversationDialog} />
 

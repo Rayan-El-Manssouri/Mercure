@@ -1,33 +1,19 @@
 {
-    "Utilisateur@gmail.com": {
-        "participants": [
-            "Admin users",
-            "Mon utilisateur 1",
-            "Mon utilisateur 1"
-        ],
-        "messages": [
-            {
-                "messageTime": "12h00",
-                "content": "Test organisation",
-                "sender": "Admin users"
-            }
-        ]
-    },
     "test@gmail.com": {
         "participants": [
-            "Admin users",
-            "Utilisateur 2"
+            "Al capitan",
+            "Lorenzo"
         ],
         "messages": [
             {
-                "messageTime": "12h00",
+                "messageTime": 1647850800,
                 "content": "Test organisation 12346",
-                "sender": "Admin users"
+                "sender": "Al capitan"
             },
             {
-                "messageTime": "12h00",
+                "messageTime": 1647950800,
                 "content": "Test organisation",
-                "sender": "Utilisateur 2"
+                "sender": "Lorenzo"
             }
         ]
     }

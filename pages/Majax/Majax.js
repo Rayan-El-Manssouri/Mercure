@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 export class Majax {
+    
     async getToken() {
         try {
             const storedToken = localStorage.getItem('token');

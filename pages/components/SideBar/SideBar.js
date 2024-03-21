@@ -34,9 +34,9 @@ const SideBar = ({ activeItem }) => {
     ];
 
     const subMenuItems = [
-        { label: 'Paramètres', link: '#', icon: <IconSettings className='w-4 stroke-1' /> },
-        { label: userInfo && <>{userInfo.name}</>, link: '#', icon: <IconUser className='w-4 stroke-1' /> },
-        { label: 'Forfait', link: '#', icon: <IconCreditCard className='w-4 stroke-1' /> }
+        { label: 'Paramètres', link: '#', icon: <IconSettings className='w-4 stroke-1'  /> , id: 5 },
+        { label: userInfo && <>{userInfo.name}</>, link: '#', icon: <IconUser className='w-4 stroke-1' /> , id: 6  },
+        { label: 'Forfait', link: '#', icon: <IconCreditCard className='w-4 stroke-1'  /> , id: 7 }
     ];
 
     return (
@@ -56,7 +56,7 @@ const SideBar = ({ activeItem }) => {
             <ul className='mt-2'>
                 {menuItems?.map((item, index) => (
                     <MenuElement
-                        key={index}
+                        key={item.id}
                         item={item} // Correction : Passer l'élément en tant que "item"
                         activeItem={activeItemState}
                     />
@@ -66,7 +66,7 @@ const SideBar = ({ activeItem }) => {
             <div className='mt-auto border border-l-0 border-r-0 border-b-0 '>
                 {subMenuItems?.map((item, index) => (
                     <SubMenuElement
-                        key={index} // Ajout de la clé unique
+                        key={item.id}
                         item={item}
                         index={index}
                     />
