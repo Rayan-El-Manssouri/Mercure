@@ -1,5 +1,5 @@
 import React from 'react';
-import { IconAd, IconAdCircle, IconPlus, IconSearch } from '@tabler/icons-react';
+import { IconPlus, IconSearch } from '@tabler/icons-react';
 const Search = ({ openNewConversationDialog }) => {
     return (
         <div className="flex w-full">

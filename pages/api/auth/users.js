@@ -8,7 +8,7 @@ export default function getUserInfo(req, res) {
         return res.status(401).json({ error: 'Token JWT non fourni dans l\'en-tête Authorization' });
     }
 
-    const token = authHeader.split(' ')[1]; // Récupérer le token JWT sans le préfixe "Bearer "
+    const token = authHeader.split(' ')[1];
 
     try {
         // Vérification et décryptage du token JWT

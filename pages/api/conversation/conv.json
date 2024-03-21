@@ -4,17 +4,36 @@
             "Al capitan",
             "Lorenzo"
         ],
-        "messages": [
-            {
-                "messageTime": 1647850800,
-                "content": "Test organisation 12346",
-                "sender": "Al capitan"
-            },
-            {
-                "messageTime": 1647950800,
-                "content": "Test organisation",
-                "sender": "Lorenzo"
-            }
-        ]
+        "messages": {
+            "Al capitan": [
+                {
+                    "messageTime": 1647850800,
+                    "content": "Salut !",
+                    "sender": "Al capitan"
+                },
+                {
+                    "messageTime": 1647850800,
+                    "content": "ça vaa",
+                    "sender": "you"
+                }
+            ],
+            "Lorenzo": [
+                {
+                    "messageTime": 1647950800,
+                    "content": "Conjugaison orthographicale de la france",
+                    "sender": "Lorenzo"
+                },
+                {
+                    "messageTime": 1647950800,
+                    "content": "Mon second message",
+                    "sender": "Lorenzo"
+                },
+                {
+                    "messageTime": 1647950800,
+                    "content": "hi",
+                    "sender": "you"
+                }
+            ]
+        }
     }
 }
