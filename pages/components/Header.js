@@ -7,12 +7,12 @@ const Header = () => {
         <header className='p-2 border flex items-center justify-between w-full shadow-sm'>
 
             <div className='flex items-center space-x-3 w-full'>
-                {/* Logo */}
                 <Image
                     src="/assets/color light 500.png"
                     width={50}
                     height={50}
                     alt="Logo"
+                    priority // Add the priority prop here
                 />
 
                 {/* Navigation */}

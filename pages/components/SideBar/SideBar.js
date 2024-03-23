@@ -15,12 +15,9 @@ const SideBar = ({ activeItem }) => {
         const majaxInstance = new Majax();
         
         const fetchData = async () => {
-            const userData = await majaxInstance.getToken();
-            if(userData) {
-                setUserInfo(userData);
-            }
+            const userData = await majaxInstance.getUsers();
+            setUserInfo(userData.message);
         };
-
         fetchData();
     }, []);
 
@@ -35,7 +32,7 @@ const SideBar = ({ activeItem }) => {
 
     const subMenuItems = [
         { label: 'Paramètres', link: '#', icon: <IconSettings className='w-4 stroke-1'  /> , id: 5 },
-        { label: userInfo && <>{userInfo.name}</>, link: '#', icon: <IconUser className='w-4 stroke-1' /> , id: 6  },
+        { label: userInfo, link: '#', icon: <IconUser className='w-4 stroke-1' /> , id: 6  },
         { label: 'Forfait', link: '#', icon: <IconCreditCard className='w-4 stroke-1'  /> , id: 7 }
     ];
 

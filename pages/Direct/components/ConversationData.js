@@ -5,14 +5,42 @@ function ConversationData({ conversationData, handleConversationClick }) {
     const [activeConversationId, setActiveConversationId] = useState(null);
 
     const handleClick = (participant) => {
-        handleConversationClick(participant);
-        setActiveConversationId(participant);
+        const participantData = {
+            name: participant.name,
+            email: participant.email 
+        };
+        handleConversationClick(participantData);
+        setActiveConversationId(participant.name);
     };
+
+    function formatTime(timestamp) {
+        const date = new Date(timestamp);
+        const hours = String(date.getHours()).padStart(2, '0');
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+        return `${hours}:${minutes}`;
+    }
 
     return (
         <div className="flex border p-1 flex-col w-96 bg-gray-50 overflow-y-auto h-full">
-            {conversationData.participants.map((participant, index) => {
-                const isActive = participant === activeConversationId;
+            {conversationData.participants && conversationData.participants.map((participant, index) => {
+                const isActive = participant.name === activeConversationId;
+                const participantName = participant.name;
+                const listMessage = conversationData.messages;
+                const participantMessages = listMessage[participantName];
+                const participantMessagesArray = Array.isArray(participantMessages) ? participantMessages : [];
+
+                const latestMessage = participantMessagesArray.length > 0 ? participantMessagesArray[participantMessagesArray.length - 1] : null;
+
+                let messageTimeFormatted = '';
+                let content = '';
+
+                if (latestMessage) {
+                    const messageTime = latestMessage.messageTime;
+                    content = latestMessage.content;
+                    messageTimeFormatted = formatTime(messageTime);
+                } else {
+                    content = null
+                }
 
                 return (
                     <section
@@ -26,25 +54,19 @@ function ConversationData({ conversationData, handleConversationClick }) {
 
                         <div className="text-sm flex flex-col w-full">
                             <div className='flex'>
-                                <div className="flex justify-between">
-                                    <p style={{ fontFamily: 'Cantarell' }}>{participant}</p>
-                                </div>
-                                <div className="text-gray-500 ml-auto mr-2">
-                                    {/* Afficher l'heure au format h:m */}
-                                    {conversationData.messages[participant] &&
-                                        conversationData.messages[participant].length > 0 &&
-                                        new Date(conversationData.messages[participant][0].messageTime * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                                <div className="flex justify-between w-full">
+                                    
+                                    <p style={{ fontFamily: 'Cantarell' }}>{participantName}</p>
 
+                                    <p className="text-gray-500 ml-auto">
+                                        {messageTimeFormatted}
+                                    </p>
                                 </div>
                             </div>
 
                             <div className="text-gray-700 overflow-hidden whitespace-nowrap text-overflow-ellipsis max-w-56">
-                                {/* Afficher le contenu du dernier message envoyé par le participant */}
-                                {conversationData.messages[participant] &&
-                                    conversationData.messages[participant].length > 0 &&
-                                    conversationData.messages[participant][0].content}
+                                {content}
                             </div>
-
                         </div>
                     </section>
                 );

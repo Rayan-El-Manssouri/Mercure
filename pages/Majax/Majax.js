@@ -1,33 +1,15 @@
 import axios from 'axios';
 
 export class Majax {
-    
+
     async getToken() {
-        try {
-            const storedToken = localStorage.getItem('token');
-            if (!storedToken) {
-                throw new Error('Token non trouvé dans le stockage local');
-            }
-            const response = await fetch('/api/auth/users', {
-                headers: {
-                    'Authorization': `Bearer ${storedToken}`
-                }
-            });
-            if (!response.ok) {
-                throw new Error('Échec de la récupération des informations de l\'utilisateur');
-            }
-            const userData = await response.json();
-            return userData;
-        } catch (error) {
-            console.error(error);
-            return null;
-        }
+        return localStorage.getItem('token');
     }
 
     async getUsers() {
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.get('/api/getUsers', {
+            const response = await axios.post('/api/getUsers', null, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -51,4 +33,24 @@ export class Majax {
             throw new Error('Error fetching conversations: ' + err.message);
         }
     }
+
+    // Token : information de l'utilisateur qui envoie : sender
+    async sendMessage(token, received, content, messageTime, email) {
+        try {
+            const response = await axios.post('/api/Direct/new', {
+                received: received,
+                content: content,
+                messageTime: messageTime,
+                email: email
+            }, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            return response.data;
+        } catch (err) {
+            throw new Error('Error fetching conversations: ' + err.message);
+        }
+    }
+
 }

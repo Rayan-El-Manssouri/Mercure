@@ -2,14 +2,10 @@
 import fs from 'fs';
 import path from 'path';
 import jwt from 'jsonwebtoken'; // Assurez-vous d'avoir installé le package jsonwebtoken
+import { log } from 'console';
 
 // Définissez le chemin absolu vers le fichier JSON
 const CONVERSATION_DATA_PATH = path.join(process.cwd(), 'pages', 'api', 'conversation', 'conv.json');
-
-// Fonction pour vérifier si l'email de l'utilisateur est dans les participants
-function isUserInConversation(userEmail, conversation) {
-    return userEmail in conversation;
-}
 
 // Définissez la fonction handler qui gère la route de l'API
 export default function handler(req, res) {
@@ -24,6 +20,7 @@ export default function handler(req, res) {
                     res.status(500).json({ error: 'Internal Server Error' });
                     return;
                 }
+                
                 // Parsez les données JSON
                 const conversationData = JSON.parse(data);
 
@@ -41,13 +38,13 @@ export default function handler(req, res) {
                     // Récupérez l'email de l'utilisateur à partir du token décodé
                     const userEmail = decodedToken.email;
 
-                    // Vérifiez si l'utilisateur est dans la conversation
-                    if (isUserInConversation(userEmail, conversationData)) {
-                        // Si oui, renvoyez la conversation
-                        res.status(200).json(conversationData[userEmail]);
+                    // Maintenant, envoyez les autres données en réponse
+                    const userConversationData = conversationData[userEmail];
+
+                    if (userConversationData) {
+                        res.status(200).json(userConversationData);
                     } else {
-                        // Si non, renvoyez un message indiquant que l'utilisateur n'est pas autorisé
-                        res.status(403).json({ error: 'User not authorized for this conversation' });
+                        res.status(404).json({ error: 'Conversation data not found' });
                     }
                 });
             });
