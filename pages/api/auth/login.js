@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 import fs from 'fs';
 import path from 'path';
+import io from 'socket.io-client';
 
 // Chemin d'accès au fichier des utilisateurs
 const usersFilePath = path.join(process.cwd(), 'pages', 'api', 'auth', 'users.json');
@@ -56,6 +57,12 @@ export default function login(req, res) {
     premium: users[userIndex].premium,
     connected: users[userIndex].is_logged_in
   }, process.env.JWT_SECRET);
+
+
+  
+  // Établir une connexion WebSocket et émettre l'événement de connexion
+  const socket = io('http://localhost:4000'); // Remplacez l'URL par l'URL de votre serveur WebSocket
+  socket.emit('login', { email, token }); // Envoyez l'email de l'utilisateur et le token JWT
 
   // Répondre avec le token
   res.status(200).json({ token });

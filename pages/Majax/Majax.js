@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export class Majax {
 
-    async getToken() {
+    getToken() {
         return localStorage.getItem('token');
     }
 
@@ -52,5 +52,4 @@ export class Majax {
             throw new Error('Error fetching conversations: ' + err.message);
         }
     }
-
 }

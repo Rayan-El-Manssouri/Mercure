@@ -12,31 +12,6 @@
           "messageTime": 1647850800,
           "content": "Mon premier messsage",
           "sender": "you"
-        },
-        {
-          "messageTime": 1711127868580,
-          "content": "SALUT",
-          "sender": "you"
-        },
-        {
-          "messageTime": 1711127896087,
-          "content": "hi",
-          "sender": "Al capitan"
-        },
-        {
-          "messageTime": 1711127971247,
-          "content": "Ceci et un p'tit test",
-          "sender": "Al capitan"
-        },
-        {
-          "messageTime": 1711202644305,
-          "content": "Coucou ! comment ça va ?",
-          "sender": "you"
-        },
-        {
-          "messageTime": 1711202674917,
-          "content": "dsdqs",
-          "sender": "you"
         }
       ],
       "Admin users": []
@@ -54,31 +29,6 @@
         {
           "messageTime": 1647850800,
           "content": "Mon premier messsage",
-          "sender": "Admin users"
-        },
-        {
-          "messageTime": 1711127868580,
-          "content": "SALUT",
-          "sender": "Admin users"
-        },
-        {
-          "messageTime": 1711127896087,
-          "content": "hi",
-          "sender": "you"
-        },
-        {
-          "messageTime": 1711127971247,
-          "content": "Ceci et un p'tit test",
-          "sender": "you"
-        },
-        {
-          "messageTime": 1711202644305,
-          "content": "Coucou ! comment ça va ?",
-          "sender": "Admin users"
-        },
-        {
-          "messageTime": 1711202674917,
-          "content": "dsdqs",
           "sender": "Admin users"
         }
       ]

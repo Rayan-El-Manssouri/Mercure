@@ -23,7 +23,7 @@ const SideBar = ({ activeItem }) => {
 
 
     const menuItems = [
-        { label: 'Accueil', link: '/Home', icon: <IconHome className='w-4 stroke-1' />, id: 0 },
+        { label: 'Accueil', link: '/home', icon: <IconHome className='w-4 stroke-1' />, id: 0 },
         { label: 'Messagerie', link: '/Direct', icon: <IconMessage className='w-4 stroke-1' />, id: 1 },
         { label: 'Recherche', link: '#', icon: <IconSearch className='w-4 stroke-1' />, id: 2 },
         { label: 'Notifications', link: '#', icon: <IconBell className='w-4 stroke-1' />, id: 3 },

@@ -1,8 +1,13 @@
 import fs from 'fs';
 import path from 'path';
 import jwt from 'jsonwebtoken';
+import axios from 'axios'; // Importer axios pour effectuer des requêtes HTTP
+import { io } from 'socket.io-client';
 
 const CONVERSATION_DATA_PATH = path.join(process.cwd(), 'pages', 'api', 'conversation', 'conv.json');
+
+// URL de votre serveur WebSocket
+const SOCKET_SERVER_URL = 'http://localhost:4000'; // L'URL de votre serveur WebSocket
 
 export default function handler(req, res) {
     if (req.method === "POST") {
@@ -56,8 +61,6 @@ export default function handler(req, res) {
                     sender: "you" // Utilisation du nom de l'expéditeur
                 });
 
-
-
                 // Enregistrement du message dans la conversation de l'utilisateur qui reçoit le message
                 if (!conversationData[email].messages[senderName]) {
                     conversationData[email].messages[senderName] = [];
@@ -76,9 +79,18 @@ export default function handler(req, res) {
                         res.status(500).json({ error: 'Internal Server Error' });
                         return;
                     }
+
+                    // Envoyer le message à l'autre utilisateur via WebSocket
+                    const socket = io(SOCKET_SERVER_URL);
+                    socket.emit('message', {
+                        content: content,
+                        sender: senderName,
+                        messageTime: messageTime,
+                        receiver: received // Email de l'utilisateur qui reçoit le message
+                    });
+
                     res.status(200).json({ message: 'Message enregistré avec succès' });
                 });
-
             });
         });
     } else {

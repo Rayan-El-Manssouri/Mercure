@@ -17,3 +17,12 @@
     font-family: 'Cantarell';
     src: url('../public/font/Cantarell-Regular.ttf') format('truetype');
 }
+
+.message-container {
+    max-width: 400px;
+    word-wrap: break-word;
+}
+
+.not-latest-message {
+    margin-right: 30px; /* Ajoutez la marge supplémentaire souhaitée */
+}

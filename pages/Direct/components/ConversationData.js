@@ -58,7 +58,7 @@ function ConversationData({ conversationData, handleConversationClick }) {
                                     
                                     <p style={{ fontFamily: 'Cantarell' }}>{participantName}</p>
 
-                                    <p className="text-gray-500 ml-auto">
+                                    <p className="text-gray-500 ml-auto mr-1">
                                         {messageTimeFormatted}
                                     </p>
                                 </div>
