@@ -1,8 +1,8 @@
 // Importation des modules / icons
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import ConversationData from './components/ConversationData';
 import jwt from 'jsonwebtoken';
-import { IconCamera, IconFolder, IconFolderUp, IconPhoneCall, IconSend } from '@tabler/icons-react';
+import { IconCamera, IconFolderUp, IconPhoneCall, IconSend, IconUserCircle } from '@tabler/icons-react';
 import io from 'socket.io-client';
 
 // Immport des composants personalisé
@@ -20,6 +20,7 @@ export default function Direct() {
     const [conversationData, setConversationData] = useState({});
     const [activeConversation, setActiveConversation] = useState(null);
     const [newMessage, setNewMessage] = useState("");
+    const chatRef = useRef(null);
 
     // Initialisations de la class gérant l'api plus facillement
     const majax = new Majax();
@@ -34,6 +35,14 @@ export default function Direct() {
             console.log("Erreur dans la récupération des conversations :", err);
         }
     };
+
+    const scrollToBottom = () => {
+        if (chatRef.current) {
+            // Ajoutez la classe de l'animation à la barre de défilement
+            chatRef.current.classList.add('scroll-down-animation');
+            chatRef.current.scrollTop = chatRef.current.scrollHeight;
+        }
+    }
 
     useEffect(() => {
         getConv();
@@ -52,9 +61,9 @@ export default function Direct() {
                 sender: sender,
                 messageTime: data.messageTime
             };
-            
+
             const keyToUpdate = (sender === "you") ? receiver : sender;
-            
+
             setConversationData(prevData => {
                 const updatedMessages = {
                     ...prevData.messages,
@@ -63,14 +72,14 @@ export default function Direct() {
                         newMessage
                     ]
                 };
-            
+
                 console.log(updatedMessages);
                 return {
                     ...prevData,
                     messages: updatedMessages
                 };
             });
-            
+
         });
 
 
@@ -80,9 +89,16 @@ export default function Direct() {
 
     }, [conversationData]);
 
+
+    // Mettre à jour la barre de défilement une fois que le contenu des messages a été mis à jour
+    useEffect(() => {
+        scrollToBottom();
+    }, [conversationData]);
+
     // Gestion d'une variable de la conversation
     const handleConversationClick = (conversation) => {
         setActiveConversation(conversation);
+        scrollToBottom()
     };
 
     // Fonction pour envoyer un message
@@ -132,18 +148,24 @@ export default function Direct() {
                 <Search />
                 <ConversationData conversationData={conversationData} handleConversationClick={handleConversationClick} />
             </div>
+
             {activeConversation ? (
                 <div className='w-full flex items-center flex-col'>
                     <div className='flex w-full border items-center border-t-0 border-r-0 border-l-0 p-1'>
-                        <p style={{ fontFamily: "Cantarell" }}>{activeConversation.name}</p>
+                        <div className='flex items-center'>
+                            <IconUserCircle className="w-8 h-8 mr-1 stroke-1" />
+                            <p style={{ fontFamily: "Cantarell" }} className='hover:bg-gray-200 px-1 py-1 rounded cursor-pointer'>{activeConversation.name}</p>
+                        </div>
+
                         <div className='ml-auto flex'>
                             <IconPhoneCall className='stroke-1 hover:bg-gray-100 rounded' />
                             <IconCamera className='stroke-1 hover:bg-gray-100 rounded ml-2' />
                         </div>
                     </div>
-                    <div className='flex flex-1 flex-row w-full overflow-auto h-full'>
+
+                    <div ref={chatRef} className='flex flex-1 flex-row w-full overflow-auto h-full' style={{ overflowY: 'scroll', scrollbarWidth: 'thin' }}>
                         {activeConversation && conversationData.messages && conversationData.messages[activeConversation.name] && (
-                            <div className="w-full overflow-auto p-1 flex flex-col" >
+                            <div className="w-full p-1 flex flex-col" >
                                 {conversationData.messages[activeConversation.name].map((message, index) => {
                                     const isLastMessage = index === conversationData.messages[activeConversation.name].length - 1 || conversationData.messages[activeConversation.name][index + 1]?.sender !== message.sender;
                                     const isCurrentUser = message.sender === 'you';
@@ -155,7 +177,8 @@ export default function Direct() {
                             </div>
                         )}
                     </div>
-                    <div className='w-full flex mt-auto p-1'>
+
+                    <div className='w-full flex mt-auto p-1 border border-r-0 border-l-0 border-b-0'>
                         <div>
                             <IconFolderUp className='stroke-1 ml-1 mr-1 hover:bg-gray-200 rounded p-1 w-8 h-8 cursor-pointer' />
                         </div>

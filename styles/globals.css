@@ -7,6 +7,7 @@
     margin: 0;
     font-family: 'System UI', sans-serif;
     box-sizing: border-box;
+    /* border: 1px solid red; */
 }
 
 #__next {
@@ -23,6 +24,33 @@
     word-wrap: break-word;
 }
 
-.not-latest-message {
-    margin-right: 30px; /* Ajoutez la marge supplémentaire souhaitée */
+.scroll-down-animation {
+    animation: scroll-down 0.5s ease-in-out forwards;
+}
+
+
+/* styles.css */
+.comment-section {
+    margin-top: 20px;
+}
+
+.comment-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.comment-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.comment-section li {
+    margin-bottom: 5px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}
+
+.comment-section li:last-child {
+    margin-bottom: 0;
 }

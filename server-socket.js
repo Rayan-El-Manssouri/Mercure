@@ -19,7 +19,6 @@ io.on('connection', (socket) => {
 
   // Gérer l'événement de réception de message
   socket.on('message', (data) => {
-    console.log('Message reçu:', data);
     io.emit('message', data);
   });
 
